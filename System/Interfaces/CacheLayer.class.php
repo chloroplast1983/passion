@@ -13,14 +13,14 @@ interface CacheLayer
 {
 
     //保存缓存
-    function save($id, $data, $time = 0);
+    public function save($id, $data, $time = 0);
 
     //删除缓存
-    function del($id);
+    public function del($id);
 
     //获取缓存数据
-    function get($id);
+    public function get($id);
 
     //批量获取缓存数据
-    function getList($idList);
+    public function getList($idList);
 }

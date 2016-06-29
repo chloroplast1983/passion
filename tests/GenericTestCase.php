@@ -1,4 +1,6 @@
 <?php
+namespace tests;
+
 /**
  * 框架自用通用测试类,封装了一些常用的函数用于测试private参数等方法
  * @author chloroplast

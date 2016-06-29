@@ -1,4 +1,5 @@
 <?php
+namespace System\Command\Cache;
 
 /**
  * 测试添加缓存命令(AddCacheCommand),测试如下功能:
@@ -40,9 +41,9 @@ class SaveCacheCommandTest extends PHPUnit_Framework_TestCase
         //测试是否返回true
         $this->assertTrue($returnStatus);
         //测试是否key存在
-        $this->assertTrue(Core::$_cacheDriver->contains($this->key), 'SaveCacheCommand execute not save value');
+        $this->assertTrue(Core::$_cacheDriver->contains($this->key));
         //测试是否保存成功,根据key是否可以得到value
-        $this->assertEquals(Core::$_cacheDriver->fetch($this->key), $this->value, 'SaveCacheCommand execute not save value');
+        $this->assertEquals(Core::$_cacheDriver->fetch($this->key), $this->value);
     }
 
     /**
@@ -53,8 +54,8 @@ class SaveCacheCommandTest extends PHPUnit_Framework_TestCase
         //执行回滚命令
         $this->command->undo();
         //测试是否key存在
-        $this->assertFalse(Core::$_cacheDriver->contains($this->key), 'SaveCacheCommand undo not clear value, contains key');
+        $this->assertFalse(Core::$_cacheDriver->contains($this->key));
         //测试是否回滚成功,根据key获取值为空
-        $this->assertEmpty(Core::$_cacheDriver->fetch($this->key), 'SaveCacheCommand undo not clear value, contains value');
+        $this->assertEmpty(Core::$_cacheDriver->fetch($this->key));
     }
 }

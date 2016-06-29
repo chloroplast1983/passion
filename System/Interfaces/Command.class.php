@@ -14,9 +14,9 @@ interface Command
     /**
      * 执行
      */
-    function execute();
+    public function execute();
     /**
      * 回滚
      */
-    function undo();
+    public function undo();
 }

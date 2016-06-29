@@ -13,14 +13,14 @@ interface DbLayer
 {
 
     //删除
-    function delete($whereSqlArr);
+    public function delete($whereSqlArr);
 
     //插入
-    function insert($insertSqlArr, $returnLastInsertId = true);
+    public function insert($insertSqlArr, $returnLastInsertId = true);
 
     //查询
-    function select(string $sql);
+    public function select(string $sql);
 
     //更新
-    function update(array $setSqlArr, $whereSqlArr);
+    public function update(array $setSqlArr, $whereSqlArr);
 }

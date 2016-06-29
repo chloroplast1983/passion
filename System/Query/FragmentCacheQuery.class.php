@@ -57,7 +57,7 @@ abstract class FragmentCacheQuery
     /**
      * 更新缓存片段
      */
-    abstract function refresh();
+    abstract public function refresh();
     /**
      * 删除片段缓存
      */

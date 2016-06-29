@@ -1,4 +1,5 @@
 <?php
+namespace System\Command\Cache;
 
 /**
  * 测试添加缓存命令(DelCacheCommand),测试如下功能:

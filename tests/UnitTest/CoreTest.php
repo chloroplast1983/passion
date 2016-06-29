@@ -1,4 +1,6 @@
 <?php
+namespace tests\UnitTest;
+
 /**
  * 测试框架核心类
  * @author chloroplast
@@ -31,11 +33,18 @@ class CoreTest extends PHPUnit_Framework_TestCase
         //计算文件总数 -- 结束
         //测试是否classMaps.php中的sizeof(array)等于文件总数
         $classMaps = include S_ROOT.'System/classMaps.php';
-        $this->assertEquals(sizeof($classMaps), $fileCounts, 'System file counts: '.$fileCounts.' not equal sizeof classMaps: '.sizeof($classMaps));
+        $this->assertEquals(
+            sizeof($classMaps),
+            $fileCounts,
+            'System file counts: '.$fileCounts.' not equal sizeof classMaps: '.sizeof($classMaps)
+        );
         
         //测试classMaps中的class是否自动加载正确
         foreach ($classMaps as $className => $classPath) {
-            $this->assertTrue(class_exists($className)||interface_exists($className), $className.' not autoload by '.$classPath);
+            $this->assertTrue(
+                class_exists($className)||interface_exists($className),
+                $className.' not autoload by '.$classPath
+            );
         }
 
         //测试Application加载文件,HomeController
@@ -90,7 +99,10 @@ class CoreTest extends PHPUnit_Framework_TestCase
      */
     public function testInitCache()
     {
-        $this->assertTrue(is_object(Core::$_cacheDriver) && Core::$_cacheDriver instanceof \Doctrine\Common\Cache\MemcachedCache);
+        $this->assertTrue(
+            is_object(Core::$_cacheDriver) &&
+            Core::$_cacheDriver instanceof \Doctrine\Common\Cache\MemcachedCache
+        );
     }
 
     /**

@@ -1,6 +1,9 @@
 <?php
+namespace tests;
+
 /**
- * 框架自用数据库测试抽象用例,其他数据库测试继承该类即可,在不同的数据库测试用例中重用,降低数据库开销.
+ * 框架自用数据库测试抽象用例,其他数据库测试继承该类即可.
+ * 在不同的数据库测试用例中重用,降低数据库开销.
  * 数据库的表,用户名这些都配置在xml文件中,可以根据自己的环境需要去修改 phpunit.xml
  * 所有数据库表的测试都需要继承该类,用于测试数据库环境.
  * 配合镜像可以在本机独立的测试单元测试和集成测试.
@@ -26,7 +29,12 @@ abstract class GenericTestsDatabaseTestCase extends PHPUnit_Extensions_Database_
 
         if ($this->conn === null) {
             if (self::$pdo == null) {
-                self::$pdo = new PDO($GLOBALS['DB_DSN'], $GLOBALS['DB_USER'], $GLOBALS['DB_PASSWD'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+                self::$pdo = new PDO(
+                    $GLOBALS['DB_DSN'],
+                    $GLOBALS['DB_USER'],
+                    $GLOBALS['DB_PASSWD'],
+                    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+                );
             }
             $this->conn = $this->createDefaultDBConnection(self::$pdo, $GLOBALS['DB_DBNAME']);
         }

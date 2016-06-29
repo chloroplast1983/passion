@@ -16,7 +16,8 @@ class Transaction
     public static $transactionSubject = null;
 
     /**
-     * 这里没有使用PDO::inTransaction,因为数据库连接已经设置为延迟加载.如果调用此方法需要初始化一次数据库连接.
+     * 这里没有使用PDO::inTransaction,因为数据库连接已经设置为延迟加载.
+     * 如果调用此方法需要初始化一次数据库连接.
      * 所以这里用程序来判断.
      */
     private static $inTransaction = false;//true 当前事务开启 false 当前事务关闭
@@ -30,7 +31,7 @@ class Transaction
         return Core::$_dbDriver->beginTA();
     }
 
-    public static function Commit()
+    public static function commit()
     {
         if (!Core::$_dbDriver->commit()) {
             return self::rollBack();

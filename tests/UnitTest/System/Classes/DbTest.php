@@ -1,4 +1,6 @@
 <?php
+namespace System\Classes;
+
 /**
  * 测试Db封装类,需要测试如下:
  * 1. delete

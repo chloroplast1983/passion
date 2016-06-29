@@ -1,4 +1,6 @@
 <?php
+namespace System\Query;
+
 /**
  * System\Query\RowCacheQuery.class.php 测试文件
  * @author chloroplast
@@ -67,8 +69,11 @@ class RowCacheQueryTest extends GenericTestsDatabaseTestCase
         //检查内存是否有数据,期望缓存有数据
         $this->assertEquals($dbResult, $this->cacheStub->get($testId));
 
-        //现在我们需要测试如果缓存有数据,则不在读取数据库,所以我们删除缓存,测试是否可以正常获取数据
-        //正常开发场景我们应该在封装的command中,变更数据后删除缓存.这里这么处理只是用于测试
+        //现在我们需要测试如果缓存有数据,则不在读取数据库,
+        //所以我们删除缓存,测试是否可以正常获取数据
+        //正常开发场景我们应该在封装的command中,变更数据后删除缓存.
+        //这里这么处理只是用于测试
+        
         //删除该id对应的数据
         $this->dbStub->delete(array($this->primaryKey=>$testId));
 
@@ -101,8 +106,12 @@ class RowCacheQueryTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($dbResults[0], $this->cacheStub->get($testIds[0]));
         $this->assertEquals($dbResults[1], $this->cacheStub->get($testIds[1]));
 
-        //现在我们需要测试如果缓存有数据,则不在读取数据库,所以我们删除缓存,测试是否可以正常获取数据
-        //正常开发场景我们应该在封装的command中,变更数据后删除缓存.这里这么处理只是用于测试
+        //现在我们需要测试如果缓存有数据,则不在读取数据库,
+        //所以我们删除缓存,测试是否可以正常获取数据
+        //正常开发场景我们应该在封装的command中,
+        //变更数据后删除缓存.
+        //这里这么处理只是用于测试
+        
         //删除该id对应的数据
         $this->dbStub->delete(array($this->primaryKey=>$testIds[0]));
         $this->dbStub->delete(array($this->primaryKey=>$testIds[1]));

@@ -10,7 +10,7 @@ use System\Interfaces;
 class Subject implements Interfaces\Subject
 {
     
-    private $_observers;
+    private $observers;
     
     public function __construct()
     {

@@ -1,4 +1,6 @@
 <?php
+namespace System\Query;
+
 /**
  * System\Query\RowQuery.class.php 测试文件
  * @author chloroplast

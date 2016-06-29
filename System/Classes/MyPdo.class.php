@@ -64,7 +64,8 @@ class MyPdo
         return $this->statement;
     }
     /**
-     * 执行Sql语句，一般用于 增、删、更新或者设置  返回影响的行数
+     * 执行Sql语句,一般用于增、删、更新或者设置
+     * 返回影响的行数
      */
     public function exec($sql)
     {
@@ -79,7 +80,8 @@ class MyPdo
          
     }
     /**
-     * 执行有返回值的查询，返回PDOStatement  可以通过链式操作，可以通过这个类封装的操作获取数据
+     * 执行有返回值的查询,返回PDOStatement
+     * 可以通过链式操作,可以通过这个类封装的操作获取数据
      */
     public function query($sql)
     {
@@ -202,7 +204,8 @@ class MyPdo
     */
      
     /**
-     * 以引用的方式绑定变量到占位符(可以只执行一次prepare，执行多次bindParam达到重复使用的效果)
+     * 以引用的方式绑定变量到占位符(可以只执行一次prepare,
+     * 执行多次bindParam达到重复使用的效果)
      */
     public function bindParam($parameter, $variable, $data_type = PDO::PARAM_STR, $length = 6)
     {

@@ -1,4 +1,6 @@
 <?php
+namespace System\Classes;
+
 /**
  * 测试框架封装的事务类,这个事务会把memcached封装到同步到mysql事务内
  * 如果Mysql回滚了所以我们需要测试:
@@ -32,18 +34,25 @@ class TransactionTest extends GenericTestsDatabaseTestCase
         System\Classes\Transaction::beginTransaction();
         //插入一条语句
         Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
-        $ids[] = Core::$_dbDriver->lastInertId();//保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        $ids[] = Core::$_dbDriver->lastInertId();
         
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand($ids[0], array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3'));
+        $command = new System\Command\Cache\SaveCacheCommand(
+            $ids[0],
+            array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3')
+        );
         $command -> execute();
         // var_dump($ids);exit();
         //插入一条语句
         Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
-
-        $ids[] = Core::$_dbDriver->lastInertId();//保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        $ids[] = Core::$_dbDriver->lastInertId();
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand($ids[1], array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4'));
+        $command = new System\Command\Cache\SaveCacheCommand(
+            $ids[1],
+            array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4')
+        );
         $command -> execute();
         //commit提交
         $status = System\Classes\Transaction::Commit();
@@ -93,16 +102,24 @@ class TransactionTest extends GenericTestsDatabaseTestCase
         System\Classes\Transaction::beginTransaction();
         //插入一条语句
         Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
-        $ids[] = Core::$_dbDriver->lastInertId();//保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        $ids[] = Core::$_dbDriver->lastInertId();
 
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand($ids[0], array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3'));
+        $command = new System\Command\Cache\SaveCacheCommand(
+            $ids[0],
+            array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3')
+        );
         $command -> execute();
         //插入一条语句
         Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
-        $ids[] = Core::$_dbDriver->lastInertId();//保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
+        $ids[] = Core::$_dbDriver->lastInertId();
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand($ids[1], array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4'));
+        $command = new System\Command\Cache\SaveCacheCommand(
+            $ids[1],
+            array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4')
+        );
         $command -> execute();
         //回滚
         $status = System\Classes\Transaction::rollBack();

@@ -15,10 +15,10 @@ interface Pcommand
      * 执行进程
      *
      */
-    function execute();
+    public function execute();
     /**
      * 进程报告
      *
      */
-    function report();
+    public function report();
 }

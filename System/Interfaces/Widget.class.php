@@ -12,5 +12,5 @@ namespace System\Interfaces;
 interface Widget
 {
     
-    function render();
+    public function render();
 }
