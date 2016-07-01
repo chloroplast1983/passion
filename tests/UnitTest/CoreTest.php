@@ -6,7 +6,7 @@ namespace tests\UnitTest;
  * @author chloroplast
  * @version 1.0.20160218
  */
-class CoreTest extends PHPUnit_Framework_TestCase
+class CoreTest extends \PHPUnit_Framework_TestCase
 {
 
     

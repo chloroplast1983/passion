@@ -1,13 +1,15 @@
 <?php
 namespace System\Classes;
 
+use tests;
+
 /**
  * 测试框架封装的事务类,这个事务会把memcached封装到同步到mysql事务内
  * 如果Mysql回滚了所以我们需要测试:
  * 1. 如果事务正常提交,数据库正常提交,则cache正常存储
  * 2. 如果事务回滚,数据库回滚,则cache回滚
  */
-class TransactionTest extends GenericTestsDatabaseTestCase
+class TransactionTest extends tests\GenericTestsDatabaseTestCase
 {
 
     public $fixtures = array('pcore_system_test_a','pcore_system_test_b');

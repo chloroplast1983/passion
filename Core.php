@@ -180,7 +180,7 @@ class Core
     private function initContainer()
     {
         //初始化容器
-        $containerBuilder = new DI\ContainerBuilder();
+        $containerBuilder = new \DI\ContainerBuilder();
         //这里我们需要使用annotation,所以开启了此功能
         $containerBuilder->useAnnotations(true);
         //为容器设置缓存
@@ -322,7 +322,7 @@ class Core
         global $memCacheDriver;
 
         //初始化memcached缓存 -- 开始
-        $memcached = new Memcached();
+        $memcached = new \Memcached();
         $memcached->addServers(self::$container->get('memcached.serevice'));
 
         self::$cacheDriver = new \Doctrine\Common\Cache\MemcachedCache();

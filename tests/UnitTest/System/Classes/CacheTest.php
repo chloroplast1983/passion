@@ -13,7 +13,7 @@ namespace System\Classes;
  * @author chloroplast
  * @version 1.0.20160218
  */
-class CacheTest extends PHPUnit_Framework_TestCase
+class CacheTest extends \PHPUnit_Framework_TestCase
 {
 
     private $stub;

@@ -1,6 +1,8 @@
 <?php
 namespace System\Classes;
 
+use tests;
+
 /**
  * 测试Db封装类,需要测试如下:
  * 1. delete
@@ -8,7 +10,7 @@ namespace System\Classes;
  * 3. update
  * 4. select
  */
-class DbTest extends GenericTestsDatabaseTestCase
+class DbTest extends tests\GenericTestsDatabaseTestCase
 {
 
     public $fixtures = array('pcore_system_test_a','pcore_system_test_b');

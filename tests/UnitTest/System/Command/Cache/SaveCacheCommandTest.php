@@ -8,7 +8,7 @@ namespace System\Command\Cache;
  * @author chloroplast
  * @version 1.0.20160217
  */
-class SaveCacheCommandTest extends PHPUnit_Framework_TestCase
+class SaveCacheCommandTest extends \PHPUnit_Framework_TestCase
 {
     
     private $command;

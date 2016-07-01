@@ -1,13 +1,15 @@
 <?php
 namespace System\Query;
 
+use tests;
+
 /**
  * System\Query\RowQuery.class.php 测试文件
  * @author chloroplast
  * @version 1.0.20160301
  */
 
-class RowQueryTest extends GenericTestsDatabaseTestCase
+class RowQueryTest extends tests\GenericTestsDatabaseTestCase
 {
 
     public $fixtures = array('pcore_system_test_a','pcore_system_test_b');

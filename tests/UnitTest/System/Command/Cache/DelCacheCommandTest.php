@@ -7,7 +7,7 @@ namespace System\Command\Cache;
  * @author chloroplast
  * @version 1.0.20160217
  */
-class DelCacheCommandTest extends PHPUnit_Framework_TestCase
+class DelCacheCommandTest extends \PHPUnit_Framework_TestCase
 {
     
     private $command;

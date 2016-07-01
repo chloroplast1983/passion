@@ -1,6 +1,8 @@
 <?php
 namespace System\Classes;
 
+use tests;
+
 /**
  * 测试框架内封装的MyPdo,我们需要:
  * 1.建立基境(fixture)
@@ -13,7 +15,7 @@ namespace System\Classes;
  * @version 1.0.20160218
  */
  
-class MyPdoTest extends GenericTestsDatabaseTestCase
+class MyPdoTest extends tests\GenericTestsDatabaseTestCase
 {
 
     public $fixtures = array('pcore_system_test_a','pcore_system_test_b');

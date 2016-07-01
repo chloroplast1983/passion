@@ -11,7 +11,7 @@ namespace tests;
  * @version 1.0.20160218
  */
 
-abstract class GenericTestsDatabaseTestCase extends PHPUnit_Extensions_Database_TestCase
+abstract class GenericTestsDatabaseTestCase extends \PHPUnit_Extensions_Database_TestCase
 {
 
     // 只实例化 pdo 一次，供测试的清理和装载基境使用
@@ -50,7 +50,7 @@ abstract class GenericTestsDatabaseTestCase extends PHPUnit_Extensions_Database_
         if (empty($fixtures)) {
             $fixtures = $this->fixtures;
         }
-        $compositeDs = new PHPUnit_Extensions_Database_DataSet_CompositeDataSet(array());
+        $compositeDs = new \PHPUnit_Extensions_Database_DataSet_CompositeDataSet(array());
 
         $fixturePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Fixtures';
 
@@ -95,7 +95,7 @@ abstract class GenericTestsDatabaseTestCase extends PHPUnit_Extensions_Database_
      */
     public function getPrivateMethod($className, $methodName)
     {
-        $reflector = new ReflectionClass($className);
+        $reflector = new \ReflectionClass($className);
         $method = $reflector->getMethod($methodName);
         $method->setAccessible(true);
  
@@ -112,7 +112,7 @@ abstract class GenericTestsDatabaseTestCase extends PHPUnit_Extensions_Database_
      */
     public function getPrivateProperty($className, $propertyName)
     {
-        $reflector = new ReflectionClass($className);
+        $reflector = new \ReflectionClass($className);
         $property = $reflector->getProperty($propertyName);
         $property->setAccessible(true);
  
