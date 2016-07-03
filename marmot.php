@@ -5,7 +5,7 @@
 define('CLI_VERSION','1.0.20160413');
 
 include_once 'Core.php';
-$core = \Core\Core::getInstance();
+$core = \Marmot\Core::getInstance();
 $core -> initCli();
 
 $aliasCommands = ['-h'=>'help',

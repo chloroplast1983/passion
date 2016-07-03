@@ -63,7 +63,7 @@ class ModelTemplate implements TemplateInterface{
 		$this->buffer .= "\n";
 
 		foreach($this->profileData['parameters'] as $parameter){
-			$this->buffer .= "    /**\n    * @var ".$parameter['type']." $".$parameter['key']." ".$parameter['comment']."\n     */\n    private $".$parameter['key'].";\n";
+			$this->buffer .= "    /**\n     * @var ".$parameter['type']." $".$parameter['key']." ".$parameter['comment']."\n     */\n    private $".$parameter['key'].";\n";
 		}
 	}
 

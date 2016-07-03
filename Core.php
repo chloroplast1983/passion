@@ -4,7 +4,7 @@
  * @author chloroplast1983
  * @version 1.0.20131007
  */
-namespace Core;
+namespace Marmot;
 
 //设置底层常量保护包含文件
 define('IN_PHP', true);

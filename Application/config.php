@@ -1,24 +1,20 @@
 <?php
-
-//用户状态
+//通用
 /**
- * @var int USER_STATUS_NORMAL  用户状态  正常
+ * @var int STATUS_NORMAL 默认状态
  */
-define('USER_STATUS_NORMAL', 0);
-
+define('STATUS_NORMAL', 0);
 /**
- * @var int USER_STATUS_BANNED  用户状态  禁用
+ * @var int STATUS_DELETE 删除状态
  */
-define('USER_STATUS_BANNED', -1);
+define('STATUS_DELETE', -2);
 
-//盐长度
+//商品
 /**
- * @var int SALT_LENGTH 盐长度
+ * @var int TYPE_ESCALATOR 扶梯
  */
-define('SALT_LENGTH', 4);
-
-//手机短信
+define('TYPE_ESCALATOR', 1);
 /**
- * @var string SMS_REGISTER_MESSAGE 手机注册短信
+ * @var TYPE_ELEVATOR 直梯
  */
-define('SMS_REGISTER_MESSAGE', '手机短信注册验证码为[%s]');
+define('TYPE_ELEVATOR', 2);

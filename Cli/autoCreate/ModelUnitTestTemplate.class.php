@@ -118,7 +118,7 @@ class ModelUnitTestTemplate implements TemplateInterface{
 				}
 			}else{//如果规则是对象
 				if($parameter['rule'] == 'object'){
-					$this->buffer .= "        ".'$'."this->assertInstanceof(".$parameter['default'].", ".'$'.$parameter['key']."Parameter->getValue(".'$'."this->stub));\n";
+					$this->buffer .= "        ".'$'."this->assertInstanceof('".$parameter['type']."', ".'$'.$parameter['key']."Parameter->getValue(".'$'."this->stub));\n";
 				}
 			}
 			$this->buffer .= "\n";
@@ -397,6 +397,7 @@ class ModelUnitTestTemplate implements TemplateInterface{
 			for($i = 0; $i < $max; $i++){
 				$this->buffer .= '-';
 			}
+
 			$this->buffer .= " start";
 			if($parameter['type'] == 'int'){//整型
 				if($parameter['rule'] == 'int'){
@@ -407,7 +408,7 @@ class ModelUnitTestTemplate implements TemplateInterface{
 					$this->generateTestRangeFunction($parameter);
 				}
 			}else if($parameter['type'] == 'string'){//字符
-				if($parameter['rule'] == ''){
+				if($parameter['rule'] == '' || $parameter['rule'] == 'string'){
 					$this->generateTestSetStringFunction($parameter);
 				}elseif($parameter['rule'] == 'email'){
 					$this->generateTestSetEmailFunction($parameter);
