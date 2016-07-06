@@ -44,10 +44,10 @@ class Category
     /**
      * Category 商品分类领域对象 构造函数
      */
-    public function __construct()
+    public function __construct(int $id = 0)
     {
         global $_FWGLOBAL;
-        $this->id = 0;
+        $this->id = !empty($id) ? $id : 0;
         $this->name = '';
         $this->parentId = 0;
         $this->createTime = $_FWGLOBAL['timestamp'];

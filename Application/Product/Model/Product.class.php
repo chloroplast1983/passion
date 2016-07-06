@@ -64,10 +64,10 @@ class Product
     /**
      * Product 商品领域对象 构造函数
      */
-    public function __construct()
+    public function __construct(int $id = 0)
     {
         global $_FWGLOBAL;
-        $this->id = 0;
+        $this->id = !empty($id) ? $id : 0;
         $this->title = '';
         $this->content = '';
         $this->createTime = $_FWGLOBAL['timestamp'];

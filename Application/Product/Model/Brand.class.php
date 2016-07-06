@@ -28,19 +28,24 @@ class Brand
      * @var string $name 品牌名称
      */
     private $name;
+    /**
+     * @var int $logo 品牌logo
+     */
+    private $logo;
 
     /**
      * Brand 商品品牌领域对象 构造函数
      */
-    public function __construct()
+    public function __construct(int $id = 0)
     {
         global $_FWGLOBAL;
-        $this->id = 0;
+        $this->id = !empty($id) ? $id : 0;
         $this->name = '';
         $this->createTime = $_FWGLOBAL['timestamp'];
         $this->updateTime = $_FWGLOBAL['timestamp'];
         $this->statusTime = $_FWGLOBAL['timestamp'];
         $this->status = STATUS_NORMAL;
+        $this->logo = 0;
     }
 
     /**
@@ -54,6 +59,7 @@ class Brand
         unset($this->updateTime);
         unset($this->statusTime);
         unset($this->status);
+        unset($this->logo);
     }
 
     /**
@@ -73,6 +79,7 @@ class Brand
     {
         return $this->id;
     }
+
     /**
      * 设置品牌名称
      * @param string $name 品牌名称
@@ -89,5 +96,23 @@ class Brand
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * 设定品牌 logo
+     * @param int $logo 品牌logo
+     */
+    public function setLogo(int $logo)
+    {
+        $this->logo = $logo;
+    }
+
+    /**
+     * 返回品牌 logo
+     * @return int $logo 品牌logo
+     */
+    public function getLogo()
+    {
+        return $this->logo;
     }
 }
