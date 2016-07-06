@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_news_content">
+	<row>
+		<field name="news_id">1</field>
+		<field name="content">新闻内容1</field>
+	</row>
+	<row>
+		<field name="news_id">2</field>
+		<field name="content">新闻内容2</field>
+	</row>
+	<row>
+		<field name="news_id">3</field>
+		<field name="content">新闻内容3</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

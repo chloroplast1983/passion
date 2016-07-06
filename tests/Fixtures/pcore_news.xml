@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_news">
+	<row>
+		<field name="news_id">1</field>
+		<field name="title">新闻标题1</field>
+		<field name="create_time">1467723290</field>
+		<field name="update_time">1467723291</field>
+		<field name="status_time">1467723292</field>
+		<field name="status">0</field>
+	</row>
+	<row>
+		<field name="news_id">2</field>
+		<field name="title">新闻标题2</field>
+		<field name="create_time">1467723293</field>
+		<field name="update_time">1467723294</field>
+		<field name="status_time">1467723295</field>
+		<field name="status">0</field>
+	</row>
+	<row>
+		<field name="news_id">3</field>
+		<field name="title">新闻标题3</field>
+		<field name="create_time">1467723296</field>
+		<field name="update_time">1467723297</field>
+		<field name="status_time">1467723298</field>
+		<field name="status">-2</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

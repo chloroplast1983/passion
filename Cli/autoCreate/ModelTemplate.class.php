@@ -148,6 +148,7 @@ class ModelTemplate implements TemplateInterface{
             $this->buffer .= "    {\n";
 			$this->buffer .= "        return ".'$this->'.$parameter['key'].";\n";
 			$this->buffer .= "    }\n";
+			$this->buffer .= "\n";
 		}
 	}
 }

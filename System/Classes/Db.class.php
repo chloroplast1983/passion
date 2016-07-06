@@ -2,7 +2,7 @@
 //powered by kevin
 namespace System\Classes;
 
-use Core;
+use Marmot\Core;
 use System\Interfaces\DbLayer;
 
 /**
@@ -34,7 +34,7 @@ abstract class Db implements DbLayer
      */
     public function delete($whereSqlArr)
     {
-        return Core::$_dbDriver->delete($this->tname($this->table), $whereSqlArr, $bind = "");
+        return Core::$dbDriver->delete($this->tname($this->table), $whereSqlArr, $bind = "");
     }
     
     /**
@@ -44,8 +44,8 @@ abstract class Db implements DbLayer
      */
     public function insert($insertSqlArr, $returnLastInsertId = true)
     {
-        $rows = Core::$_dbDriver->insert($this->tname($this->table), $insertSqlArr);
-        return $returnLastInsertId ? Core::$_dbDriver->lastInertId() : $rows;
+        $rows = Core::$dbDriver->insert($this->tname($this->table), $insertSqlArr);
+        return $returnLastInsertId ? Core::$dbDriver->lastInertId() : $rows;
     }
     
     /**
@@ -58,7 +58,7 @@ abstract class Db implements DbLayer
     {
         $sql = $sql == '' ? '' : ' WHERE ' . $sql;
         $sqlstr = 'SELECT ' . $select . ' FROM ' . $this->tname($this->table) . $useIndex . $sql;
-        return Core::$_dbDriver->query($sqlstr);
+        return Core::$dbDriver->query($sqlstr);
     }
 
     /**
@@ -68,7 +68,7 @@ abstract class Db implements DbLayer
      */
     public function update(array $setSqlArr, $whereSqlArr)
     {
-        return Core::$_dbDriver->update($this->tname($this->table), $setSqlArr, $whereSqlArr);
+        return Core::$dbDriver->update($this->tname($this->table), $setSqlArr, $whereSqlArr);
     }
 
     /**

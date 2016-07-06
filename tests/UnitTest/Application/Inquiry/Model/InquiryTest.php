@@ -175,4 +175,33 @@ class InquiryTest extends tests\GenericTestCase
         $this->assertEquals(1467538389, $this->stub->getUpdateTime());
     }
     //updateTime 测试 --------------------------------------------------   end
+    //email 测试 ------------------------------------------------------- start
+    /**
+     * 设置 User setEmail() 正确的传参类型, 期望传值正确
+     */
+    public function testSetEmailCorrectType()
+    {
+        $this->stub->setEmail('41893204@qq.com');
+        $this->assertEquals('41893204@qq.com', $this->stub->getEmail());
+    }
+
+    /**
+     * 设置 User setEmail() 错误的传参类型, 期望期望抛出TypeError exception
+     *
+     * @expectedException TypeError
+     */
+    public function testSetEmailWrongType()
+    {
+        $this->stub->setEmail(array(1, 2, 3));
+    }
+
+    /**
+     * 设置 User setEmail() 错误的传参类型.但是传参是数值, 期望返回类型正确, 值正确.
+     */
+    public function testSetEmailCorrectTypeButNotEmail()
+    {
+        $this->stub->setEmail('string');
+        $this->assertEquals('', $this->stub->getEmail());
+    }
+    //email 测试 -------------------------------------------------------   end
 }

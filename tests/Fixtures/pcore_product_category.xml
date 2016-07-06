@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_product_category">
+	<row>
+		<field name="category_id">1</field>
+		<field name="category_name">产品大分类1</field>
+		<field name="create_time">1467723290</field>
+		<field name="parent_id">0</field>
+		<field name="type">1</field>
+	</row>
+	<row>
+		<field name="category_id">2</field>
+		<field name="category_name">产品小分类1</field>
+		<field name="create_time">1467723293</field>
+		<field name="parent_id">1</field>
+		<field name="type">1</field>
+	</row>
+	<row>
+		<field name="category_id">3</field>
+		<field name="category_name">产品大分类2</field>
+		<field name="create_time">1467723296</field>
+		<field name="parent_id">0</field>
+		<field name="type">2</field>
+	</row>
+	<row>
+		<field name="category_id">4</field>
+		<field name="category_name">产品小分类2</field>
+		<field name="create_time">1467723299</field>
+		<field name="parent_id">3</field>
+		<field name="type">2</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

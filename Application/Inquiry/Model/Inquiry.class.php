@@ -1,6 +1,8 @@
 <?php
 namespace Inquiry\Model;
 
+use Common\Model\ModifyTime;
+
 /**
  * Inquiry 询价领域对象
  * @author chloroplast
@@ -9,6 +11,10 @@ namespace Inquiry\Model;
 
 class Inquiry
 {
+    /**
+     * @var ModifyTime 时间性状
+     */
+    use ModifyTime;
     /**
      * @var int $id 询价id
      */
@@ -22,25 +28,22 @@ class Inquiry
      */
     private $content;
     /**
-     * @var int $createTime 新闻发布时间
+     * @var string $email 邮箱
      */
-    private $createTime;
-    /**
-     * @var int $updateTime 新闻更新时间
-     */
-    private $updateTime;
+    private $email;
 
     /**
      * Inquiry 询价领域对象 构造函数
      */
-    public function __construct()
+    public function __construct(int $id = 0)
     {
         global $_FWGLOBAL;
-        $this->id = 0;
+        $this->id = !empty($id) ? $id : 0;
         $this->title = '';
         $this->content = '';
         $this->createTime = $_FWGLOBAL['timestamp'];
         $this->updateTime = $_FWGLOBAL['timestamp'];
+        $this->email = '';
     }
 
     /**
@@ -53,6 +56,7 @@ class Inquiry
         unset($this->content);
         unset($this->createTime);
         unset($this->updateTime);
+        unset($this->email);
     }
 
     /**
@@ -106,38 +110,22 @@ class Inquiry
     {
         return $this->content;
     }
+
     /**
-     * 设置新闻发布时间
-     * @param int $createTime 新闻发布时间
+     * 设置邮箱
+     * @param string $email 用户邮箱
      */
-    public function setCreateTime(int $createTime)
+    public function setEmail(string $email)
     {
-        $this->createTime = $createTime;
+        $this->email = filter_var($email, FILTER_VALIDATE_EMAIL) ? $email : '';
     }
 
     /**
-     * 获取新闻发布时间
-     * @return int $createTime 新闻发布时间
+     * 获取邮箱
+     * @return string $email 用户邮箱
      */
-    public function getCreateTime()
+    public function getEmail()
     {
-        return $this->createTime;
-    }
-    /**
-     * 设置新闻更新时间
-     * @param int $updateTime 新闻更新时间
-     */
-    public function setUpdateTime(int $updateTime)
-    {
-        $this->updateTime = $updateTime;
-    }
-
-    /**
-     * 获取新闻更新时间
-     * @return int $updateTime 新闻更新时间
-     */
-    public function getUpdateTime()
-    {
-        return $this->updateTime;
+        return $this->email;
     }
 }

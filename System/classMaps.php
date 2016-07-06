@@ -6,6 +6,7 @@ return [
     'System\Classes\Db'     => S_ROOT.'System/Classes/Db.class.php',
     'System\Classes\MyPdo' => S_ROOT.'System/Classes/MyPdo.class.php',
     'System\Classes\Transaction' => S_ROOT.'System/Classes/Transaction.class.php',
+    'System\Classes\Translator' => S_ROOT.'System/Classes/Translator.class.php',
     
     //interfaces
     'System\Interfaces\Command' => S_ROOT.'System/Interfaces/Command.class.php',

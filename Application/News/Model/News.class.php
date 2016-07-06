@@ -1,6 +1,9 @@
 <?php
 namespace News\Model;
 
+use Common\Model\ModifyTime;
+use Common\Model\Status;
+
 /**
  * News 新闻领域对象
  * @author chloroplast
@@ -9,6 +12,14 @@ namespace News\Model;
 
 class News
 {
+    /**
+     * @var ModifyTime 时间性状
+     */
+    use ModifyTime;
+    /**
+     * @var Status 状态性状
+     */
+    use Status;
     /**
      * @var int $id 新闻id
      */
@@ -21,30 +32,14 @@ class News
      * @var string $content 内容
      */
     private $content;
-    /**
-     * @var int $createTime 新闻发布时间
-     */
-    private $createTime;
-    /**
-     * @var int $updateTime 新闻更新时间
-     */
-    private $updateTime;
-    /**
-     * @var int $statusTime 新闻状态更新时间
-     */
-    private $statusTime;
-    /**
-     * @var int $status 新闻状态
-     */
-    private $status;
 
     /**
      * News 新闻领域对象 构造函数
      */
-    public function __construct()
+    public function __construct(int $id = 0)
     {
         global $_FWGLOBAL;
-        $this->id = 0;
+        $this->id = !empty($id) ? $id : 0;
         $this->title = '';
         $this->content = '';
         $this->createTime = $_FWGLOBAL['timestamp'];
@@ -84,6 +79,7 @@ class News
     {
         return $this->id;
     }
+
     /**
      * 设置标题
      * @param string $title 标题
@@ -101,6 +97,7 @@ class News
     {
         return $this->title;
     }
+
     /**
      * 设置内容
      * @param string $content 内容
@@ -117,73 +114,5 @@ class News
     public function getContent()
     {
         return $this->content;
-    }
-    /**
-     * 设置新闻发布时间
-     * @param int $createTime 新闻发布时间
-     */
-    public function setCreateTime(int $createTime)
-    {
-        $this->createTime = $createTime;
-    }
-
-    /**
-     * 获取新闻发布时间
-     * @return int $createTime 新闻发布时间
-     */
-    public function getCreateTime()
-    {
-        return $this->createTime;
-    }
-    /**
-     * 设置新闻更新时间
-     * @param int $updateTime 新闻更新时间
-     */
-    public function setUpdateTime(int $updateTime)
-    {
-        $this->updateTime = $updateTime;
-    }
-
-    /**
-     * 获取新闻更新时间
-     * @return int $updateTime 新闻更新时间
-     */
-    public function getUpdateTime()
-    {
-        return $this->updateTime;
-    }
-    /**
-     * 设置新闻状态更新时间
-     * @param int $statusTime 新闻状态更新时间
-     */
-    public function setStatusTime(int $statusTime)
-    {
-        $this->statusTime = $statusTime;
-    }
-
-    /**
-     * 获取新闻状态更新时间
-     * @return int $statusTime 新闻状态更新时间
-     */
-    public function getStatusTime()
-    {
-        return $this->statusTime;
-    }
-    /**
-     * 设置新闻状态
-     * @param int $status 新闻状态
-     */
-    public function setStatus(int $status)
-    {
-        $this->status= in_array($status, array(STATUS_NORMAL,STATUS_DELETE)) ? $status : STATUS_NORMAL;
-    }
-
-    /**
-     * 获取新闻状态
-     * @return int $status 新闻状态
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }

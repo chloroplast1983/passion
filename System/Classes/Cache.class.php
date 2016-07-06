@@ -4,7 +4,7 @@ namespace System\Classes;
 
 use System\Command\Cache;
 use System\Interfaces\CacheLayer;
-use Core;
+use Marmot\Core;
 
 abstract class Cache implements CacheLayer
 {
@@ -46,7 +46,7 @@ abstract class Cache implements CacheLayer
      */
     public function get($id)
     {
-        return Core::$_cacheDriver->fetch($this->key.'_'.$id);
+        return Core::$cacheDriver->fetch($this->key.'_'.$id);
     }
     
     /**
@@ -68,7 +68,7 @@ abstract class Cache implements CacheLayer
         
         $flipKey = array_flip($keys);
 
-        $hits = Core::$_cacheDriver->fetchMultiple(array_values($keys));
+        $hits = Core::$cacheDriver->fetchMultiple(array_values($keys));
 
         if (!$hits) {
             return array($misses, $flipKey);

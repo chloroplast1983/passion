@@ -2,6 +2,7 @@
 namespace System\Query;
 
 use tests;
+use Marmot\Core;
 
 /**
  * System\Query\RowQuery.class.php 测试文件
@@ -41,7 +42,7 @@ class RowQueryTest extends tests\GenericTestsDatabaseTestCase
         unset($this->dbStub);
         unset($this->rowQuery);
         //清空缓存数据
-        Core::$_cacheDriver->flushAll();
+        Core::$cacheDriver->flushAll();
         parent::tearDown();
     }
     //通过rowCache读取数据,数据库有数据,测试返回数据成功,且缓存已经被正确赋值

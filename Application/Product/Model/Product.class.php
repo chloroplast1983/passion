@@ -1,6 +1,9 @@
 <?php
 namespace Product\Model;
 
+use Common\Model\ModifyTime;
+use Common\Model\Status;
+
 /**
  * Product 商品领域对象
  * @author chloroplast
@@ -9,6 +12,14 @@ namespace Product\Model;
 
 class Product
 {
+    /**
+     * @var ModifyTime 时间性状
+     */
+    use ModifyTime;
+    /**
+     * @var Status 状态性状
+     */
+    use Status;
     /**
      * @var int $id 新闻id
      */
@@ -21,22 +32,6 @@ class Product
      * @var string $content 内容
      */
     private $content;
-    /**
-     * @var int $createTime 新闻发布时间
-     */
-    private $createTime;
-    /**
-     * @var int $updateTime 新闻更新时间
-     */
-    private $updateTime;
-    /**
-     * @var int $statusTime 新闻状态更新时间
-     */
-    private $statusTime;
-    /**
-     * @var int $status 新闻状态
-     */
-    private $status;
     /**
      * @var \Product\Model\Brand $brand 品牌
      */
@@ -126,6 +121,7 @@ class Product
     {
         return $this->id;
     }
+    
     /**
      * 设置标题
      * @param string $title 标题
@@ -143,6 +139,7 @@ class Product
     {
         return $this->title;
     }
+
     /**
      * 设置内容
      * @param string $content 内容
@@ -160,74 +157,7 @@ class Product
     {
         return $this->content;
     }
-    /**
-     * 设置新闻发布时间
-     * @param int $createTime 新闻发布时间
-     */
-    public function setCreateTime(int $createTime)
-    {
-        $this->createTime = $createTime;
-    }
-
-    /**
-     * 获取新闻发布时间
-     * @return int $createTime 新闻发布时间
-     */
-    public function getCreateTime()
-    {
-        return $this->createTime;
-    }
-    /**
-     * 设置新闻更新时间
-     * @param int $updateTime 新闻更新时间
-     */
-    public function setUpdateTime(int $updateTime)
-    {
-        $this->updateTime = $updateTime;
-    }
-
-    /**
-     * 获取新闻更新时间
-     * @return int $updateTime 新闻更新时间
-     */
-    public function getUpdateTime()
-    {
-        return $this->updateTime;
-    }
-    /**
-     * 设置新闻状态更新时间
-     * @param int $statusTime 新闻状态更新时间
-     */
-    public function setStatusTime(int $statusTime)
-    {
-        $this->statusTime = $statusTime;
-    }
-
-    /**
-     * 获取新闻状态更新时间
-     * @return int $statusTime 新闻状态更新时间
-     */
-    public function getStatusTime()
-    {
-        return $this->statusTime;
-    }
-    /**
-     * 设置新闻状态
-     * @param int $status 新闻状态
-     */
-    public function setStatus(int $status)
-    {
-        $this->status= in_array($status, array(STATUS_NORMAL,STATUS_DELETE)) ? $status : STATUS_NORMAL;
-    }
-
-    /**
-     * 获取新闻状态
-     * @return int $status 新闻状态
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
+    
     /**
      * 设置品牌
      * @param \Product\Model\Brand $brand 品牌
@@ -245,6 +175,7 @@ class Product
     {
         return $this->brand;
     }
+
     /**
      * 设置分类
      * @param \Product\Model\Category $category 分类
@@ -262,6 +193,7 @@ class Product
     {
         return $this->category;
     }
+
     /**
      * 设置尺寸
      * @param string $model 尺寸
@@ -279,6 +211,7 @@ class Product
     {
         return $this->model;
     }
+
     /**
      * 设置产品编号
      * @param string $number 产品编号
@@ -296,6 +229,7 @@ class Product
     {
         return $this->number;
     }
+
     /**
      * 设置最小订单量
      * @param string $moq 最小订单量
@@ -313,6 +247,7 @@ class Product
     {
         return $this->moq;
     }
+
     /**
      * 设置质保时间
      * @param string $warrantyTime 质保时间
@@ -330,6 +265,7 @@ class Product
     {
         return $this->warrantyTime;
     }
+
     /**
      * 设置证书
      * @param string $certificates 证书

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_product">
+	<row>
+		<field name="product_id">1</field>
+		<field name="create_time">1467723290</field>
+		<field name="update_time">1467723291</field>
+		<field name="status_time">1467723292</field>
+		<field name="status">0</field>
+		<field name="category_id">2</field>
+		<field name="brand_id">1</field>
+		<field name="title">产品标题1</field>
+		<field name="model">model1</field>
+		<field name="number">number1</field>
+		<field name="moq">moq1</field>
+		<field name="warranty_time">warranty_time1</field>
+		<field name="certificates">certificates1</field>
+	</row>
+	<row>
+		<field name="product_id">2</field>
+		<field name="create_time">1467723293</field>
+		<field name="update_time">1467723294</field>
+		<field name="status_time">1467723295</field>
+		<field name="status">0</field>
+		<field name="category_id">2</field>
+		<field name="brand_id">2</field>
+		<field name="title">产品标题2</field>
+		<field name="model">model2</field>
+		<field name="number">number2</field>
+		<field name="moq">moq2</field>
+		<field name="warranty_time">warranty_time2</field>
+		<field name="certificates">certificates2</field>
+	</row>
+	<row>
+		<field name="product_id">3</field>
+		<field name="create_time">1467723296</field>
+		<field name="update_time">1467723297</field>
+		<field name="status_time">1467723298</field>
+		<field name="status">-2</field>
+		<field name="category_id">4</field>
+		<field name="brand_id">3</field>
+		<field name="title">产品标题3</field>
+		<field name="model">model3</field>
+		<field name="number">number3</field>
+		<field name="moq">moq3</field>
+		<field name="warranty_time">warranty_time3</field>
+		<field name="certificates">certificates3</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

@@ -4,7 +4,7 @@ namespace System\Command\Cache;
 use System\Interfaces;
 use System\Observer;
 use System\Classes;
-use Core;
+use Marmot\Core;
 
 /**
  * 添加cache缓存命令
@@ -31,11 +31,11 @@ class SaveCacheCommand implements Interfaces\Command
 
     public function execute()
     {
-        return Core::$_cacheDriver->save($this->key, $this->data, $this->time);
+        return Core::$cacheDriver->save($this->key, $this->data, $this->time);
     }
 
     public function undo()
     {
-        return Core::$_cacheDriver->delete($this->key);
+        return Core::$cacheDriver->delete($this->key);
     }
 }

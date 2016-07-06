@@ -82,7 +82,7 @@ class Core
         self::initAutoload();//autoload
         self::initVersion();//初始化网站版本
         self::initEnv();//初始化环境
-        self::initContainer();//引入容器
+        self::initContainer('test');//引入容器
         self::initCache();//初始化缓存使用
         self::initDb();//初始化mysql
     }
@@ -177,7 +177,7 @@ class Core
      * @author chloroplast1983
      * @version 1.0.20160215
      */
-    private function initContainer()
+    private function initContainer(string $env = '')
     {
         //初始化容器
         $containerBuilder = new \DI\ContainerBuilder();
@@ -191,7 +191,7 @@ class Core
             $containerBuilder->setDefinitionCache($containerCache);
         }
         //为容器设置配置文件
-        $containerBuilder->addDefinitions('config.php');
+         $containerBuilder->addDefinitions(S_ROOT.'config'.$env.'.php');
         //创建容器
         self::$container = $containerBuilder->build();
     }

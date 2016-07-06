@@ -2,6 +2,8 @@
 namespace System\Classes;
 
 use tests;
+use Marmot\Core;
+use PDO;
 
 /**
  * 测试框架封装的事务类,这个事务会把memcached封装到同步到mysql事务内
@@ -33,35 +35,35 @@ class TransactionTest extends tests\GenericTestsDatabaseTestCase
         $oldCount = sizeof($results);
 
         //开启事务
-        System\Classes\Transaction::beginTransaction();
+        Transaction::beginTransaction();
         //插入一条语句
-        Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
+        Core::$dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
         //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
-        $ids[] = Core::$_dbDriver->lastInertId();
+        $ids[] = Core::$dbDriver->lastInertId();
         
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand(
+        $command = new \System\Command\Cache\SaveCacheCommand(
             $ids[0],
             array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3')
         );
         $command -> execute();
         // var_dump($ids);exit();
         //插入一条语句
-        Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
+        Core::$dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
         //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
-        $ids[] = Core::$_dbDriver->lastInertId();
+        $ids[] = Core::$dbDriver->lastInertId();
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand(
+        $command = new \System\Command\Cache\SaveCacheCommand(
             $ids[1],
             array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4')
         );
         $command -> execute();
         //commit提交
-        $status = System\Classes\Transaction::Commit();
+        $status = Transaction::Commit();
         $this->assertTrue($status);
         //检索插入的数据已经插入成功
         //检索总数据数量为旧的总数+2
-        $results = Core::$_dbDriver->query('SELECT * FROM pcore_system_test_a');
+        $results = Core::$dbDriver->query('SELECT * FROM pcore_system_test_a');
         $newCount = sizeof($results);
 
         $this->assertEquals($oldCount+2, $newCount);
@@ -77,12 +79,12 @@ class TransactionTest extends tests\GenericTestsDatabaseTestCase
         $this->assertEquals('userA4', $results[4]['user']);
 
         //从缓存检索插入数据,检查内容是否匹配
-        $data = Core::$_cacheDriver->fetch($ids[0]);
+        $data = Core::$cacheDriver->fetch($ids[0]);
         $this->assertEquals(4, $data['id']);
         $this->assertEquals('titleA3', $data['title']);
         $this->assertEquals('userA3', $data['user']);
 
-        $data = Core::$_cacheDriver->fetch($ids[1]);
+        $data = Core::$cacheDriver->fetch($ids[1]);
         $this->assertEquals(5, $data['id']);
         $this->assertEquals('titleA4', $data['title']);
         $this->assertEquals('userA4', $data['user']);
@@ -97,46 +99,46 @@ class TransactionTest extends tests\GenericTestsDatabaseTestCase
  
         $ids = array();
         //查出旧数据
-        $oldResults = Core::$_dbDriver->query('SELECT * FROM pcore_system_test_a');
+        $oldResults = Core::$dbDriver->query('SELECT * FROM pcore_system_test_a');
         $oldCount = sizeof($oldResults);
 
         //开启事务
-        System\Classes\Transaction::beginTransaction();
+        Transaction::beginTransaction();
         //插入一条语句
-        Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
+        Core::$dbDriver->insert('pcore_system_test_a', array('title'=>'titleA3','user'=>'userA3'));
         //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
-        $ids[] = Core::$_dbDriver->lastInertId();
+        $ids[] = Core::$dbDriver->lastInertId();
 
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand(
+        $command = new \System\Command\Cache\SaveCacheCommand(
             $ids[0],
             array('id'=>$ids[0],'title'=>'titleA3','user'=>'userA3')
         );
         $command -> execute();
         //插入一条语句
-        Core::$_dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
+        Core::$dbDriver->insert('pcore_system_test_a', array('title'=>'titleA4','user'=>'userA4'));
         //保存到ids[]数组,因为要添加多条数据需要测试从缓存读取数据
-        $ids[] = Core::$_dbDriver->lastInertId();
+        $ids[] = Core::$dbDriver->lastInertId();
         //保存数据到缓存,key为主键id
-        $command = new System\Command\Cache\SaveCacheCommand(
+        $command = new \System\Command\Cache\SaveCacheCommand(
             $ids[1],
             array('id'=>$ids[1],'title'=>'titleA4','user'=>'userA4')
         );
         $command -> execute();
         //回滚
-        $status = System\Classes\Transaction::rollBack();
+        $status = Transaction::rollBack();
         $this->assertTrue($status);
         //检索插入的数据没有插入成功
-        $newResults = Core::$_dbDriver->query('SELECT * FROM pcore_system_test_a');
+        $newResults = Core::$dbDriver->query('SELECT * FROM pcore_system_test_a');
 
         //确认旧数据的内容一致
         $this->assertEquals($oldResults, $newResults);
 
         //从缓存检索插入数据,检查内容是否为空
-        $data = Core::$_cacheDriver->fetch($ids[0]);
+        $data = Core::$cacheDriver->fetch($ids[0]);
         $this->assertEmpty($data);
 
-        $data = Core::$_cacheDriver->fetch($ids[1]);
+        $data = Core::$cacheDriver->fetch($ids[1]);
         $this->assertEmpty($data);
     }
 }

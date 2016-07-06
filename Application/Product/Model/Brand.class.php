@@ -1,6 +1,9 @@
 <?php
 namespace Product\Model;
 
+use Common\Model\ModifyTime;
+use Common\Model\Status;
+
 /**
  * Brand 商品品牌领域对象
  * @author chloroplast
@@ -10,6 +13,14 @@ namespace Product\Model;
 class Brand
 {
     /**
+     * @var ModifyTime 时间性状
+     */
+    use ModifyTime;
+    /**
+     * @var Status 状态性状
+     */
+    use Status;
+    /**
      * @var int $id 品牌id
      */
     private $id;
@@ -17,22 +28,6 @@ class Brand
      * @var string $name 品牌名称
      */
     private $name;
-    /**
-     * @var int $createTime 新闻发布时间
-     */
-    private $createTime;
-    /**
-     * @var int $updateTime 新闻更新时间
-     */
-    private $updateTime;
-    /**
-     * @var int $statusTime 新闻状态更新时间
-     */
-    private $statusTime;
-    /**
-     * @var int $status 新闻状态
-     */
-    private $status;
 
     /**
      * Brand 商品品牌领域对象 构造函数
@@ -94,73 +89,5 @@ class Brand
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * 设置新闻发布时间
-     * @param int $createTime 新闻发布时间
-     */
-    public function setCreateTime(int $createTime)
-    {
-        $this->createTime = $createTime;
-    }
-
-    /**
-     * 获取新闻发布时间
-     * @return int $createTime 新闻发布时间
-     */
-    public function getCreateTime()
-    {
-        return $this->createTime;
-    }
-    /**
-     * 设置新闻更新时间
-     * @param int $updateTime 新闻更新时间
-     */
-    public function setUpdateTime(int $updateTime)
-    {
-        $this->updateTime = $updateTime;
-    }
-
-    /**
-     * 获取新闻更新时间
-     * @return int $updateTime 新闻更新时间
-     */
-    public function getUpdateTime()
-    {
-        return $this->updateTime;
-    }
-    /**
-     * 设置新闻状态更新时间
-     * @param int $statusTime 新闻状态更新时间
-     */
-    public function setStatusTime(int $statusTime)
-    {
-        $this->statusTime = $statusTime;
-    }
-
-    /**
-     * 获取新闻状态更新时间
-     * @return int $statusTime 新闻状态更新时间
-     */
-    public function getStatusTime()
-    {
-        return $this->statusTime;
-    }
-    /**
-     * 设置新闻状态
-     * @param int $status 新闻状态
-     */
-    public function setStatus(int $status)
-    {
-        $this->status= in_array($status, array(STATUS_NORMAL,STATUS_DELETE)) ? $status : STATUS_NORMAL;
-    }
-
-    /**
-     * 获取新闻状态
-     * @return int $status 新闻状态
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }

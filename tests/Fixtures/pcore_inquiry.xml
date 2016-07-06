@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_inquiry">
+	<row>
+		<field name="inquiry_id">1</field>
+		<field name="title">询价标题1</field>
+		<field name="create_time">1467723290</field>
+		<field name="content">询价内容1</field>
+		<field name="email">41893204@qq.com</field>
+		<field name="pic">1</field>
+	</row>
+	<row>
+		<field name="inquiry_id">2</field>
+		<field name="title">询价标题2</field>
+		<field name="create_time">1467723293</field>
+		<field name="content">询价内容2</field>
+		<field name="email">41893201@qq.com</field>
+		<field name="pic">2</field>
+	</row>
+	<row>
+		<field name="inquiry_id">3</field>
+		<field name="title">询价标题3</field>
+		<field name="create_time">1467723296</field>
+		<field name="content">询价内容3</field>
+		<field name="email">41893202@qq.com</field>
+		<field name="pic">3</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

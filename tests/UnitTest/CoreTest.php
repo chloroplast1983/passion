@@ -1,6 +1,8 @@
 <?php
 namespace tests\UnitTest;
 
+use Marmot\Core;
+
 /**
  * 测试框架核心类
  * @author chloroplast
@@ -48,8 +50,8 @@ class CoreTest extends \PHPUnit_Framework_TestCase
         }
 
         //测试Application加载文件,HomeController
-        $homeController = new Home\Controller\IndexController();
-        $this->assertTrue($homeController instanceof Home\Controller\IndexController, 'Application not autoload');
+        $homeController = new \Home\Controller\IndexController();
+        $this->assertTrue($homeController instanceof \Home\Controller\IndexController, 'Application not autoload');
     }
 
     /**
@@ -83,7 +85,7 @@ class CoreTest extends \PHPUnit_Framework_TestCase
     public function testInitContainer()
     {
         //测试容器已经被初始化了
-        $this->assertTrue(is_object(Core::$_container) && Core::$_container instanceof DI\Container);
+        $this->assertTrue(is_object(Core::$container) && Core::$container instanceof \DI\Container);
     }
 
     /**
@@ -91,7 +93,7 @@ class CoreTest extends \PHPUnit_Framework_TestCase
      */
     public function testInitDb()
     {
-        $this->assertTrue(is_object(Core::$_dbDriver) && Core::$_dbDriver instanceof \System\Classes\MyPdo);
+        $this->assertTrue(is_object(Core::$dbDriver) && Core::$dbDriver instanceof \System\Classes\MyPdo);
     }
 
     /**
@@ -100,8 +102,8 @@ class CoreTest extends \PHPUnit_Framework_TestCase
     public function testInitCache()
     {
         $this->assertTrue(
-            is_object(Core::$_cacheDriver) &&
-            Core::$_cacheDriver instanceof \Doctrine\Common\Cache\MemcachedCache
+            is_object(Core::$cacheDriver) &&
+            Core::$cacheDriver instanceof \Doctrine\Common\Cache\MemcachedCache
         );
     }
 

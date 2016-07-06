@@ -1,6 +1,9 @@
 <?php
 namespace Product\Model;
 
+use Common\Model\ModifyTime;
+use Common\Model\Status;
+
 /**
  * Category 商品分类领域对象
  * @author chloroplast
@@ -9,6 +12,14 @@ namespace Product\Model;
 
 class Category
 {
+    /**
+     * @var ModifyTime 时间性状
+     */
+    use ModifyTime;
+    /**
+     * @var Status 状态性状
+     */
+    use Status;
     /**
      * @var int $id 分类id
      */
@@ -106,23 +117,7 @@ class Category
     {
         return $this->parentId;
     }
-    /**
-     * 设置分类创建时间
-     * @param int $createTime 分类创建时间
-     */
-    public function setCreateTime(int $createTime)
-    {
-        $this->createTime = $createTime;
-    }
 
-    /**
-     * 获取分类创建时间
-     * @return int $createTime 分类创建时间
-     */
-    public function getCreateTime()
-    {
-        return $this->createTime;
-    }
     /**
      * 设置商品分类类型
      * @param int $type 商品分类类型
