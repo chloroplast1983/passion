@@ -19,7 +19,7 @@ class BrandTranslator extends Translator
         return $brand;
     }
 
-    public function objectToArray($brand, array $keys)
+    public function objectToArray($brand, array $keys = array())
     {
         if (!$brand instanceof Brand) {
             return false;

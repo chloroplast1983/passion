@@ -68,13 +68,15 @@ class BrandTranslatorTest extends GenericTestsDatabaseTestCase
         $brand->setStatusTime($expectedArray['status_time']);
         $brand->setStatus($expectedArray['status']);
         $brand->setLogo($expectedArray['logo']);
+
+        $brandInfo = $this->stub->objectToArray($brand);
         //测试翻译器赋值正确
-        $this->assertEquals($expectedArray['brand_id'], $brand->getId());
-        $this->assertEquals($expectedArray['brand_name'], $brand->getName());
-        $this->assertEquals($expectedArray['update_time'], $brand->getUpdateTime());
-        $this->assertEquals($expectedArray['create_time'], $brand->getCreateTime());
-        $this->assertEquals($expectedArray['status_time'], $brand->getStatusTime());
-        $this->assertEquals($expectedArray['status'], $brand->getStatus());
-        $this->assertEquals($expectedArray['logo'], $brand->getLogo());
+        $this->assertEquals($expectedArray['brand_id'], $brandInfo['brand_id']);
+        $this->assertEquals($expectedArray['brand_name'], $brandInfo['brand_name']);
+        $this->assertEquals($expectedArray['update_time'], $brandInfo['update_time']);
+        $this->assertEquals($expectedArray['create_time'], $brandInfo['create_time']);
+        $this->assertEquals($expectedArray['status_time'], $brandInfo['status_time']);
+        $this->assertEquals($expectedArray['status'], $brandInfo['status']);
+        $this->assertEquals($expectedArray['logo'], $brandInfo['logo']);
     }
 }

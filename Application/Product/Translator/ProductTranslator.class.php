@@ -28,7 +28,7 @@ class ProductTranslator extends Translator
         return $product;
     }
 
-    public function objectToArray($product, array $keys)
+    public function objectToArray($product, array $keys = array())
     {
         if (!$product instanceof Product) {
             return false;
@@ -50,6 +50,14 @@ class ProductTranslator extends Translator
         $expression['warranty_time'] = $product->getWarrantyTime();
         $expression['certificates'] = $product->getCertificates();
 
-        return $this->filterKeysFromArray($keys, $expression);
+        $filteredResult = $this->filterKeysFromArray($keys, $expression);
+
+        if (isset($filteredResult['content'])) {
+            $productContent['product_id'] = $expression['product_id'];
+            $productContent['content'] = $expression['content'];
+            unset($filteredResult['content']);
+        }
+
+        return array($filteredResult, $productContent);
     }
 }

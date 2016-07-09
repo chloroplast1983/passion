@@ -8,7 +8,7 @@ abstract class Translator
     {
     }
 
-    public function objectToArray($object, array $keys)
+    public function objectToArray($object, array $keys = array())
     {
     }
     
@@ -28,6 +28,7 @@ abstract class Translator
         foreach ($keys as $key) {
             $result[$key] = $expression[$key];
         }
+        
         return $result;
     }
 }

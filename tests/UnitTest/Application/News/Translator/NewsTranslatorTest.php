@@ -82,13 +82,68 @@ class NewsTranslatorTest extends GenericTestsDatabaseTestCase
         $news->setStatusTime($expectedArray['status_time']);
         $news->setStatus($expectedArray['status']);
         $news->setContent($expectedArray['content']);
+
+        $newsInfo = $newsContent = array();
+
+        list($newsInfo, $newsContent) = $this->stub->objectToArray($news);
         //测试翻译器赋值正确
-        $this->assertEquals($expectedArray['news_id'], $news->getId());
-        $this->assertEquals($expectedArray['title'], $news->getTitle());
-        $this->assertEquals($expectedArray['update_time'], $news->getUpdateTime());
-        $this->assertEquals($expectedArray['create_time'], $news->getCreateTime());
-        $this->assertEquals($expectedArray['status_time'], $news->getStatusTime());
-        $this->assertEquals($expectedArray['status'], $news->getStatus());
-        $this->assertEquals($expectedArray['content'], $news->getContent());
+        $this->assertEquals($expectedArray['news_id'], $newsInfo['news_id']);
+        $this->assertEquals($expectedArray['title'], $newsInfo['title']);
+        $this->assertEquals($expectedArray['update_time'], $newsInfo['update_time']);
+        $this->assertEquals($expectedArray['create_time'], $newsInfo['create_time']);
+        $this->assertEquals($expectedArray['status_time'], $newsInfo['status_time']);
+        $this->assertEquals($expectedArray['status'], $newsInfo['status']);
+        //比较content数组
+        $this->assertEquals($expectedArray['news_id'], $newsContent['news_id']);
+        $this->assertEquals($expectedArray['content'], $newsContent['content']);
+    }
+
+    public function testObjectToArrayWithoutContent()
+    {
+        $testNewsId = 1;
+        $expectedNewsArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_news WHERE news_id='.$testNewsId
+        );
+        $expectedNewsArray = $expectedNewsArray[0];
+
+        $expectedNewsContentArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_news_content WHERE news_id='.$testNewsId
+        );
+        $expectedNewsContentArray = $expectedNewsContentArray[0];
+        
+        $expectedArray = array_merge($expectedNewsArray, $expectedNewsContentArray);
+
+        $news = new \News\Model\News($testNewsId);
+        $news->setTitle($expectedArray['title']);
+        $news->setCreateTime($expectedArray['create_time']);
+        $news->setUpdateTime($expectedArray['update_time']);
+        $news->setStatusTime($expectedArray['status_time']);
+        $news->setStatus($expectedArray['status']);
+        $news->setContent($expectedArray['content']);
+
+        $newsInfo = $newsContent = array();
+
+        list($newsInfo, $newsContent) = $this->stub->objectToArray(
+            $news,
+            array(
+                'news_id',
+                'title',
+                'create_time',
+                'update_time',
+                'status_time',
+                'status'
+                )
+        );
+
+        //测试翻译器赋值正确
+        $this->assertEquals($expectedArray['news_id'], $newsInfo['news_id']);
+        $this->assertEquals($expectedArray['title'], $newsInfo['title']);
+        $this->assertEquals($expectedArray['update_time'], $newsInfo['update_time']);
+        $this->assertEquals($expectedArray['create_time'], $newsInfo['create_time']);
+        $this->assertEquals($expectedArray['status_time'], $newsInfo['status_time']);
+        $this->assertEquals($expectedArray['status'], $newsInfo['status']);
+
+        //测试content数组返回空
+        $this->assertEmpty($newsContent);
     }
 }

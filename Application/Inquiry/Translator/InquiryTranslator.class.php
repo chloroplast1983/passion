@@ -17,7 +17,7 @@ class InquiryTranslator extends Translator
         return $inquiry;
     }
 
-    public function objectToArray($inquiry, array $keys)
+    public function objectToArray($inquiry, array $keys = array())
     {
         if (!$inquiry instanceof Inquiry) {
             return false;
@@ -27,8 +27,9 @@ class InquiryTranslator extends Translator
         $expression['inquiry_id'] = $inquiry->getId();
         $expression['title'] = $inquiry->getTitle();
         $expression['content'] = $inquiry->getContent();
-        $expression['create_time'] = $news->getCreateTime();
-        $expression['email'] = $news->getEmail();
+        $expression['create_time'] = $inquiry->getCreateTime();
+        $expression['email'] = $inquiry->getEmail();
+        $expression['pic'] = 0;
 
         return $this->filterKeysFromArray($keys, $expression);
     }

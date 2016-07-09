@@ -96,21 +96,98 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $product->setMoq($expectedArray['moq']);
         $product->setWarrantyTime($expectedArray['warranty_time']);
         $product->setCertificates($expectedArray['certificates']);
-        //测试翻译器赋值正确
-        $this->assertEquals($expectedArray['product_id'], $product->getId());
-        $this->assertEquals($expectedArray['title'], $product->getTitle());
-        $this->assertEquals($expectedArray['update_time'], $product->getUpdateTime());
-        $this->assertEquals($expectedArray['create_time'], $product->getCreateTime());
-        $this->assertEquals($expectedArray['status_time'], $product->getStatusTime());
-        $this->assertEquals($expectedArray['status'], $product->getStatus());
-        $this->assertEquals($expectedArray['content'], $product->getContent());
-        $this->assertEquals($expectedArray['category_id'], $product->getCategory()->getId());
-        $this->assertEquals($expectedArray['brand_id'], $product->getBrand()->getId());
-        $this->assertEquals($expectedArray['model'], $product->getModel());
-        $this->assertEquals($expectedArray['number'], $product->getNumber());
-        $this->assertEquals($expectedArray['moq'], $product->getMoq());
-        $this->assertEquals($expectedArray['warranty_time'], $product->getWarrantyTime());
-        $this->assertEquals($expectedArray['certificates'], $product->getCertificates());
 
+        $productInfo = $productContent = array();
+
+        list($productInfo, $productContent) = $this->stub->objectToArray($product);
+        //测试翻译器赋值正确
+        $this->assertEquals($expectedArray['product_id'], $productInfo['product_id']);
+        $this->assertEquals($expectedArray['title'], $productInfo['title']);
+        $this->assertEquals($expectedArray['update_time'], $productInfo['update_time']);
+        $this->assertEquals($expectedArray['create_time'], $productInfo['create_time']);
+        $this->assertEquals($expectedArray['status_time'], $productInfo['status_time']);
+        $this->assertEquals($expectedArray['status'], $productInfo['status']);
+        $this->assertEquals($expectedArray['category_id'], $productInfo['category_id']);
+        $this->assertEquals($expectedArray['brand_id'], $productInfo['brand_id']);
+        $this->assertEquals($expectedArray['model'], $productInfo['model']);
+        $this->assertEquals($expectedArray['number'], $productInfo['number']);
+        $this->assertEquals($expectedArray['moq'], $productInfo['moq']);
+        $this->assertEquals($expectedArray['warranty_time'], $productInfo['warranty_time']);
+        $this->assertEquals($expectedArray['certificates'], $productInfo['certificates']);
+        //比较content
+        $this->assertEquals($expectedArray['product_id'], $productContent['product_id']);
+        $this->assertEquals($expectedArray['content'], $productContent['content']);
+    }
+
+    /**
+     * 测试翻译对象转换为数组
+     */
+    public function testObjectToArrayWithoutContent()
+    {
+
+        $testProductId = 1;
+        $expectedProductArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_product WHERE product_id='.$testProductId
+        );
+        $expectedProductArray = $expectedProductArray[0];
+
+        $expectedProductContentArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_product_content WHERE product_id='.$testProductId
+        );
+        $expectedProductContentArray = $expectedProductContentArray[0];
+        
+        $expectedArray = array_merge($expectedProductArray, $expectedProductContentArray);
+
+        $product = new Product($testProductId);
+        $product->setTitle($expectedArray['title']);
+        $product->setCreateTime($expectedArray['create_time']);
+        $product->setUpdateTime($expectedArray['update_time']);
+        $product->setStatusTime($expectedArray['status_time']);
+        $product->setStatus($expectedArray['status']);
+        $product->setContent($expectedArray['content']);
+        $product->getCategory()->setId($expectedArray['category_id']);
+        $product->getBrand()->setId($expectedArray['brand_id']);
+        $product->setModel($expectedArray['model']);
+        $product->setNumber($expectedArray['number']);
+        $product->setMoq($expectedArray['moq']);
+        $product->setWarrantyTime($expectedArray['warranty_time']);
+        $product->setCertificates($expectedArray['certificates']);
+
+        $productInfo = $productContent = array();
+
+        list($productInfo, $productContent) = $this->stub->objectToArray(
+            $product,
+            array(
+                'product_id',
+                'title',
+                'update_time',
+                'create_time',
+                'status_time',
+                'status',
+                'category_id',
+                'brand_id',
+                'model',
+                'number',
+                'moq',
+                'warranty_time',
+                'certificates',
+            )
+        );
+        //测试翻译器赋值正确
+        $this->assertEquals($expectedArray['product_id'], $productInfo['product_id']);
+        $this->assertEquals($expectedArray['title'], $productInfo['title']);
+        $this->assertEquals($expectedArray['update_time'], $productInfo['update_time']);
+        $this->assertEquals($expectedArray['create_time'], $productInfo['create_time']);
+        $this->assertEquals($expectedArray['status_time'], $productInfo['status_time']);
+        $this->assertEquals($expectedArray['status'], $productInfo['status']);
+        $this->assertEquals($expectedArray['category_id'], $productInfo['category_id']);
+        $this->assertEquals($expectedArray['brand_id'], $productInfo['brand_id']);
+        $this->assertEquals($expectedArray['model'], $productInfo['model']);
+        $this->assertEquals($expectedArray['number'], $productInfo['number']);
+        $this->assertEquals($expectedArray['moq'], $productInfo['moq']);
+        $this->assertEquals($expectedArray['warranty_time'], $productInfo['warranty_time']);
+        $this->assertEquals($expectedArray['certificates'], $productInfo['certificates']);
+        //比较content
+        $this->assertEmpty($productContent);
     }
 }

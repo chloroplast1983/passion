@@ -64,11 +64,13 @@ class InquiryTranslatorTest extends GenericTestsDatabaseTestCase
         $inquiry->setCreateTime($expectedArray['create_time']);
         $inquiry->setContent($expectedArray['content']);
         $inquiry->setEmail($expectedArray['email']);
+
+        $inquiryInfo = $this->stub->objectToArray($inquiry);
         //测试翻译器赋值正确
-        $this->assertEquals($expectedArray['inquiry_id'], $inquiry->getId());
-        $this->assertEquals($expectedArray['title'], $inquiry->getTitle());
-        $this->assertEquals($expectedArray['create_time'], $inquiry->getCreateTime());
-        $this->assertEquals($expectedArray['email'], $inquiry->getEmail());
-        $this->assertEquals($expectedArray['content'], $inquiry->getContent());
+        $this->assertEquals($expectedArray['inquiry_id'], $inquiryInfo['inquiry_id']);
+        $this->assertEquals($expectedArray['title'], $inquiryInfo['title']);
+        $this->assertEquals($expectedArray['create_time'], $inquiryInfo['create_time']);
+        $this->assertEquals($expectedArray['email'], $inquiryInfo['email']);
+        $this->assertEquals($expectedArray['content'], $inquiryInfo['content']);
     }
 }

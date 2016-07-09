@@ -65,11 +65,12 @@ class CategoryTranslatorTest extends GenericTestsDatabaseTestCase
         $category->setParentId($expectedArray['parent_id']);
         $category->setType($expectedArray['type']);
 
+        $categoryInfo = $this->stub->objectToArray($category);
         //测试翻译器赋值正确
-        $this->assertEquals($expectedArray['category_id'], $category->getId());
-        $this->assertEquals($expectedArray['category_name'], $category->getName());
-        $this->assertEquals($expectedArray['create_time'], $category->getCreateTime());
-        $this->assertEquals($expectedArray['parent_id'], $category->getParentId());
-        $this->assertEquals($expectedArray['type'], $category->getType());
+        $this->assertEquals($expectedArray['category_id'], $categoryInfo['category_id']);
+        $this->assertEquals($expectedArray['category_name'], $categoryInfo['category_name']);
+        $this->assertEquals($expectedArray['create_time'], $categoryInfo['create_time']);
+        $this->assertEquals($expectedArray['parent_id'], $categoryInfo['parent_id']);
+        $this->assertEquals($expectedArray['type'], $categoryInfo['type']);
     }
 }

@@ -17,7 +17,7 @@ class CategoryTranslator extends Translator
         return $category;
     }
 
-    public function objectToArray($category, array $keys)
+    public function objectToArray($category, array $keys = array())
     {
         if (!$category instanceof Category) {
             return false;

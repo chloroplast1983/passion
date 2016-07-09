@@ -21,13 +21,14 @@ class NewsTranslator extends Translator
         return $news;
     }
 
-    public function objectToArray($news, array $keys)
+    public function objectToArray($news, array $keys = array())
     {
         if (!$news instanceof News) {
             return false;
         }
 
-        $expression = array();
+        $expression = $result = $newsContent = array();
+
         $expression['news_id'] = $news->getId();
         $expression['title'] = $news->getTitle();
         $expression['update_time'] = $news->getUpdateTime();
@@ -36,6 +37,14 @@ class NewsTranslator extends Translator
         $expression['status'] = $news->getStatus();
         $expression['content'] = $news->getContent();
 
-        return $this->filterKeysFromArray($keys, $expression);
+        $filteredResult = $this->filterKeysFromArray($keys, $expression);
+
+        if (isset($filteredResult['content'])) {
+            $newsContent['news_id'] = $expression['news_id'];
+            $newsContent['content'] = $expression['content'];
+            unset($filteredResult['content']);
+        }
+
+        return array($filteredResult, $newsContent);
     }
 }

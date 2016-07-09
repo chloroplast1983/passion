@@ -38,6 +38,39 @@ abstract class RowCacheQuery
         unset($this->cacheLayer);
         unset($this->dbLayer);
     }
+
+    /**
+     * @param array $data 添加数据
+     */
+    public function add(array $data, $lasetInsertId = true)
+    {
+        $result = $this->dbLayer->insert($data, $lasetInsertId);
+
+        if (!$result) {
+            return false;
+        }
+        return $result;
+    }
+
+    /**
+     * @param array $data 更新数据
+     * @param array $condition 更新条件 | 默认为主键
+     */
+    public function update(array $data, array $condition = array())
+    {
+        if (empty($condition)) {
+            $condition[$this->primaryKey] = $data[$this->primaryKey];
+            unset($data[$this->primaryKey]);
+        }
+        $row = $this->dbLayer->update($data, $condition);
+        if (!$row) {
+            return false;
+        }
+        //更新缓存
+        $this->cacheLayer->del($this->primaryKey);
+        return true;
+    }
+
     /**
      * @param int $id,主键id
      */
