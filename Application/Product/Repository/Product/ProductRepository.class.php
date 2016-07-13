@@ -43,13 +43,14 @@ class ProductRepository
         list($productArray, $productContentArray) = $this->translator->objectToArray($product);
 
         $id = $this->productRowCacheQuery->add($productArray);
+       
         if (!$id) {
             return false;
         }
         $product->setId($id);
         $productContentArray['product_id'] = $id;
-
         $rows = $this->productContentRowCacheQuery->add($productContentArray, false);
+
         if (!$rows) {
             return false;
         }

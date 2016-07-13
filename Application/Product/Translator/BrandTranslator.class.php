@@ -25,15 +25,45 @@ class BrandTranslator extends Translator
             return false;
         }
 
+        if (empty($keys)) {
+            $keys = array(
+                        'id',
+                        'name',
+                        'updateTime',
+                        'createTime',
+                        'statusTime',
+                        'status',
+                        'logo'
+                    );
+        }
+
         $expression = array();
         $expression['brand_id'] = $brand->getId();
-        $expression['brand_name'] = $brand->getName();
-        $expression['update_time'] = $brand->getUpdateTime();
-        $expression['create_time'] = $brand->getCreateTime();
-        $expression['status_time'] = $brand->getStatusTime();
-        $expression['status'] = $brand->getStatus();
-        $expression['logo'] = $brand->getLogo();
 
-        return $this->filterKeysFromArray($keys, $expression);
+        if (in_array('name', $keys)) {
+            $expression['brand_name'] = $brand->getName();
+        }
+
+        if (in_array('updateTime', $keys)) {
+            $expression['update_time'] = $brand->getUpdateTime();
+        }
+
+        if (in_array('createTime', $keys)) {
+            $expression['create_time'] = $brand->getCreateTime();
+        }
+
+        if (in_array('statusTime', $keys)) {
+            $expression['status_time'] = $brand->getStatusTime();
+        }
+
+        if (in_array('status', $keys)) {
+            $expression['status'] = $brand->getStatus();
+        }
+
+        if (in_array('logo', $keys)) {
+            $expression['logo'] = $brand->getLogo();
+        }
+
+        return $expression;
     }
 }

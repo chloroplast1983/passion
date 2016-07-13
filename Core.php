@@ -231,7 +231,7 @@ class Core
         // global $_FWGLOBAL, $_FWC;
 
         //创建路由规则,如果对外提供接口考虑token用于验证
-        $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
+        $dispatcher = \FastRoute\simpleDispatcher(function (\FastRoute\RouteCollector $r) {
             //添加默认首页路由 -- 开始
             $r->addRoute('GET', '/', ['Home\Controller\IndexController','index']);
 
@@ -248,18 +248,18 @@ class Core
         $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
         
         switch ($routeInfo[0]) {
-            case FastRoute\Dispatcher::NOT_FOUND:
+            case \FastRoute\Dispatcher::NOT_FOUND:
                 // ... 404 Not Found
                 //header:404
                 echo '404';
                 break;
-            case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+            case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
                 // ... 405 Method Not Allowed
                 //header:405
                 echo '405';
                 break;
-            case FastRoute\Dispatcher::FOUND:
+            case \FastRoute\Dispatcher::FOUND:
                 $controller = $routeInfo[1];
                 $parameters = $routeInfo[2];
                 //安全过滤 -- 开始
@@ -275,7 +275,7 @@ class Core
     
     private function initOutput()
     {
-        ob_start();
+        
     }
     
     /**

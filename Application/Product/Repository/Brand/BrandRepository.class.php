@@ -90,8 +90,14 @@ class BrandRepository
     public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
     {
 
-        $brandList = $this->brandRowCacheQuery->find($condition, $offset, $size);
+        $condition = '1';
 
+        if (isset($filter['status'])) {
+            $condition = 'status = '.$filter['status'];
+        }
+
+        $brandList = $this->brandRowCacheQuery->find($condition, $offset, $size);
+        
         if (empty($brandList)) {
             return false;
         }

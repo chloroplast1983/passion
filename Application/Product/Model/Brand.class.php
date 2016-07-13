@@ -3,6 +3,7 @@ namespace Product\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Marmot\Core;
 
 /**
  * Brand 商品品牌领域对象
@@ -114,5 +115,32 @@ class Brand
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * 保存品牌
+     */
+    public function save()
+    {
+        $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
+        if ($this->getId() == 0) {
+            return $repository->add($this);
+        } else {
+            return $repository->update($this, array('updateTime','name','logo'));
+        }
+    }
+
+    /**
+     * 删除品牌
+     */
+    public function delete()
+    {
+        $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
+        if ($this->getId() == 0) {
+            return false;
+        }
+        //设置删除状态
+        $this->setStatus(STATUS_DELETE);
+        return $repository->update($this, array('status','statusTime'));
     }
 }

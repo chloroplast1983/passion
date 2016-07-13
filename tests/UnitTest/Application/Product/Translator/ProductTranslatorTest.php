@@ -158,18 +158,18 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         list($productInfo, $productContent) = $this->stub->objectToArray(
             $product,
             array(
-                'product_id',
+                'id',
                 'title',
-                'update_time',
-                'create_time',
-                'status_time',
+                'updateTime',
+                'createTime',
+                'statusTime',
                 'status',
-                'category_id',
-                'brand_id',
+                'category',
+                'brand',
                 'model',
                 'number',
                 'moq',
-                'warranty_time',
+                'warrantyTime',
                 'certificates',
             )
         );

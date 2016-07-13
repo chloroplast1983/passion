@@ -58,16 +58,22 @@ abstract class RowCacheQuery
      */
     public function update(array $data, array $condition = array())
     {
+        $cacheKey = '';
+
         if (empty($condition)) {
             $condition[$this->primaryKey] = $data[$this->primaryKey];
+            $cacheKey = $condition[$this->primaryKey];
             unset($data[$this->primaryKey]);
+        } else {
+            $cacheKey = explode('_', $condition);
         }
+
         $row = $this->dbLayer->update($data, $condition);
         if (!$row) {
             return false;
         }
         //更新缓存
-        $this->cacheLayer->del($this->primaryKey);
+        $this->cacheLayer->del($cacheKey);
         return true;
     }
 
@@ -148,7 +154,7 @@ abstract class RowCacheQuery
      *
      * @return [] 查询到的id数组
      */
-    public function find($condition, int $offset, int $size)
+    public function find(string $condition, int $offset, int $size)
     {
         return $this->dbLayer->select($condition.' LIMIT '.$offset.','.$size, $this->primaryKey);
     }

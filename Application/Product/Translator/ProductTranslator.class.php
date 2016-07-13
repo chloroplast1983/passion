@@ -34,30 +34,81 @@ class ProductTranslator extends Translator
             return false;
         }
 
-        $expression = array();
-        $expression['product_id'] = $product->getId();
-        $expression['title'] = $product->getTitle();
-        $expression['update_time'] = $product->getUpdateTime();
-        $expression['create_time'] = $product->getCreateTime();
-        $expression['status_time'] = $product->getStatusTime();
-        $expression['status'] = $product->getStatus();
-        $expression['content'] = $product->getContent();
-        $expression['category_id'] = $product->getCategory()->getId();
-        $expression['brand_id'] = $product->getBrand()->getId();
-        $expression['model'] = $product->getModel();
-        $expression['number'] = $product->getNumber();
-        $expression['moq'] = $product->getMoq();
-        $expression['warranty_time'] = $product->getWarrantyTime();
-        $expression['certificates'] = $product->getCertificates();
-
-        $filteredResult = $this->filterKeysFromArray($keys, $expression);
-
-        if (isset($filteredResult['content'])) {
-            $productContent['product_id'] = $expression['product_id'];
-            $productContent['content'] = $expression['content'];
-            unset($filteredResult['content']);
+        if (empty($keys)) {
+            $keys = array(
+                        'id',
+                        'title',
+                        'updateTime',
+                        'createTime',
+                        'statusTime',
+                        'status',
+                        'category',
+                        'brand',
+                        'model',
+                        'number',
+                        'moq',
+                        'warrantyTime',
+                        'certificates',
+                        'content'
+                    );
         }
 
-        return array($filteredResult, $productContent);
+        $expression = array();
+        $expression['product_id'] = $product->getId();
+
+        if (in_array('title', $keys)) {
+            $expression['title'] = $product->getTitle();
+        }
+        
+        if (in_array('updateTime', $keys)) {
+            $expression['update_time'] = $product->getUpdateTime();
+        }
+
+        if (in_array('createTime', $keys)) {
+            $expression['create_time'] = $product->getCreateTime();
+        }
+
+        if (in_array('statusTime', $keys)) {
+            $expression['status_time'] = $product->getStatusTime();
+        }
+
+        if (in_array('status', $keys)) {
+            $expression['status'] = $product->getStatus();
+        }
+
+        if (in_array('category', $keys)) {
+            $expression['category_id'] = $product->getCategory()->getId();
+        }
+
+        if (in_array('brand', $keys)) {
+            $expression['brand_id'] = $product->getBrand()->getId();
+        }
+
+        if (in_array('model', $keys)) {
+            $expression['model'] = $product->getModel();
+        }
+
+        if (in_array('number', $keys)) {
+            $expression['number'] = $product->getNumber();
+        }
+
+        if (in_array('moq', $keys)) {
+            $expression['moq'] = $product->getMoq();
+        }
+
+        if (in_array('warrantyTime', $keys)) {
+            $expression['warranty_time'] = $product->getWarrantyTime();
+        }
+
+        if (in_array('certificates', $keys)) {
+            $expression['certificates'] = $product->getCertificates();
+        }
+
+        if (in_array('content', $keys)) {
+            $productContent['product_id'] = $expression['product_id'];
+            $productContent['content'] = $product->getContent();
+        }
+
+        return array($expression, $productContent);
     }
 }

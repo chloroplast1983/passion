@@ -126,11 +126,11 @@ class NewsTranslatorTest extends GenericTestsDatabaseTestCase
         list($newsInfo, $newsContent) = $this->stub->objectToArray(
             $news,
             array(
-                'news_id',
+                'id',
                 'title',
-                'create_time',
-                'update_time',
-                'status_time',
+                'createTime',
+                'updateTime',
+                'statusTime',
                 'status'
                 )
         );

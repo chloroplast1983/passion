@@ -1,0 +1,10 @@
+.pages{padding:20px 70px 20px 0px;}
+.page, .pageback{float:right;padding:2px 0;font-family:Verdana,Helvetica,Arial,sans-serif;}
+.page a, .page span,.page strong, .pageback a{float:left;padding:0 6px;margin-right:2px;height:20px;border:1px solid;line-height:20px;overflow:hidden;}
+.page a, .page span,.pageback a{border-color:#E6E7E1;background-color:#FFF;color:#09C;}
+.page a:hover, .pageback a:hover{text-decoration:none;color:#09C;}
+.page a.active{background-color:#09C;color:#ffffff;}
+.page strong{border-color:#09C;background-color:#09C;color:#FFF;font-weight:bold;}
+.page a.next{padding-right:16px;background:url(../Images/arrow_right.gif) no-repeat;background-position:90% 50%;}
+.pageback a{padding-left:16px;background:#FFF url(../Images/arrow_left.gif) no-repeat 4% 50%;}
+.page a:hover, .pageback a, .page a.next{border-color:#09C;}

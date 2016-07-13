@@ -94,6 +94,12 @@ class InquiryRepository
     public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
     {
 
+        $condition = '1';
+
+        if (isset($filter['status'])) {
+            $condition = 'status = '.$filter['status'];
+        }
+        
         $inquiryList = $this->inquiryRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($inquiryList)) {

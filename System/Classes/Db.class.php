@@ -57,6 +57,7 @@ abstract class Db implements DbLayer
     public function select(string $sql, string $select = '*', string $useIndex = '')
     {
         $sql = $sql == '' ? '' : ' WHERE ' . $sql;
+
         $sqlstr = 'SELECT ' . $select . ' FROM ' . $this->tname($this->table) . $useIndex . $sql;
         return Core::$dbDriver->query($sqlstr);
     }

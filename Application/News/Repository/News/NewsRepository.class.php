@@ -63,7 +63,7 @@ class NewsRepository
         $newsArray = $newsContentArray = array();
 
         list($newsArray, $newsContentArray) = $newsTranslator->objectToArray($news, $keys);
-
+        
         $result = $this->newsRowCacheQuery->update($newsArray);
 
         if (!$result) {
@@ -89,6 +89,9 @@ class NewsRepository
             return false;
         }
 
+        $newsContentInfo = $this->newsContentRowCacheQuery->getOne($id);
+
+        $newsInfo = array_merge($newsInfo, $newsContentInfo);
         //翻译器 -- 开始
         $newsTranslator = new NewsTranslator();
         //翻译器 -- 结束
@@ -127,6 +130,12 @@ class NewsRepository
     public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
     {
 
+        $condition = '1';
+
+        if (isset($filter['status'])) {
+            $condition = 'status = '.$filter['status'];
+        }
+
         $newsList = $this->newsRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($newsList)) {
@@ -136,6 +145,11 @@ class NewsRepository
         foreach ($newsList as $newsInfo) {
             $ids[] = $newsInfo['news_id'];
         }
+
+        if (empty($ids)) {
+            return false;
+        }
+
         return $this->getList($ids);
     }
 }

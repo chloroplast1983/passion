@@ -148,6 +148,11 @@ class NewsRepositoryTest extends GenericTestsDatabaseTestCase
         $expectedArray = Core::$dbDriver->query('SELECT * FROM pcore_news WHERE news_id='.$testNewsId);
         $expectedArray = $expectedArray[0];
 
+        $expectedContentArray = Core::$dbDriver->query('SELECT * FROM pcore_news_content WHERE news_id='.$testNewsId);
+        $expectedContentArray = $expectedContentArray[0];
+
+        $expectedArray = array_merge($expectedArray, $expectedContentArray);
+
         $news = $this->stub->getOne($testNewsId);
 
         $this->assertInstanceOf('News\Model\News', $news);

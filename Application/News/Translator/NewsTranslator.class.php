@@ -27,24 +27,47 @@ class NewsTranslator extends Translator
             return false;
         }
 
-        $expression = $result = $newsContent = array();
-
-        $expression['news_id'] = $news->getId();
-        $expression['title'] = $news->getTitle();
-        $expression['update_time'] = $news->getUpdateTime();
-        $expression['create_time'] = $news->getCreateTime();
-        $expression['status_time'] = $news->getStatusTime();
-        $expression['status'] = $news->getStatus();
-        $expression['content'] = $news->getContent();
-
-        $filteredResult = $this->filterKeysFromArray($keys, $expression);
-
-        if (isset($filteredResult['content'])) {
-            $newsContent['news_id'] = $expression['news_id'];
-            $newsContent['content'] = $expression['content'];
-            unset($filteredResult['content']);
+        if (empty($keys)) {
+            $keys = array(
+                        'id',
+                        'title',
+                        'updateTime',
+                        'createTime',
+                        'statusTime',
+                        'status',
+                        'content'
+                    );
         }
 
-        return array($filteredResult, $newsContent);
+        $expression = $newsContent = array();
+
+        $expression['news_id'] = $news->getId();
+        
+        if (in_array('title', $keys)) {
+            $expression['title'] = $news->getTitle();
+        }
+
+        if (in_array('updateTime', $keys)) {
+            $expression['update_time'] = $news->getUpdateTime();
+        }
+
+        if (in_array('createTime', $keys)) {
+            $expression['create_time'] = $news->getCreateTime();
+        }
+
+        if (in_array('statusTime', $keys)) {
+            $expression['status_time'] = $news->getStatusTime();
+        }
+
+        if (in_array('status', $keys)) {
+            $expression['status'] = $news->getStatus();
+        }
+
+        if (in_array('content', $keys)) {
+            $newsContent['news_id'] = $expression['news_id'];
+            $newsContent['content'] = $news->getContent();
+        }
+
+        return array($expression, $newsContent);
     }
 }

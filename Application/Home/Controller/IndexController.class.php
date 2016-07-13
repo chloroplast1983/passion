@@ -1,13 +1,13 @@
 <?php
 namespace Home\Controller;
 
-class IndexController
+use System\Classes\Controller;
+use Marmot\Core;
+
+class IndexController extends Controller
 {
 
     public function index()
     {
-
-        var_dump('Hello World');
-        exit();
     }
 }

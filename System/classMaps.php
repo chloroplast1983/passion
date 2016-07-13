@@ -7,6 +7,10 @@ return [
     'System\Classes\MyPdo' => S_ROOT.'System/Classes/MyPdo.class.php',
     'System\Classes\Transaction' => S_ROOT.'System/Classes/Transaction.class.php',
     'System\Classes\Translator' => S_ROOT.'System/Classes/Translator.class.php',
+    'System\Classes\Controller' => S_ROOT.'System/Classes/Controller.class.php',
+    'System\Classes\Filter' => S_ROOT.'System/Classes/Filter.class.php',
+    'System\Classes\Request' => S_ROOT.'System/Classes/Request.class.php',
+    'System\Classes\Response' => S_ROOT.'System/Classes/Response.class.php',
     
     //interfaces
     'System\Interfaces\Command' => S_ROOT.'System/Interfaces/Command.class.php',

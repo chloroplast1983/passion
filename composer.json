@@ -16,7 +16,8 @@
         "pdepend/pdepend" : "2.2.4",
         "sebastian/phpcpd": "*",
         "phploc/phploc": "*",
-        "phpmd/phpmd" : "@stable"
+        "phpmd/phpmd" : "@stable",
+        "smarty/smarty": "~3.1"
     },
     "repositories": {
         "packagist": {

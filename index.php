@@ -1,5 +1,6 @@
 <?php
+
 require './Core.php';
 
-$core = Core::getInstance();
+$core = Marmot\Core::getInstance();
 $core -> init();

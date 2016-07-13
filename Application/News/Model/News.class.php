@@ -3,6 +3,7 @@ namespace News\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Marmot\Core;
 
 /**
  * News 新闻领域对象
@@ -114,5 +115,32 @@ class News
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * 保存新闻
+     */
+    public function save()
+    {
+        $repository = Core::$container->get('News\Repository\News\NewsRepository');
+        if ($this->getId() == 0) {
+            return $repository->add($this);
+        } else {
+            return $repository->update($this, array('updateTime','title','content'));
+        }
+    }
+
+    /**
+     * 删除新闻
+     */
+    public function delete()
+    {
+        $repository = Core::$container->get('News\Repository\News\NewsRepository');
+        if ($this->getId() == 0) {
+            return false;
+        }
+        //设置删除状态
+        $this->setStatus(STATUS_DELETE);
+        return $repository->update($this, array('status','statusTime'));
     }
 }

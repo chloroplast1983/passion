@@ -23,13 +23,35 @@ class CategoryTranslator extends Translator
             return false;
         }
 
+        if (empty($keys)) {
+            $keys = array(
+                        'id',
+                        'name',
+                        'createTime',
+                        'parentId',
+                        'type',
+                    );
+        }
+
         $expression = array();
         $expression['category_id'] = $category->getId();
-        $expression['category_name'] = $category->getName();
-        $expression['create_time'] = $category->getCreateTime();
-        $expression['parent_id'] = $category->getParentId();
-        $expression['type'] = $category->getType();
 
-        return $this->filterKeysFromArray($keys, $expression);
+        if (in_array('name', $keys)) {
+            $expression['category_name'] = $category->getName();
+        }
+
+        if (in_array('createTime', $keys)) {
+            $expression['create_time'] = $category->getCreateTime();
+        }
+
+        if (in_array('parentId', $keys)) {
+            $expression['parent_id'] = $category->getParentId();
+        }
+
+        if (in_array('type', $keys)) {
+            $expression['type'] = $category->getType();
+        }
+
+        return $expression;
     }
 }
