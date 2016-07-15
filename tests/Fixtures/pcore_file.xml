@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="passion_test">
+	<table_data name="pcore_file">
+	<row>
+		<field name="file_id">1</field>
+		<field name="file_hash">file_hash</field>
+		<field name="file_name">file_name1</field>
+		<field name="file_ext">jpg</field>
+		<field name="file_path">file_path</field>
+		<field name="file_size">10kb</field>
+		<field name="file_time">1467723290</field>
+		<field name="file_uid">1</field>
+	</row>
+	<row>
+		<field name="file_id">2</field>
+		<field name="file_hash">file_hash</field>
+		<field name="file_name">file_name2</field>
+		<field name="file_ext">gif</field>
+		<field name="file_path">file_path</field>
+		<field name="file_size">20kb</field>
+		<field name="file_time">1467723293</field>
+		<field name="file_uid">2</field>
+	</row>
+	<row>
+		<field name="file_id">3</field>
+		<field name="file_hash">file_hash</field>
+		<field name="file_name">file_name3</field>
+		<field name="file_ext">png</field>
+		<field name="file_path">file_path</field>
+		<field name="file_size">30kb</field>
+		<field name="file_time">1467723296</field>
+		<field name="file_uid">3</field>
+	</row>
+	</table_data>
+</database>
+</mysqldump>

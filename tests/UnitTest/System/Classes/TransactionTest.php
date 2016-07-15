@@ -88,7 +88,6 @@ class TransactionTest extends tests\GenericTestsDatabaseTestCase
         $this->assertEquals(5, $data['id']);
         $this->assertEquals('titleA4', $data['title']);
         $this->assertEquals('userA4', $data['user']);
-
     }
 
     /**

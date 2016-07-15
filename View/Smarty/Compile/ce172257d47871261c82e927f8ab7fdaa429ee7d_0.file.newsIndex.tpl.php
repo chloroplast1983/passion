@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-07-11 19:36:59
+/* Smarty version 3.1.29, created on 2016-07-14 11:59:52
   from "/var/www/html/passion/View/Smarty/Templates/Admin/newsIndex.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_578384db0e28f9_23871836',
+  'unifunc' => 'content_57870e38503da2_79333146',
   'file_dependency' => 
   array (
     'ce172257d47871261c82e927f8ab7fdaa429ee7d' => 
     array (
       0 => '/var/www/html/passion/View/Smarty/Templates/Admin/newsIndex.tpl',
-      1 => 1468237752,
+      1 => 1468469004,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:Admin/footer.tpl' => 1,
   ),
 ),false)) {
-function content_578384db0e28f9_23871836 ($_smarty_tpl) {
+function content_57870e38503da2_79333146 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/passion/vendor/smarty/smarty/libs/plugins/modifier.date_format.php';
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:Admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -59,7 +59,7 @@ $__foreach_news_0_saved_local_item = $_smarty_tpl->tpl_vars['news'];
 			<td><a href="/Admin/News/<?php echo $_smarty_tpl->tpl_vars['news']->value->getId();?>
 ">查看</a>&nbsp;&nbsp;<a href="/Admin/News/Save/<?php echo $_smarty_tpl->tpl_vars['news']->value->getId();?>
 ">编辑</a>&nbsp;&nbsp;<a href="/Admin/News/Delete/<?php echo $_smarty_tpl->tpl_vars['news']->value->getId();?>
-">删除</a></td>
+" class="del">删除</a></td>
 		</tr>
 		<?php
 $_smarty_tpl->tpl_vars['news'] = $__foreach_news_0_saved_local_item;

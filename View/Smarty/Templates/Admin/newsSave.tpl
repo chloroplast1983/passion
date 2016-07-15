@@ -14,6 +14,7 @@
 			    <script id="container" name="content" type="text/plain">
         			{html_entity_decode($news->getContent())}
     			</script>
+    		</td>
 		</tr>
 	</table>
 	<input type="hidden" name="newsId" value="{$news->getId()}"/>

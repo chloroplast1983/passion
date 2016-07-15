@@ -54,7 +54,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
         //初始化Application
         $brand = new Brand();
         $brand->setName('name');
-        $brand->setLogo(1);
+        $brand->getLogo()->setId(1);
 
         $result = $this->stub->add($brand);
         //期望返回true
@@ -68,7 +68,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
         $expectedArray = $expectedArray[0];
         $this->assertEquals($expectedArray['brand_id'], $brand->getId());
         $this->assertEquals($expectedArray['brand_name'], $brand->getName());
-        $this->assertEquals($expectedArray['logo'], $brand->getLogo());
+        $this->assertEquals($expectedArray['logo'], $brand->getLogo()->getId());
         $this->assertEquals($expectedArray['create_time'], $brand->getCreateTime());
         $this->assertEquals($expectedArray['update_time'], $brand->getUpdateTime());
         $this->assertEquals($expectedArray['status_time'], $brand->getStatusTime());
@@ -88,7 +88,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
 
         $brand = new Brand($testBrandId);
         $brand->setName($oldArray['brand_name'].'Modified');
-        $brand->setLogo($oldArray['logo']+2);
+        $brand->getLogo()->setId($oldArray['logo']+2);
         $brand->setStatus(STATUS_DELETE);
 
         //确认旧数据和新数据不一致
@@ -110,7 +110,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
 
         $this->assertEquals($expectedArray['brand_id'], $brand->getId());
         $this->assertEquals($expectedArray['brand_name'], $brand->getName());
-        $this->assertEquals($expectedArray['logo'], $brand->getLogo());
+        $this->assertEquals($expectedArray['logo'], $brand->getLogo()->getId());
         $this->assertEquals($expectedArray['create_time'], $brand->getCreateTime());
         $this->assertEquals($expectedArray['update_time'], $brand->getUpdateTime());
         $this->assertEquals($expectedArray['status_time'], $brand->getStatusTime());
@@ -136,7 +136,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
         $this->assertInstanceOf('Product\Model\Brand', $brand);
         $this->assertEquals($expectedArray['brand_id'], $brand->getId());
         $this->assertEquals($expectedArray['brand_name'], $brand->getName());
-        $this->assertEquals($expectedArray['logo'], $brand->getLogo());
+        $this->assertEquals($expectedArray['logo'], $brand->getLogo()->getId());
         $this->assertEquals($expectedArray['create_time'], $brand->getCreateTime());
         $this->assertEquals($expectedArray['update_time'], $brand->getUpdateTime());
         $this->assertEquals($expectedArray['status_time'], $brand->getStatusTime());
@@ -164,7 +164,7 @@ class BrandRepositoryTest extends GenericTestsDatabaseTestCase
             $this->assertInstanceOf('Product\Model\Brand', $brand);
             $this->assertEquals($expectedArray['brand_id'], $brand->getId());
             $this->assertEquals($expectedArray['brand_name'], $brand->getName());
-            $this->assertEquals($expectedArray['logo'], $brand->getLogo());
+            $this->assertEquals($expectedArray['logo'], $brand->getLogo()->getId());
             $this->assertEquals($expectedArray['create_time'], $brand->getCreateTime());
             $this->assertEquals($expectedArray['update_time'], $brand->getUpdateTime());
             $this->assertEquals($expectedArray['status_time'], $brand->getStatusTime());

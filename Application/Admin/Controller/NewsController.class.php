@@ -10,11 +10,20 @@ class NewsController extends Controller
 
     use AdminController;
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->getResponse()->view()->assign('newsSideBar', true);
+    }
     /**
      * 列表
      */
     public function index()
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('newsListRef', true);
+
         $newsList = array();
 
         $repository = Core::$container->get('News\Repository\News\NewsRepository');
@@ -30,6 +39,10 @@ class NewsController extends Controller
      */
     public function save(int $newsId = 0)
     {
+
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('newsSaveRef', true);
+
         $news = new News();
         if (!empty($newsId)) {
             $repository = Core::$container->get('News\Repository\News\NewsRepository');
@@ -45,6 +58,9 @@ class NewsController extends Controller
      */
     public function action()
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('newsSaveRef', true);
+
         $title = $this->getRequest()->post('title');
         $content = $this->getRequest()->post('content');
         $id = $this->getRequest()->post('newsId');
@@ -65,6 +81,10 @@ class NewsController extends Controller
      */
     public function get(int $newsId = 0)
     {
+
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('newsListRef', true);
+
         $repository = Core::$container->get('News\Repository\News\NewsRepository');
 
         $news = new News();
@@ -79,6 +99,9 @@ class NewsController extends Controller
      */
     public function delete(int $newsId = 0)
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('newsListRef', true);
+        
         $news = new News($newsId);
         $news->delete();
 

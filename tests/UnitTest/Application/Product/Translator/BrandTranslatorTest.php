@@ -46,7 +46,7 @@ class BrandTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($brand->getCreateTime(), $expectedArray['create_time']);
         $this->assertEquals($brand->getStatusTime(), $expectedArray['status_time']);
         $this->assertEquals($brand->getStatus(), $expectedArray['status']);
-        $this->assertEquals($brand->getLogo(), $expectedArray['logo']);
+        $this->assertEquals($brand->getLogo()->getId(), $expectedArray['logo']);
     }
 
     /**
@@ -67,7 +67,7 @@ class BrandTranslatorTest extends GenericTestsDatabaseTestCase
         $brand->setUpdateTime($expectedArray['update_time']);
         $brand->setStatusTime($expectedArray['status_time']);
         $brand->setStatus($expectedArray['status']);
-        $brand->setLogo($expectedArray['logo']);
+        $brand->getLogo()->setId($expectedArray['logo']);
 
         $brandInfo = $this->stub->objectToArray($brand);
         //测试翻译器赋值正确

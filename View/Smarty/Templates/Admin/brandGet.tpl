@@ -9,7 +9,7 @@
 		</tr>
 		<tr>
 			<th>logo</th>
-			<td>logo</td>
+			<td>{$brand->getLogo()->getId()}</td>
 		</tr>
 		<tr>
 			<th>添加时间</th>

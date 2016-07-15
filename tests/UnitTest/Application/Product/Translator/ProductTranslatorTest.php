@@ -61,6 +61,7 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($product->getMoq(), $expectedArray['moq']);
         $this->assertEquals($product->getWarrantyTime(), $expectedArray['warranty_time']);
         $this->assertEquals($product->getCertificates(), $expectedArray['certificates']);
+        $this->assertEquals($product->getLogo()->getId(), $expectedArray['logo']);
     }
 
     /**
@@ -96,6 +97,7 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $product->setMoq($expectedArray['moq']);
         $product->setWarrantyTime($expectedArray['warranty_time']);
         $product->setCertificates($expectedArray['certificates']);
+        $product->getLogo()->setId($expectedArray['logo']);
 
         $productInfo = $productContent = array();
 
@@ -114,6 +116,8 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($expectedArray['moq'], $productInfo['moq']);
         $this->assertEquals($expectedArray['warranty_time'], $productInfo['warranty_time']);
         $this->assertEquals($expectedArray['certificates'], $productInfo['certificates']);
+        $this->assertEquals($expectedArray['logo'], $productInfo['logo']);
+
         //比较content
         $this->assertEquals($expectedArray['product_id'], $productContent['product_id']);
         $this->assertEquals($expectedArray['content'], $productContent['content']);
@@ -152,6 +156,7 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $product->setMoq($expectedArray['moq']);
         $product->setWarrantyTime($expectedArray['warranty_time']);
         $product->setCertificates($expectedArray['certificates']);
+        $product->getLogo()->setId($expectedArray['logo']);
 
         $productInfo = $productContent = array();
 
@@ -171,6 +176,7 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
                 'moq',
                 'warrantyTime',
                 'certificates',
+                'logo',
             )
         );
         //测试翻译器赋值正确
@@ -187,6 +193,7 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($expectedArray['moq'], $productInfo['moq']);
         $this->assertEquals($expectedArray['warranty_time'], $productInfo['warranty_time']);
         $this->assertEquals($expectedArray['certificates'], $productInfo['certificates']);
+        $this->assertEquals($expectedArray['logo'], $productInfo['logo']);
         //比较content
         $this->assertEmpty($productContent);
     }

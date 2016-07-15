@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-07-13 10:53:50
+/* Smarty version 3.1.29, created on 2016-07-14 19:27:47
   from "/var/www/html/passion/View/Smarty/Templates/Admin/newsSave.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5785ad3e5dc5e8_42234689',
+  'unifunc' => 'content_57877733093f36_58095275',
   'file_dependency' => 
   array (
     '3f0886efaf88251815c6f600326a25776f865242' => 
     array (
       0 => '/var/www/html/passion/View/Smarty/Templates/Admin/newsSave.tpl',
-      1 => 1468378427,
+      1 => 1468466527,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:Admin/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5785ad3e5dc5e8_42234689 ($_smarty_tpl) {
+function content_57877733093f36_58095275 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:Admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -44,6 +44,7 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:Admin/header
 
     			<?php echo '</script'; ?>
 >
+    		</td>
 		</tr>
 	</table>
 	<input type="hidden" name="newsId" value="<?php echo $_smarty_tpl->tpl_vars['news']->value->getId();?>

@@ -12,6 +12,9 @@ class CategoryTranslator extends Translator
         $category = new Category($expression['category_id']);
         $category->setName($expression['category_name']);
         $category->setCreateTime($expression['create_time']);
+        $category->setUpdateTime($expression['update_time']);
+        $category->setStatusTime($expression['status_time']);
+        $category->setStatus($expression['status']);
         $category->setParentId($expression['parent_id']);
         $category->setType($expression['type']);
         return $category;
@@ -28,6 +31,9 @@ class CategoryTranslator extends Translator
                         'id',
                         'name',
                         'createTime',
+                        'updateTime',
+                        'statusTime',
+                        'status',
                         'parentId',
                         'type',
                     );
@@ -38,6 +44,18 @@ class CategoryTranslator extends Translator
 
         if (in_array('name', $keys)) {
             $expression['category_name'] = $category->getName();
+        }
+
+        if (in_array('updateTime', $keys)) {
+            $expression['update_time'] = $category->getUpdateTime();
+        }
+
+        if (in_array('statusTime', $keys)) {
+            $expression['status_time'] = $category->getStatusTime();
+        }
+
+        if (in_array('status', $keys)) {
+            $expression['status'] = $category->getStatus();
         }
 
         if (in_array('createTime', $keys)) {

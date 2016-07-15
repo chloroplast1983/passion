@@ -10,17 +10,29 @@ class BrandController extends Controller
 
     use AdminController;
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->getResponse()->view()->assign('productSideBar', true);
+        $this->getResponse()->view()->assign('brandListRef', true);
+    }
     /**
      * 列表
      */
     public function index()
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $brandList = array();
 
         $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
         $brandList = $repository->filter(
             array('status'=>STATUS_NORMAL)
         );
+
+
         $this->getResponse()->view()->assign('brandList', $brandList);
         $this->getResponse()->view()->display('Admin/brandIndex.tpl');
     }
@@ -30,6 +42,9 @@ class BrandController extends Controller
      */
     public function save(int $brandId = 0)
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $brand = new brand();
         if (!empty($brandId)) {
             $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
@@ -45,15 +60,22 @@ class BrandController extends Controller
      */
     public function action()
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $name = $this->getRequest()->post('name');
-        // $content = $this->getRequest()->post('content');
         $id = $this->getRequest()->post('brandId');
+
         /**
          * 数据校验
          */
         $brand = new Brand(intval($id));
+
+        if (isset($_FILES)) {
+            $brand->getLogo()->upload('logo');
+        }
+
         $brand->setName($name);
-        // $brand->setLogo(1);
         $brand->save();
 
         $this->message('保存成功', '/Admin/Brand/'.$brand->getId());
@@ -65,12 +87,15 @@ class BrandController extends Controller
      */
     public function get(int $brandId = 0)
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
 
         $brand = new Brand();
         $brand = $repository->getOne($brandId);
 
-        if ($brand instanceof Brand) {
+        if (!$brand instanceof Brand) {
             //临时
             $this->message('品牌不正确', '/Admin/Brand');
         }
@@ -84,6 +109,9 @@ class BrandController extends Controller
      */
     public function delete(int $brandId = 0)
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $brand = new brand($brandId);
         $brand->delete();
 

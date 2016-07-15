@@ -15,7 +15,7 @@
 			<td>{$news->getTitle()}</td>
 			<td>{$news->getCreateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
 			<td>{$news->getUpdateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
-			<td><a href="/Admin/News/{$news->getId()}">查看</a>&nbsp;&nbsp;<a href="/Admin/News/Save/{$news->getId()}">编辑</a>&nbsp;&nbsp;<a href="/Admin/News/Delete/{$news->getId()}">删除</a></td>
+			<td><a href="/Admin/News/{$news->getId()}">查看</a>&nbsp;&nbsp;<a href="/Admin/News/Save/{$news->getId()}">编辑</a>&nbsp;&nbsp;<a href="/Admin/News/Delete/{$news->getId()}" class="del">删除</a></td>
 		</tr>
 		{/foreach}
 		{/if}

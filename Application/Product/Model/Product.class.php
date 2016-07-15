@@ -3,6 +3,8 @@ namespace Product\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Common\Model\File;
+use Marmot\Core;
 
 /**
  * Product 商品领域对象
@@ -60,6 +62,14 @@ class Product
      * @var string $certificates 证书
      */
     private $certificates;
+    /**
+     * @var array $slides 幻灯片数组
+     */
+    private $slides;
+    /**
+     * @var File $logo 图片无水印logo
+     */
+    private $logo;
 
     /**
      * Product 商品领域对象 构造函数
@@ -81,6 +91,8 @@ class Product
         $this->moq = '';
         $this->warrantyTime = '';
         $this->certificates = '';
+        $this->slides = array();
+        $this->logo = Core::$container->make('Common\Model\File');
     }
 
     /**
@@ -102,6 +114,8 @@ class Product
         unset($this->moq);
         unset($this->warrantyTime);
         unset($this->certificates);
+        unset($this->slides);
+        unset($this->logo);
     }
 
     /**
@@ -282,5 +296,83 @@ class Product
     public function getCertificates()
     {
         return $this->certificates;
+    }
+
+    /**
+     * 设定商品 logo
+     * @param File $logo 品牌logo
+     */
+    public function setLogo(File $logo)
+    {
+        $this->logo = $logo;
+    }
+
+    /**
+     * 返回商品 logo
+     * @return int $logo 品牌logo
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * 保存商品
+     */
+    public function save()
+    {
+        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+        if ($this->getId() == 0) {
+            return $repository->add($this);
+        } else {
+            return $repository->update($this, array(
+                'updateTime',
+                'title',
+                'content',
+                'brand',
+                'category',
+                'model',
+                'moq',
+                'number',
+                'certificates',
+                'warrantyTime',
+                'content',
+                ));
+        }
+    }
+
+    /**
+     * 删除商品
+     */
+    public function delete()
+    {
+        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+        if ($this->getId() == 0) {
+            return false;
+        }
+        //设置删除状态
+        $this->setStatus(STATUS_DELETE);
+        return $repository->update($this, array('status','statusTime'));
+    }
+
+    /**
+     * 添加幻灯片
+     */
+    public function addSlide(File $file)
+    {
+        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+        if ($repository->addSlide($this, $file)) {
+            $this->slides[] = $file;
+        }
+    }
+
+    /**
+     * 删除幻灯片
+     */
+    public function deleteSlide(File $file)
+    {
+        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+        $repository->deleteSlide($this, $file);
+        unset($this->slides[array_search($file, $this->slides)]);
     }
 }

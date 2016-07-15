@@ -78,7 +78,6 @@ class ProductTest extends tests\GenericTestCase
         //测试初始化证书
         $certificatesParameter = $this->getPrivateProperty('\Product\Model\Product', 'certificates');
         $this->assertEmpty($certificatesParameter->getValue($this->stub));
-
     }
 
     //id 测试 ---------------------------------------------------------- start

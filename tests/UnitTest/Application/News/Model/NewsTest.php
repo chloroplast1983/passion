@@ -50,7 +50,6 @@ class NewsTest extends tests\GenericTestCase
         //测试初始化新闻状态
         $statusParameter = $this->getPrivateProperty('\News\Model\News', 'status');
         $this->assertEquals(STATUS_NORMAL, $statusParameter->getValue($this->stub));
-
     }
 
     //id 测试 ---------------------------------------------------------- start

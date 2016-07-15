@@ -13,7 +13,12 @@ use Product\Model\Product;
 class ProductRepositoryTest extends GenericTestsDatabaseTestCase
 {
 
-    public $fixtures = array('pcore_product','pcore_product_content');
+    public $fixtures = array(
+        'pcore_product',
+        'pcore_product_content',
+        'pcore_product_brand',
+        'pcore_product_category'
+    );
 
     private $stub;
 
@@ -97,7 +102,6 @@ class ProductRepositoryTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($expectedArray['moq'], $product->getMoq());
         $this->assertEquals($expectedArray['warranty_time'], $product->getWarrantyTime());
         $this->assertEquals($expectedArray['certificates'], $product->getCertificates());
-
     }
 
     /**
@@ -182,8 +186,17 @@ class ProductRepositoryTest extends GenericTestsDatabaseTestCase
         $testProductId = 1;
 
         //期待数组
-        $expectedArray = Core::$dbDriver->query('SELECT * FROM pcore_product WHERE product_id='.$testProductId);
+        $expectedArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_product WHERE product_id='.$testProductId
+        );
         $expectedArray = $expectedArray[0];
+
+        $expectedContentArray = Core::$dbDriver->query(
+            'SELECT * FROM pcore_product_content WHERE product_id='.$testProductId
+        );
+        $expectedContentArray = $expectedContentArray[0];
+
+        $expectedArray = array_merge($expectedArray, $expectedContentArray);
 
         $product = $this->stub->getOne($testProductId);
 
@@ -219,7 +232,7 @@ class ProductRepositoryTest extends GenericTestsDatabaseTestCase
         );
         
         $productList = $this->stub->getList($testProductIds);
-
+  
         foreach ($expectedArrayList as $key => $expectedArray) {
             $product = $productList[$key];
             $this->assertEquals($expectedArray['product_id'], $product->getId());

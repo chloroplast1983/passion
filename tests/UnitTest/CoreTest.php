@@ -44,7 +44,7 @@ class CoreTest extends \PHPUnit_Framework_TestCase
         //测试classMaps中的class是否自动加载正确
         foreach ($classMaps as $className => $classPath) {
             $this->assertTrue(
-                class_exists($className)||interface_exists($className),
+                class_exists($className)||interface_exists($className)||trait_exists($className),
                 $className.' not autoload by '.$classPath
             );
         }

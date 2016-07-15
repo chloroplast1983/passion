@@ -77,7 +77,6 @@ class MyPdo
         } catch (Exception $e) {
             return $e->getMessage();
         }
-         
     }
     /**
      * 执行有返回值的查询,返回PDOStatement

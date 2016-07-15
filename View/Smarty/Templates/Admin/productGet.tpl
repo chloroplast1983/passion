@@ -17,11 +17,11 @@
 		</tr>
 		<tr>
 			<th>品牌</th>
-			<td>xxx</td>
+			<td>{$product->getBrand()->getName()}</td>
 		</tr>
 		<tr>
 			<th>分类</th>
-			<td>xxx</td>
+			<td>{$product->getCategory()->getName()}</td>
 		</tr>
 		<tr>
 			<th>尺寸</th>
@@ -42,6 +42,10 @@
 		<tr>
 			<th>证书</th>
 			<td>{$product->getCertificates()}</td>
+		</tr>	
+		<tr>
+			<th>内容</th>
+			<td>{html_entity_decode($product->getContent())}</td>
 		</tr>		
 	</table>
 </div>

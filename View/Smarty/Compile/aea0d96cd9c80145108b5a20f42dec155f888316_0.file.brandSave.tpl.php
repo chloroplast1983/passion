@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2016-07-12 15:52:45
+/* Smarty version 3.1.29, created on 2016-07-15 14:37:25
   from "/var/www/html/passion/View/Smarty/Templates/Admin/brandSave.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5784a1cdda8dc0_08273779',
+  'unifunc' => 'content_578884a5ece5d1_17293490',
   'file_dependency' => 
   array (
     'aea0d96cd9c80145108b5a20f42dec155f888316' => 
     array (
       0 => '/var/www/html/passion/View/Smarty/Templates/Admin/brandSave.tpl',
-      1 => 1468309960,
+      1 => 1468564642,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:Admin/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5784a1cdda8dc0_08273779 ($_smarty_tpl) {
+function content_578884a5ece5d1_17293490 ($_smarty_tpl) {
 $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:Admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -35,10 +35,22 @@ $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:Admin/header
 			<td><input type="text" name="name" value="<?php echo $_smarty_tpl->tpl_vars['brand']->value->getName();?>
 " class="txt"/></td>
 		</tr>
+		<?php if ($_smarty_tpl->tpl_vars['brand']->value->getLogo()->getId() != 0) {?>
 		<tr>
 			<th>logo</th>
-			<td>logo</td>
+			<td><?php echo $_smarty_tpl->tpl_vars['brand']->value->getLogo()->getId();?>
+</td>
 		</tr>
+		<tr>
+			<th>编辑上传logo</th>
+			<td><input type="file" name="logo" value="" class="txt"/></td>
+		</tr>
+		<?php } else { ?>
+		<tr>
+			<th>logo</th>
+			<td><input type="file" name="logo" value="" class="txt"/></td>
+		</tr>
+		<?php }?>
 	</table>
 	<input type="hidden" name="brandId" value="<?php echo $_smarty_tpl->tpl_vars['brand']->value->getId();?>
 "/>

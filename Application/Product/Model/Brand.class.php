@@ -3,6 +3,7 @@ namespace Product\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Common\Model\File;
 use Marmot\Core;
 
 /**
@@ -46,7 +47,7 @@ class Brand
         $this->updateTime = $_FWGLOBAL['timestamp'];
         $this->statusTime = $_FWGLOBAL['timestamp'];
         $this->status = STATUS_NORMAL;
-        $this->logo = 0;
+        $this->logo = Core::$container->make('Common\Model\File');
     }
 
     /**
@@ -101,9 +102,9 @@ class Brand
 
     /**
      * 设定品牌 logo
-     * @param int $logo 品牌logo
+     * @param File $logo 品牌logo
      */
-    public function setLogo(int $logo)
+    public function setLogo(File $logo)
     {
         $this->logo = $logo;
     }

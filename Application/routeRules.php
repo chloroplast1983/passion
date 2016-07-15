@@ -123,14 +123,6 @@ return [
     ],
     [
         'method'=>'GET',
-        'rule'=>'/Admin/Category/{categoryId:\d+}',
-        'controller'=>[
-            'Admin\Controller\CategoryController',
-            'get'
-        ]
-    ],
-    [
-        'method'=>'GET',
         'rule'=>'/Admin/Category/Save[/{categoryId:\d+}]',
         'controller'=>[
             'Admin\Controller\CategoryController',
@@ -163,11 +155,19 @@ return [
         ]
     ],
     [
-        'method'=>'POST',
+        'method'=>'GET',
         'rule'=>'/Admin/Product/Save[/{productId:\d+}]',
         'controller'=>[
             'Admin\Controller\ProductController',
             'save'
+        ]
+    ],
+    [
+        'method'=>'POST',
+        'rule'=>'/Admin/Product/Save[/{productId:\d+}]',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'action'
         ]
     ],
     [
@@ -176,6 +176,15 @@ return [
         'controller'=>[
             'Admin\Controller\ProductController',
             'delete'
+        ]
+    ],
+    //productSlide
+    [
+        'method'=>'GET',
+        'rule'=>'/Admin/Product/Slides/{productId:\d+}',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'slides'
         ]
     ],
 ];

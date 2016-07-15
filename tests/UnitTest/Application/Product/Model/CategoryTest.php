@@ -42,7 +42,6 @@ class CategoryTest extends tests\GenericTestCase
         //测试初始化商品分类类型
         $typeParameter = $this->getPrivateProperty('\Product\Model\Category', 'type');
         $this->assertEquals(TYPE_ELEVATOR, $typeParameter->getValue($this->stub));
-
     }
 
     //id 测试 ---------------------------------------------------------- start

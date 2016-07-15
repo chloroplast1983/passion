@@ -15,7 +15,7 @@ class BrandTranslator extends Translator
         $brand->setCreateTime($expression['create_time']);
         $brand->setStatusTime($expression['status_time']);
         $brand->setStatus($expression['status']);
-        $brand->setLogo($expression['logo']);
+        $brand->getLogo()->setId($expression['logo']);
         return $brand;
     }
 
@@ -61,7 +61,7 @@ class BrandTranslator extends Translator
         }
 
         if (in_array('logo', $keys)) {
-            $expression['logo'] = $brand->getLogo();
+            $expression['logo'] = $brand->getLogo()->getId();
         }
 
         return $expression;

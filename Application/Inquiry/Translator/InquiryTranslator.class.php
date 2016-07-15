@@ -29,7 +29,6 @@ class InquiryTranslator extends Translator
         $expression['content'] = $inquiry->getContent();
         $expression['create_time'] = $inquiry->getCreateTime();
         $expression['email'] = $inquiry->getEmail();
-        $expression['pic'] = 0;
 
         return $this->filterKeysFromArray($keys, $expression);
     }

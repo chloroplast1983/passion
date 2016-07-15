@@ -75,7 +75,7 @@ class BrandRepository
         $brandList = array();
         //获取用户数据
         $brandInfoList = $this->brandRowCacheQuery->getList($ids);
-        
+       
         foreach ($brandInfoList as $brandInfo) {
             $brand = $this->translator->arrayToObject($brandInfo);
             $brandList[] = $brand;

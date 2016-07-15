@@ -10,11 +10,21 @@ class InquiryController extends Controller
 
     use AdminController;
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->getResponse()->view()->assign('inquirySideBar', true);
+    }
+
     /**
      * 列表
      */
     public function index()
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $inquiryList = array();
 
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
@@ -28,6 +38,9 @@ class InquiryController extends Controller
      */
     public function get(int $inquiryId = 0)
     {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
 
         $inquiry = new Inquiry();
@@ -36,5 +49,4 @@ class InquiryController extends Controller
         $this->getResponse()->view()->assign('inquiry', $inquiry);
         $this->getResponse()->view()->display('Admin/inquiryGet.tpl');
     }
-
 }

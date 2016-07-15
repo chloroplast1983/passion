@@ -6,6 +6,11 @@
 		<li><a href="#">新闻列表</a></li>
 	</ul>
 </div>
+<script type="text/javascript">
+    jQuery(function ($) {
+    	Common.init();
+    })
+</script>
 </body>
 
 </html>

@@ -282,4 +282,18 @@ class Request
         $params = $this->getBodyParams();
         return isset($params[$name]) ? $params[$name] : $defaultValue;
     }
+
+    /**
+     * 判断是否 ajax
+     */
+    public function isAjax()
+    {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
+            &&
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

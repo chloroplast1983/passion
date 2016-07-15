@@ -134,7 +134,6 @@ class Core
             if (file_exists($classFile)) {
                 include_once $classFile;
             }
-          
         });
         //加载框架Application文件的autoload,匿名函数 -- 开始
     }
@@ -150,13 +149,17 @@ class Core
     {
         global $_FWGLOBAL;
         //开启session
-        session_start();
+        // session_start();
         
         $_FWGLOBAL = array();
         
         //设定框架全局时间戳,代替各自调时间函数
         $mtime = explode(' ', microtime());
         $_FWGLOBAL['timestamp'] = $mtime[1];//全局时间戳
+
+        // $whoops = new \Whoops\Run;
+        // $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        // $whoops->register();
 
         //加载应用配置文件
         require(S_ROOT.'Application/config.php');
@@ -275,7 +278,6 @@ class Core
     
     private function initOutput()
     {
-        
     }
     
     /**

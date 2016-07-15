@@ -42,7 +42,6 @@ class InquiryTest extends tests\GenericTestCase
         //测试初始化新闻更新时间
         $updateTimeParameter = $this->getPrivateProperty('\Inquiry\Model\Inquiry', 'updateTime');
         $this->assertGreaterThan(0, $updateTimeParameter->getValue($this->stub));
-
     }
 
     //id 测试 ---------------------------------------------------------- start

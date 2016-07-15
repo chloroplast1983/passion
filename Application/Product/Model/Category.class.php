@@ -3,6 +3,7 @@ namespace Product\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Marmot\Core;
 
 /**
  * Category 商品分类领域对象
@@ -51,6 +52,9 @@ class Category
         $this->name = '';
         $this->parentId = 0;
         $this->createTime = $_FWGLOBAL['timestamp'];
+        $this->updateTime = $_FWGLOBAL['timestamp'];
+        $this->statusTime = $_FWGLOBAL['timestamp'];
+        $this->status = STATUS_NORMAL;
         $this->type = TYPE_ELEVATOR;
     }
 
@@ -63,6 +67,9 @@ class Category
         unset($this->name);
         unset($this->parentId);
         unset($this->createTime);
+        unset($this->updateTime);
+        unset($this->statusTime);
+        unset($this->status);
         unset($this->type);
     }
 
@@ -134,5 +141,18 @@ class Category
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * 保存分类
+     */
+    public function save()
+    {
+        $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
+        if ($this->getId() == 0) {
+            return $repository->add($this);
+        } else {
+            return $repository->update($this, array('parentId','name','type'));
+        }
     }
 }

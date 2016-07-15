@@ -89,6 +89,20 @@ class CategoryRepository
     public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
     {
 
+        $condition = '1';
+
+        if (isset($filter['type'])) {
+            $condition .= ' AND type = '.$filter['type'];
+        }
+
+        if (isset($filter['parentId'])) {
+            $condition .= ' AND parent_id = '.$filter['parentId'];
+        }
+
+        if (isset($filter['status'])) {
+            $condition .= ' AND status = '.$filter['status'];
+        }
+
         $categoryList = $this->categoryRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($categoryList)) {

@@ -22,6 +22,7 @@ class ProductTranslator extends Translator
         $product->setMoq($expression['moq']);
         $product->setWarrantyTime($expression['warranty_time']);
         $product->setCertificates($expression['certificates']);
+        $product->getLogo()->setId($expression['logo']);
         if (isset($expression['content'])) {
             $product->setContent($expression['content']);
         }
@@ -49,11 +50,12 @@ class ProductTranslator extends Translator
                         'moq',
                         'warrantyTime',
                         'certificates',
-                        'content'
+                        'content',
+                        'logo'
                     );
         }
 
-        $expression = array();
+        $expression = $productContent = array();
         $expression['product_id'] = $product->getId();
 
         if (in_array('title', $keys)) {
@@ -107,6 +109,10 @@ class ProductTranslator extends Translator
         if (in_array('content', $keys)) {
             $productContent['product_id'] = $expression['product_id'];
             $productContent['content'] = $product->getContent();
+        }
+
+        if (in_array('logo', $keys)) {
+            $expression['logo'] = $product->getLogo()->getId();
         }
 
         return array($expression, $productContent);
