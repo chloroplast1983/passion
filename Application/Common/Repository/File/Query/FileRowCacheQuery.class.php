@@ -10,7 +10,7 @@ class FileRowCacheQuery extends RowCacheQuery
     /**
      * @var string $parimartKey 查询数据的键
      */
-    private $primaryKey = 'fileId';
+    private $primaryKey = 'file_id';
 
     /**
      * @var Persistence\FileCache $cacheLayer

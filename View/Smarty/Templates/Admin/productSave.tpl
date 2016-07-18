@@ -58,7 +58,7 @@
 		{if $product->getLogo()->getId() neq 0}
 		<tr>
 			<th>logo</th>
-			<td>{$product->getLogo()->getId()}</td>
+			<td><img src="{$product->getLogo()->getFileURL()}"/></td>
 		</tr>
 		<tr>
 			<th>编辑上传logo</th>

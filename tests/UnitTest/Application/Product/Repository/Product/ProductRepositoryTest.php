@@ -17,7 +17,8 @@ class ProductRepositoryTest extends GenericTestsDatabaseTestCase
         'pcore_product',
         'pcore_product_content',
         'pcore_product_brand',
-        'pcore_product_category'
+        'pcore_product_category',
+        'pcore_file'
     );
 
     private $stub;

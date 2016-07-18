@@ -11,7 +11,7 @@
 		{if $brand->getLogo()->getId() neq 0}
 		<tr>
 			<th>logo</th>
-			<td>{$brand->getLogo()->getId()}</td>
+			<td><img src="{$brand->getLogo()->getFileURL()}"/></td>
 		</tr>
 		<tr>
 			<th>编辑上传logo</th>

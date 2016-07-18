@@ -9,7 +9,13 @@
 		</tr>
 		<tr>
 			<th>logo</th>
-			<td>{$brand->getLogo()->getId()}</td>
+			<td>
+			{if $brand->getLogo()->getId() > 0}
+			<img src="{$brand->getLogo()->getFileURL()}"/>
+			{else}
+			无
+			{/if}
+			</td>
 		</tr>
 		<tr>
 			<th>添加时间</th>

@@ -13,7 +13,7 @@ use Product\Model\Brand;
 class BrandRepositoryTest extends GenericTestsDatabaseTestCase
 {
 
-    public $fixtures = array('pcore_product_brand');
+    public $fixtures = array('pcore_product_brand','pcore_file');
 
     private $stub;
 

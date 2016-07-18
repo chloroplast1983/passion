@@ -4,6 +4,7 @@ namespace Product\Repository\Brand;
 use Product\Repository\Brand\Query;
 use Product\Model\Brand;
 use Product\Translator\BrandTranslator;
+use Marmot\Core;
 
 /**
  * Brand仓库
@@ -60,8 +61,12 @@ class BrandRepository
         }
 
         $brand = $this->translator->arrayToObject($brandInfo);
-        //获取图片 -- 开始
-        //获取图片 -- 结束
+        if ($brand->getLogo()->getId() > 0) {
+            //获取图片 -- 开始
+            $repository = Core::$container->get('Common\Repository\File\FileRepository');
+            $brand->setLogo($repository->getOne($brand->getLogo()->getId()));
+            //获取图片 -- 结束
+        }
         return $brand;
     }
 

@@ -145,7 +145,12 @@ class ProductRepository
             $product->setCategory($repository->getOne($product->getCategory()->getId()));
         }
         //获取幻灯片 -- 开始
-        // $this->productSlidesVectorQuery->
+        if ($product->getLogo()->getId()) {
+            //获取图片 -- 开始
+            $repository = Core::$container->get('Common\Repository\File\FileRepository');
+            $product->setLogo($repository->getOne($product->getLogo()->getId()));
+            //获取图片 -- 结束
+        }
         //获取幻灯片 -- 结束
         return $product;
     }

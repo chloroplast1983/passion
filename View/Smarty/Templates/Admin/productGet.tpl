@@ -42,6 +42,16 @@
 		<tr>
 			<th>证书</th>
 			<td>{$product->getCertificates()}</td>
+		</tr>
+		<tr>
+			<th>logo</th>
+			<td>
+			{if $product->getLogo()->getId() > 0}
+			<img src="{$product->getLogo()->getFileURL()}"/>
+			{else}
+			无
+			{/if}
+			</td>
 		</tr>	
 		<tr>
 			<th>内容</th>
