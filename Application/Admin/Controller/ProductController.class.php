@@ -4,6 +4,7 @@ namespace Admin\Controller;
 use System\Classes\Controller;
 use Marmot\Core;
 use Product\Model\Product;
+use System\Classes\Transaction;
 
 class ProductController extends Controller
 {
@@ -112,12 +113,18 @@ class ProductController extends Controller
         $product->setWarrantyTime($warrantyTime);
         $product->setCertificates($certificates);
 
+        Transaction::beginTransaction();
         if (isset($_FILES)) {
-            $product->getLogo()->upload('logo');
+            if (!$product->getLogo()->upload('logo')) {
+                Transaction::rollBack();
+            }
         }
         
-        $product->save();
+        if (!$product->save()) {
+            Transaction::rollBack();
+        }
 
+        Transaction::Commit();
         $this->message('保存成功', '/Admin/Product/'.$product->getId());
     }
 

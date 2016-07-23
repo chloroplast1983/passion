@@ -4,6 +4,7 @@ namespace Admin\Controller;
 use System\Classes\Controller;
 use Marmot\Core;
 use News\Model\News;
+use System\Classes\Transaction;
 
 class NewsController extends Controller
 {
@@ -87,11 +88,14 @@ class NewsController extends Controller
         /**
          * 数据校验
          */
+        Transaction::beginTransaction();
         $news = new News(intval($id));
         $news->setTitle($title);
         $news->setContent($content);
-        $news->save();
-
+        if (!$news->save()) {
+            Transaction::rollBack();
+        }
+        Transaction::Commit();
         $this->message('保存成功', '/Admin/News/'.$news->getId());
     }
 

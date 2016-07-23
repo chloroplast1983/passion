@@ -4,6 +4,7 @@ namespace Admin\Controller;
 use System\Classes\Controller;
 use Marmot\Core;
 use Product\Model\Brand;
+use System\Classes\Transaction;
 
 class BrandController extends Controller
 {
@@ -89,13 +90,19 @@ class BrandController extends Controller
          */
         $brand = new Brand(intval($id));
 
+        Transaction::beginTransaction();
         if (isset($_FILES)) {
-            $brand->getLogo()->upload('logo');
+            if (!$brand->getLogo()->upload('logo')){
+                Transaction::rollBack();
+            }
         }
 
         $brand->setName($name);
-        $brand->save();
+        if (!$brand->save()){
+            Transaction::rollBack();
+        }
 
+        Transaction::Commit();
         $this->message('保存成功', '/Admin/Brand/'.$brand->getId());
     }
 
