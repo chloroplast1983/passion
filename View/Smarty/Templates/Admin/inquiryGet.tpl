@@ -19,6 +19,12 @@
 			<th>询价内容</th>
 			<td>{$inquiry->getContent()}</td>
 		</tr>
+		{if $inquiry->getProduct()->getId()}
+		<tr>
+			<th>询价商品</th>
+			<td><a target="__bank" href="/Product/{$inquiry->getProduct()->getId()}">{$inquiry->getProduct()->getTitle()}</a></td>
+		</tr>
+		{/if}
 	</table>
 </div>
 {include file="Admin/footer.tpl"}

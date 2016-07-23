@@ -64,6 +64,13 @@ class InquiryController extends Controller
         $inquiry = new Inquiry();
         $inquiry = $repository->getOne($inquiryId);
         
+        if ($inquiry->getProduct()->getId() > 0) {
+            $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+
+            $product = $repository->getOne($inquiry->getProduct()->getId());
+            $inquiry->setProduct($product);
+        }
+
         $this->getResponse()->view()->assign('inquiry', $inquiry);
         $this->getResponse()->view()->display('Admin/inquiryGet.tpl');
     }
