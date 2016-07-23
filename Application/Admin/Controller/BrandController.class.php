@@ -92,13 +92,13 @@ class BrandController extends Controller
 
         Transaction::beginTransaction();
         if (isset($_FILES)) {
-            if (!$brand->getLogo()->upload('logo')){
+            if (!$brand->getLogo()->upload('logo')) {
                 Transaction::rollBack();
             }
         }
 
         $brand->setName($name);
-        if (!$brand->save()){
+        if (!$brand->save()) {
             Transaction::rollBack();
         }
 
