@@ -10,15 +10,21 @@
 					<div role="tabpanel" class="tab-pane active" id="products">
 						<dl class="side_menu_items">
 							<dt>
-								<a href="/Product?filter[status]=0">Escalator Parts</a>
+								<a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>
 							</dt>
 							{foreach $categoryList['type'][1] as $parentCategory}
 							<dd class="side_has_submenu">
-								<a href="javascript:;">{$parentCategory->getName()}</a>
+								<a href=
+								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
+								"/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}"
+								{else}
+								"/Product?filter[status]=0&filter[category]=$parentCategory->getId()"
+								{/if}
+								>{$parentCategory->getName()}</a>
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
 								<ul class="side_submenu list-unstyled">
 									{foreach $categoryList['parent'][$parentCategory->getId()] as $category}
-									<li><a href="javascript:;">{$category->getName()}</a></li>
+									<li><a href="/Product?filter[status]=0&filter[category]={$category->getId()}">{$category->getName()}</a></li>
 									{/foreach}
 								</ul>
 								{/if}
@@ -27,15 +33,21 @@
 						</dl>
 						<dl class="side_menu_items">
 							<dt>
-								<a href="/Product?filter[status]=0">Elevator Parts</a>
+								<a href="/Product?filter[status]=0&filter[type]=2">Elevator Parts</a>
 							</dt>
 							{foreach $categoryList['type'][2] as $parentCategory}
 							<dd class="side_has_submenu">
-								<a href="javascript:;">{$parentCategory->getName()}</a>
+								<a href=
+								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
+								"/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}"
+								{else}
+								"/Product?filter[status]=0&filter[category]=$parentCategory->getId()"
+								{/if}
+								>{$parentCategory->getName()}</a>
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
 								<ul class="side_submenu list-unstyled">
 									{foreach $categoryList['parent'][$parentCategory->getId()] as $category}
-									<li><a href="javascript:;">{$category->getName()}</a></li>
+									<li><a href="/Product?filter[status]=0&filter[category]={$category->getId()}">{$category->getName()}</a></li>
 									{/foreach}
 								</ul>
 								{/if}

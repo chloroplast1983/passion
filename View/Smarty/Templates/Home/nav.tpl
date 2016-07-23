@@ -129,8 +129,9 @@
 			<li {if $aboutNavActive}class="active"{/if}><a href="/About">About</a></li>
 			<li {if $contactsNavActive}class="active"{/if}><a href="/Contacts">Contacts</a></li>
 		</ul>
-		<form class="navbar-search-form">
-			<input type="text" class="form-control" placeholder="keywords, brands, and product items">
+		<form class="navbar-search-form" atcion="/Product">
+			<input type="hidden" name="filter[status]" value="0">
+			<input type="text" name="filter[keyword]" class="form-control" placeholder="keywords, brands, and product items">
 			<input type="submit" class="btn btn-search" value="search">
 		</form>
 	</div>

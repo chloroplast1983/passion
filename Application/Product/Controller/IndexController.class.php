@@ -18,11 +18,11 @@ class IndexController extends Controller
 
         $filter = $this->getRequest()->get('filter');
 
-        // if ($filter['type'] == 1) {
-        //     $this->getResponse()->view()->assign('productEscalatorNavActive', true);
-        // } else {
-        //     $this->getResponse()->view()->assign('productNavActive', true);
-        // }
+        if ($filter['type'] == 1) {
+            $this->getResponse()->view()->assign('productEscalatorNavActive', true);
+        } else {
+            $this->getResponse()->view()->assign('productNavActive', true);
+        }
     }
 
     public function index()
@@ -38,16 +38,25 @@ class IndexController extends Controller
 
         $filter = $this->getRequest()->get('filter');
 
-        $filter = is_array() ? $filter : array('status'=>STATUS_NORMAL);
+        $filter = is_array($filter) ? $filter : array('status'=>STATUS_NORMAL);
 
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
 
-        list($num, $productList) = $repository->filter(
-            $filter,
-            array(),
-            $start,
-            $perpage
-        );
+        if (isset($filter['parentCategory']) || isset($filter['type']) || isset($filter['keyword'])) {
+            list($num, $productList) = $repository->search(
+                $filter,
+                array(),
+                $start,
+                $perpage
+            );
+        } else {
+            list($num, $productList) = $repository->filter(
+                $filter,
+                array(),
+                $start,
+                $perpage
+            );
+        }
 
         $urlCondition = http_build_query(array('filter'=>$filter));
        

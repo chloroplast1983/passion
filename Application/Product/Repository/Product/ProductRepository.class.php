@@ -254,6 +254,10 @@ class ProductRepository
             $product->getBrand()->setId($filter['brand']);
         }
 
+        if (isset($filter['category'])) {
+            $product->getCategory()->setId($filter['category']);
+        }
+
         list($productArray, $productContentArray) = $this->translator->objectToArray($product, array_keys($filter));
        
         foreach ($productArray as $key => $val) {
@@ -293,10 +297,53 @@ class ProductRepository
         array $filter = array(),
         array $sort = array(),
         int $offset = 0,
-        int $size = 20
+        int $size = 20,
+        bool $countAble = true
     ) {
 
+        $condition = $conjection = '';
+
         $ids = array();
+
+        if (isset($filter['parentCategory'])) {
+            $condition .= $conjection.'parent_id='.$filter['parentCategory'];
+            $conjection = ' AND ';
+        }
+
+        if (isset($filter['type'])) {
+            $condition .= $conjection.'type='.$filter['type'];
+            $conjection = ' AND ';
+        }
+
+        if (isset($filter['keyword'])) {
+            $condition .= $conjection.
+            ' (title like \'%'.$filter['keyword'].
+            '%\' OR brand_name like \'%'.$filter['keyword'].'%\')';
+        }
+
+        $productIds = Core::$dbDriver->query('
+                        SELECT product_id FROM pcore_product AS product 
+                        LEFT JOIN pcore_product_category AS category 
+                        ON product.category_id=category.category_id
+                        LEFT JOIN pcore_product_brand AS brand 
+                        ON product.brand_id=brand.brand_id
+                        WHERE '.$condition. ' LIMIT '.$offset.','.$size);
+
+        foreach ($productIds as $productId) {
+            $ids[] = $productId['product_id'];
+        }
+
+        if ($countAble) {
+            $count = Core::$dbDriver->query('
+                        SELECT count(*) as count FROM pcore_product AS product 
+                        LEFT JOIN pcore_product_category AS category 
+                        ON product.category_id=category.category_id
+                        LEFT JOIN pcore_product_brand AS brand 
+                        ON product.brand_id=brand.brand_id
+                        WHERE '.$condition);
+
+            return array($count['count'], $this->getList($ids));
+        }
 
         return $this->getList($ids);
     }
