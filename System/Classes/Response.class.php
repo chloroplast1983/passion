@@ -26,4 +26,62 @@ class Response
         echo json_encode($data);
         exit();
     }
+
+    public function multiPages($num, $perpage, $curpage, $mpurl)
+    {
+        $page = 5;
+        $multipage = array();
+        $mpurl .= strpos($mpurl, '?') ? '&' : '?';
+        $realpages = 1;
+        if ($num > $perpage) {
+            $offset = 2;
+            $realpages = @ceil($num / $perpage);
+            $pages = $realpages;
+            if ($page > $pages) {
+                $from = 1;
+                $to = $pages;
+            } else {
+                $from = $curpage - $offset;
+                $to = $from + $page - 1;
+                if ($from < 1) {
+                    $to = $curpage + 1 - $from;
+                    $from = 1;
+                    if ($to - $from < $page) {
+                        $to = $page;
+                    }
+                } elseif ($to > $pages) {
+                    $from = $pages - $page + 1;
+                    $to = $pages;
+                }
+            }
+            $n=1;
+            if ($curpage - $offset > 1 && $pages > $page) {
+                $multipage[$n] = array('url'=>$mpurl.'page=1','html'=>'1 ...');
+                $n++;
+            }
+            if ($curpage > 1) {
+                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage - 1),'html'=>'&lsaquo;&lsaquo;');
+                $n++;
+            }
+            for ($i = $from; $i <= $to; $i++) {
+                $multipage[$n] = ($i == $curpage) ? array('url'=>'#','html'=>$i,'class'=>' class="active"') :
+                    array('url'=>$mpurl.'page='.$i,'html'=>$i);
+                $n++;
+            }
+            if ($curpage < $pages) {
+                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage + 1),'html'=>'&rsaquo;&rsaquo;');
+                $n++;
+            }
+            if ($to < $pages) {
+                $multipage[$n] = array('url'=>$mpurl.'page='.$pages,'html'=>'... '.$realpages);
+                $n++;
+            }
+            $multipage[0] = empty($multipage) ? array() : array(
+                'url'=>'',
+                'html'=>'<span>共 '.$num.' 条数据</span> <a>共 '.$pages.' 页</a> '
+            );
+        }
+        ksort($multipage);
+        return $multipage;
+    }
 }

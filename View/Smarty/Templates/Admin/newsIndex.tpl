@@ -21,6 +21,7 @@
 		{/if}
 	</table>
 	<div class="pages">
+	{include file="Admin/pages.tpl"}
 	</div>
 </div>	
 {include file="Admin/footer.tpl"}

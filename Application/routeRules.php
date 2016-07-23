@@ -181,10 +181,110 @@ return [
     //productSlide
     [
         'method'=>'GET',
-        'rule'=>'/Admin/Product/Slides/{productId:\d+}',
+        'rule'=>'/Admin/Product/{productId:\d+}/Slides',
         'controller'=>[
             'Admin\Controller\ProductController',
             'slides'
+        ]
+    ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Admin/Product/{productId:\d+}/Slides/Save',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'slidesSave'
+        ]
+    ],
+    [
+        'method'=>'POST',
+        'rule'=>'/Admin/Product/{productId:\d+}/Slides/Save',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'slidesAction'
+        ]
+    ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Admin/Product/{productId:\d+}/Slides/{fileId:\d+}/Delete',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'slidesDelete'
+        ]
+    ],
+    //Home 前台
+     [
+        'method'=>'GET',
+        'rule'=>'/About',
+        'controller'=>[
+            'Home\Controller\IndexController',
+            'about'
+        ]
+     ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Contacts',
+        'controller'=>[
+            'Home\Controller\IndexController',
+            'contacts'
+        ]
+    ],
+    //inquiry
+    [
+        'method'=>'GET',
+        'rule'=>'/Inquiry[/Product/{productId:\d+}]',
+        'controller'=>[
+            'Inquiry\Controller\IndexController',
+            'index'
+        ]
+    ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Inquiry/Success',
+        'controller'=>[
+            'Inquiry\Controller\IndexController',
+            'success'
+        ]
+    ],
+    [
+        'method'=>'POST',
+        'rule'=>'/Inquiry[/Product/{productId:\d+}]',
+        'controller'=>[
+            'Inquiry\Controller\IndexController',
+            'action'
+        ]
+    ],
+    //news
+    [
+        'method'=>'GET',
+        'rule'=>'/News',
+        'controller'=>[
+            'News\Controller\IndexController',
+            'index'
+        ]
+    ],
+    [
+        'method'=>'GET',
+        'rule'=>'/News/{newsId:\d+}',
+        'controller'=>[
+            'News\Controller\IndexController',
+            'get'
+        ]
+    ],
+    //product
+    [
+        'method'=>'GET',
+        'rule'=>'/Product',
+        'controller'=>[
+            'Product\Controller\IndexController',
+            'index'
+        ]
+    ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Product/{productId:\d+}',
+        'controller'=>[
+            'Product\Controller\IndexController',
+            'get'
         ]
     ],
 ];

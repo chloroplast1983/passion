@@ -13,6 +13,7 @@
 	Category.initGetCategoryListByType = function(){
 		$("select.categoryType").bind("change",function(){
 			Category.getCategoryListByType($(this).val());
+			Category.getCategoryListByParent(0);
 		});
 
 		var typeId = $("select.categoryType").val();

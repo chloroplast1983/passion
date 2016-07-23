@@ -35,5 +35,6 @@ return [
     'System\Query\FragmentCacheQuery' => S_ROOT.'System/Query/FragmentCacheQuery.class.php',
     'System\Query\VectorQuery' => S_ROOT.'System/Query/VectorQuery.class.php',
     'System\Query\SearchQuery' => S_ROOT.'System/Query/SearchQuery.class.php',
-    'System\Query\VectorDbQuery' => S_ROOT.'System/Query/VectorDbQuery.class.php'
+    'System\Query\VectorDbQuery' => S_ROOT.'System/Query/VectorDbQuery.class.php',
+    'System\Query\RowQueryFindable' => S_ROOT.'System/Query/RowQueryFindable.class.php'
 ];

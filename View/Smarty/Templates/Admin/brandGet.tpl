@@ -1,7 +1,7 @@
 {include file="Admin/header.tpl"}
 <h3><em></em>品牌管理</h3>
 <div class="submsg">
-	<h5><a href="/Admin/Brand">返回品牌列表</a></h5>
+	<h5><a href="/Admin/Brand?filter[status]=0">返回品牌列表</a></h5>
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
 			<th>品牌名称</th>

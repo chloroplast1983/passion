@@ -22,14 +22,32 @@ class InquiryController extends Controller
      */
     public function index()
     {
+        $perpage = 20;
+        $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($curpage-1)*$perpage;
+
         //触发导航栏链接高亮
         $this->getResponse()->view()->assign('inquiryListRef', true);
 
         $inquiryList = array();
 
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
-        $inquiryList = $repository->filter();
+        list($num, $inquiryList) = $repository->filter(
+            array(),
+            array(),
+            $start,
+            $perpage
+        );
+
+        $multi = $this->getResponse()->multiPages(
+            $num,
+            $perpage,
+            $curpage,
+            '/Admin/Inquiry?'.$urlCondition
+        );
+
         $this->getResponse()->view()->assign('inquiryList', $inquiryList);
+        $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/inquiryIndex.tpl');
     }
 

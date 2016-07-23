@@ -10,7 +10,7 @@ class FileTranslator extends Translator
 
     public function arrayToObject(array $expression)
     {
-        $file = Core::$container->get('Common\Model\File');
+        $file = Core::$container->make('Common\Model\File');
         $file->setId($expression['file_id']);
         $file->setFileHash($expression['file_hash']);
         $file->setFileName($expression['file_name']);

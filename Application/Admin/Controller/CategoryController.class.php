@@ -24,13 +24,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $perpage = 20;
+        $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($curpage-1)*$perpage;
+
         $categoryList = array();
         
         $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array();
 
         $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
-        $categoryList = $repository->filter(
-            $filter
+        list($num, $categoryList) = $repository->filter(
+            $filter,
+            array(),
+            $start,
+            $perpage
         );
 
         if ($this->getRequest()->isAjax()) {
@@ -67,9 +74,19 @@ class CategoryController extends Controller
             // }
         }
 
+        $urlCondition = http_build_query(array('filter'=>$filter));
+
+        $multi = $this->getResponse()->multiPages(
+            $num,
+            $perpage,
+            $curpage,
+            '/Admin/Category?'.$urlCondition
+        );
+
         $this->getResponse()->view()->assign('type', $filter['type']);
         $this->getResponse()->view()->assign('parentCategoryList', $parentCategoryList);
         $this->getResponse()->view()->assign('categoryList', $categoryList);
+        $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/categoryIndex.tpl');
     }
 

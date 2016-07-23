@@ -13,7 +13,14 @@ use Inquiry\Model\Inquiry;
 class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
 {
 
-    public $fixtures = array('pcore_inquiry');
+    public $fixtures = array(
+        'pcore_inquiry',
+        'pcore_product',
+        'pcore_product_content',
+        'pcore_product_brand',
+        'pcore_product_category',
+        'pcore_file',
+        );
 
     private $stub;
 
@@ -53,7 +60,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
     {
         //初始化Application
         $inquiry = new Inquiry();
-        $inquiry->setTitle('title');
+        $inquiry->setName('name');
         $inquiry->setEmail('41893204@qq.com');
         $inquiry->setContent('content');
 
@@ -68,7 +75,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
         $expectedArray = Core::$dbDriver->query('SELECT * FROM pcore_inquiry WHERE inquiry_id='.$inquiry->getId());
         $expectedArray = $expectedArray[0];
         $this->assertEquals($expectedArray['inquiry_id'], $inquiry->getId());
-        $this->assertEquals($expectedArray['title'], $inquiry->getTitle());
+        $this->assertEquals($expectedArray['name'], $inquiry->getName());
         $this->assertEquals($expectedArray['create_time'], $inquiry->getCreateTime());
         $this->assertEquals($expectedArray['email'], $inquiry->getEmail());
         $this->assertEquals($expectedArray['content'], $inquiry->getContent());
@@ -86,7 +93,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
         $oldArray = $oldArray[0];
 
         $inquiry = new Inquiry($testInquiryId);
-        $inquiry->setTitle($oldArray['title'].'Modified');
+        $inquiry->setName($oldArray['name'].'Modified');
 
         $modifiedEmail = '111111@qq.com';//我们待测试邮件地址
         //断言和旧数据的邮件地址不一样
@@ -97,7 +104,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
 
         //确认旧数据和新数据不一致
         $this->assertEquals($oldArray['inquiry_id'], $inquiry->getId());
-        $this->assertNotEquals($oldArray['title'], $inquiry->getTitle());
+        $this->assertNotEquals($oldArray['name'], $inquiry->getName());
         $this->assertNotEquals($oldArray['create_time'], $inquiry->getCreateTime());
         $this->assertNotEquals($oldArray['email'], $inquiry->getEmail());
         $this->assertNotEquals($oldArray['content'], $inquiry->getContent());
@@ -110,7 +117,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
         $expectedArray = Core::$dbDriver->query('SELECT * FROM pcore_inquiry WHERE inquiry_id='.$testInquiryId);
         $expectedArray = $expectedArray[0];
         $this->assertEquals($expectedArray['inquiry_id'], $inquiry->getId());
-        $this->assertEquals($expectedArray['title'], $inquiry->getTitle());
+        $this->assertEquals($expectedArray['name'], $inquiry->getName());
         $this->assertEquals($expectedArray['create_time'], $inquiry->getCreateTime());
         $this->assertEquals($expectedArray['email'], $inquiry->getEmail());
         $this->assertEquals($expectedArray['content'], $inquiry->getContent());
@@ -134,7 +141,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
 
         $this->assertInstanceOf('Inquiry\Model\Inquiry', $inquiry);
         $this->assertEquals($expectedArray['inquiry_id'], $inquiry->getId());
-        $this->assertEquals($expectedArray['title'], $inquiry->getTitle());
+        $this->assertEquals($expectedArray['name'], $inquiry->getName());
         $this->assertEquals($expectedArray['create_time'], $inquiry->getCreateTime());
         $this->assertEquals($expectedArray['email'], $inquiry->getEmail());
         $this->assertEquals($expectedArray['content'], $inquiry->getContent());
@@ -160,7 +167,7 @@ class InquiryRepositoryTest extends GenericTestsDatabaseTestCase
 
             $this->assertInstanceOf('Inquiry\Model\Inquiry', $inquiry);
             $this->assertEquals($expectedArray['inquiry_id'], $inquiry->getId());
-            $this->assertEquals($expectedArray['title'], $inquiry->getTitle());
+            $this->assertEquals($expectedArray['name'], $inquiry->getName());
             $this->assertEquals($expectedArray['create_time'], $inquiry->getCreateTime());
             $this->assertEquals($expectedArray['email'], $inquiry->getEmail());
             $this->assertEquals($expectedArray['content'], $inquiry->getContent());

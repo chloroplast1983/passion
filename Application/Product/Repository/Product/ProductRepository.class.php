@@ -29,6 +29,7 @@ class ProductRepository
     /**
      * @var Query\ProductSlidesVectorQuery $productSlidesVectorQuery 幻灯片关系缓存
      */
+    private $productSlidesVectorQuery;
 
     public function __construct(
         Query\ProductRowCacheQuery $productRowCacheQuery,
@@ -70,16 +71,18 @@ class ProductRepository
 
         $productArray = $productContentArray = array();
 
+        $conditionArray[$this->productRowCacheQuery->getPrimaryKey()] = $product->getId();
+
         list($productArray, $productContentArray) = $this->translator->objectToArray($product, $keys);
 
-        $result = $this->productRowCacheQuery->update($productArray);
+        $result = $this->productRowCacheQuery->update($productArray, $conditionArray);
 
         if (!$result) {
             return false;
         }
 
         if (!empty($productContentArray)) {
-            return $this->productContentRowCacheQuery->update($productContentArray);
+            return $this->productContentRowCacheQuery->update($productContentArray, $conditionArray);
         }
 
         return true;
@@ -95,7 +98,7 @@ class ProductRepository
         $fileTranslator = new \Common\Translator\FileTranslator();
         $fileArray = $fileTranslator->objectToArray($file, array('id'));
 
-        return array($productArray, $fileArray);
+        return array_merge($productArray, $fileArray);
     }
 
     /**
@@ -103,7 +106,7 @@ class ProductRepository
      */
     public function addSlide(Product $product, File $file)
     {
-        $this->productSlidesVectorQuery->add(
+        return $this->productSlidesVectorQuery->add(
             $this->slideArrayTranslator($product, $file)
         );
     }
@@ -113,7 +116,7 @@ class ProductRepository
      */
     public function deleteSlide(Product $product, File $file)
     {
-        $this->productSlidesVectorQuery->delete(
+        return $this->productSlidesVectorQuery->delete(
             $this->slideArrayTranslator($product, $file)
         );
     }
@@ -144,14 +147,24 @@ class ProductRepository
             $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
             $product->setCategory($repository->getOne($product->getCategory()->getId()));
         }
-        //获取幻灯片 -- 开始
+        //获取logo -- 开始
         if ($product->getLogo()->getId()) {
             //获取图片 -- 开始
             $repository = Core::$container->get('Common\Repository\File\FileRepository');
             $product->setLogo($repository->getOne($product->getLogo()->getId()));
             //获取图片 -- 结束
         }
-        //获取幻灯片 -- 结束
+        //获取logo -- 结束
+
+        //轮播图 -- 开始
+        $slideIds = $this->productSlidesVectorQuery->getSlideIds($product->getId());
+        if (!empty($slideIds)) {
+            $repository = Core::$container->get('Common\Repository\File\FileRepository');
+            $slideList = $repository->getList($slideIds);
+
+            $product->setSlides($slideList);
+        }
+        //轮播图 -- 结束
         return $product;
     }
 
@@ -161,7 +174,8 @@ class ProductRepository
      */
     public function getList(array $ids)
     {
-        $productList = $catrgoryIds = $brandIds = array();
+        $productList = $categoryList = $brandList = $logoList = array();
+        $catrgoryIds = $brandIds = $logoIds = array();
         //获取用户数据
         $productInfoList = $this->productRowCacheQuery->getList($ids);
         
@@ -169,6 +183,7 @@ class ProductRepository
             $product = $this->translator->arrayToObject($productInfo);
             $brandIds[] = $product->getBrand()->getId();
             $categoryIds[] = $product->getCategory()->getId();
+            $logoIds[] = $product->getLogo()->getId();
             $productList[] = $product;
         }
 
@@ -176,33 +191,40 @@ class ProductRepository
         $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
         $brandList = $repository->getList($brandIds);
 
-        $generator = function ($brandList) {
-            foreach ($brandList as $brand) {
-                yield $brand;
-            }
-        };
-        $brandListGenerator = $generator($brandList);
+        // $generator = function ($brandList) {
+        //     foreach ($brandList as $brand) {
+        //         yield $brand;
+        //     }
+        // };
+        // $brandListGenerator = $generator($brandList);
         //获取分类
         $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
         $categoryList = $repository->getList($categoryIds);
 
-        $generator = function ($categoryList) {
-            foreach ($categoryList as $category) {
-                yield $category;
-            }
-        };
-        $categoryListGenerator = $generator($categoryList);
+        // $generator = function ($categoryList) {
+        //     foreach ($categoryList as $category) {
+        //         yield $category;
+        //     }
+        // };
+        // $categoryListGenerator = $generator($categoryList);
 
+        $repository = Core::$container->get('Common\Repository\File\FileRepository');
+        $logoList = $repository->getList($logoIds);
         //拼接数组
         foreach ($productList as $product) {
             if ($product->getBrand()->getId() > 0) {
-                $product->setBrand($brandListGenerator->current());
-                $brandListGenerator->next();
+                $product->setBrand(current($brandList));
+                next($brandList);
             }
 
             if ($product->getCategory()->getId() > 0) {
-                $product->setCategory($categoryListGenerator->current());
-                $categoryListGenerator->next();
+                $product->setCategory(current($categoryList));
+                next($categoryList);
+            }
+
+            if ($product->getLogo()->getId() > 0) {
+                $product->setLogo(current($logoList));
+                next($logoList);
             }
         }
 
@@ -212,15 +234,38 @@ class ProductRepository
     /**
      * 根据条件查询询价
      */
-    public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
-    {
+    public function filter(
+        array $filter = array(),
+        array $sort = array(),
+        int $offset = 0,
+        int $size = 20,
+        bool $countAble = true
+    ) {
 
-        $condition = '1';
+        $conjection = $condition = '';
+
+        $product = new Product();
 
         if (isset($filter['status'])) {
-            $condition .= ' AND status = '.$filter['status'];
+            $product->setStatus($filter['status']);
         }
 
+        if (isset($filter['brand'])) {
+            $product->getBrand()->setId($filter['brand']);
+        }
+
+        list($productArray, $productContentArray) = $this->translator->objectToArray($product, array_keys($filter));
+       
+        foreach ($productArray as $key => $val) {
+            $val = is_numeric($val) ? $val : '\''.$val.'\'';
+            $condition .= $conjection.$key.' = '.$val;
+            $conjection = ' AND ';
+        }
+
+        if (empty($condition)) {
+            $condition = ' 1 ';
+        }
+       
         $productList = $this->productRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($productList)) {
@@ -228,8 +273,31 @@ class ProductRepository
         }
         $ids = array();
         foreach ($productList as $productInfo) {
-            $ids[] = $productInfo['product_id'];
+            $ids[] = $productInfo[$this->productRowCacheQuery->getPrimaryKey()];
         }
+
+        if ($countAble) {
+            //计算总数
+            $count = $this->productRowCacheQuery->count($condition);
+            return array($count, $this->getList($ids));
+        }
+        return $this->getList($ids);
+    }
+
+    /**
+     * 搜索
+     * 这里需要优化使用sphinx继承抽象SearchQuery来实现,
+     * 这里暂时使用链表方案来解决
+     */
+    public function search(
+        array $filter = array(),
+        array $sort = array(),
+        int $offset = 0,
+        int $size = 20
+    ) {
+
+        $ids = array();
+
         return $this->getList($ids);
     }
 }

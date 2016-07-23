@@ -4,11 +4,11 @@
 	<h5><a href="/Admin/Inquiry">返回询价列表</a></h5>
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
-			<th>询价标题</th>
-			<td>{$inquiry->getTitle()}</td>
+			<th>询价人</th>
+			<td>{$inquiry->getName()}</td>
 		</tr>
 		<tr>
-			<th>询价人</th>
+			<th>询价人邮件</th>
 			<td>{$inquiry->getEmail()}</td>
 		</tr>
 		<tr>

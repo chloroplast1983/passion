@@ -21,16 +21,36 @@ class NewsController extends Controller
      */
     public function index()
     {
+        $perpage = 20;
+        $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($curpage-1)*$perpage;
+
         //触发导航栏链接高亮
         $this->getResponse()->view()->assign('newsListRef', true);
 
         $newsList = array();
 
+        $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array();
+        
         $repository = Core::$container->get('News\Repository\News\NewsRepository');
-        $newsList = $repository->filter(
-            array('status'=>STATUS_NORMAL)
+        list($num, $newsList) = $repository->filter(
+            $filter,
+            array(),
+            $start,
+            $perpage
         );
+
+        $urlCondition = http_build_query(array('filter'=>$filter));
+       
+        $multi = $this->getResponse()->multiPages(
+            $num,
+            $perpage,
+            $curpage,
+            '/Admin/News?'.$urlCondition
+        );
+
         $this->getResponse()->view()->assign('newsList', $newsList);
+        $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/newsIndex.tpl');
     }
 

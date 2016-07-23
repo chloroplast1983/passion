@@ -6,8 +6,6 @@
  */
 namespace Marmot;
 
-//设置底层常量保护包含文件
-define('IN_PHP', true);
 //默认访问程序路径,请勿修改
 define('S_ROOT', dirname(__FILE__).DIRECTORY_SEPARATOR);
 //通用文件夹目录路径,可以手动修改,需要相对地址

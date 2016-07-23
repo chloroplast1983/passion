@@ -56,7 +56,10 @@ class ProductTranslator extends Translator
         }
 
         $expression = $productContent = array();
-        $expression['product_id'] = $product->getId();
+
+        if (in_array('id', $keys)) {
+            $expression['product_id'] = $product->getId();
+        }
 
         if (in_array('title', $keys)) {
             $expression['title'] = $product->getTitle();
@@ -73,7 +76,7 @@ class ProductTranslator extends Translator
         if (in_array('statusTime', $keys)) {
             $expression['status_time'] = $product->getStatusTime();
         }
-
+       
         if (in_array('status', $keys)) {
             $expression['status'] = $product->getStatus();
         }
@@ -114,7 +117,7 @@ class ProductTranslator extends Translator
         if (in_array('logo', $keys)) {
             $expression['logo'] = $product->getLogo()->getId();
         }
-
+        
         return array($expression, $productContent);
     }
 }

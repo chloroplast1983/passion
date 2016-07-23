@@ -38,8 +38,11 @@ class BrandTranslator extends Translator
         }
 
         $expression = array();
-        $expression['brand_id'] = $brand->getId();
 
+        if (in_array('id', $keys)) {
+            $expression['brand_id'] = $brand->getId();
+        }
+        
         if (in_array('name', $keys)) {
             $expression['brand_name'] = $brand->getName();
         }

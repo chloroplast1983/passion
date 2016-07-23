@@ -1,7 +1,7 @@
 {include file="Admin/header.tpl"}
 <h3><em></em>新闻管理</h3>
 <div class="submsg">
-	<h5><a href="/Admin/News">返回新闻列表</a></h5>
+	<h5><a href="/Admin/News?filter[status]=0">返回新闻列表</a></h5>
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
 			<th>标题</th>

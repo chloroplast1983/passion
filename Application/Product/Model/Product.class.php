@@ -356,6 +356,22 @@ class Product
     }
 
     /**
+     * 设置幻灯片数组
+     */
+    public function setSlides(array $slides)
+    {
+        $this->slides = $slides;
+    }
+
+    /**
+     * 返回幻灯片数组
+     */
+    public function getSlides()
+    {
+        return $this->slides;
+    }
+
+    /**
      * 添加幻灯片
      */
     public function addSlide(File $file)
@@ -364,6 +380,7 @@ class Product
         if ($repository->addSlide($this, $file)) {
             $this->slides[] = $file;
         }
+        return true;
     }
 
     /**
@@ -374,5 +391,6 @@ class Product
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
         $repository->deleteSlide($this, $file);
         unset($this->slides[array_search($file, $this->slides)]);
+        return true;
     }
 }

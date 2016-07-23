@@ -178,10 +178,15 @@ class NewsRepositoryTest extends GenericTestsDatabaseTestCase
             'SELECT * FROM pcore_news WHERE news_id IN ('.implode(',', $testNewsIds).')'
         );
         
+        $expectedContentArrayList = Core::$dbDriver->query(
+            'SELECT * FROM pcore_news_content WHERE news_id IN ('.implode(',', $testNewsIds).')'
+        );
+
         $newsList = $this->stub->getList($testNewsIds);
 
-        foreach ($expectedArrayList as $key => $expectedArray) {
-            $news = $newsList[$key];
+        foreach ($newsList as $key => $news) {
+            $expectedArray = $expectedArrayList[$key];
+            $expectedContentArray = $expectedContentArrayList[$key];
 
             $this->assertInstanceOf('News\Model\News', $news);
             $this->assertEquals($expectedArray['news_id'], $news->getId());
@@ -190,7 +195,7 @@ class NewsRepositoryTest extends GenericTestsDatabaseTestCase
             $this->assertEquals($expectedArray['update_time'], $news->getUpdateTime());
             $this->assertEquals($expectedArray['status_time'], $news->getStatusTime());
             $this->assertEquals($expectedArray['status'], $news->getStatus());
-            $this->assertEquals($expectedArray['content'], $news->getContent());
+            $this->assertEquals($expectedContentArray['content'], $news->getContent());
         }
     }
 }

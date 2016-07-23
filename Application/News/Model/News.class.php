@@ -117,6 +117,34 @@ class News
         return $this->content;
     }
 
+
+    /**
+     * 获取简介
+     */
+    public function getAbstract()
+    {
+        $length = 20;
+
+        $input = html_entity_decode($this->getContent());
+        //strip tags, if desired
+        // if ($strip_html) {
+        $input = strip_tags($input);
+        // }
+        
+        //no need to trim, already shorter than trim length
+        if (strlen($input) <= $length) {
+            return $input;
+        }
+     
+        //find last space within length
+        $lastSpace = strrpos(substr($input, 0, $length), ' ');
+        $abstract = substr($input, 0, $lastSpace);
+    
+        $abstract .= '...';
+     
+        return $abstract;
+    }
+
     /**
      * 保存新闻
      */

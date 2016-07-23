@@ -4,6 +4,7 @@ namespace Inquiry\Repository\Inquiry;
 use Inquiry\Repository\Inquiry\Query;
 use Inquiry\Model\Inquiry;
 use Inquiry\Translator\InquiryTranslator;
+use Marmot\Core;
 
 /**
  * Inquiry仓库
@@ -23,12 +24,12 @@ class InquiryRepository
     public function __construct(Query\InquiryRowCacheQuery $inquiryRowCacheQuery)
     {
         $this->inquiryRowCacheQuery = $inquiryRowCacheQuery;
+        $this->translator = new InquiryTranslator();
     }
 
     public function add(Inquiry $inquiry)
     {
-        $inquiryTranslator = new InquiryTranslator();
-        $inquiryArray = $inquiryTranslator->objectToArray($inquiry);
+        $inquiryArray = $this->translator->objectToArray($inquiry);
         $id = $this->inquiryRowCacheQuery->add($inquiryArray);
         if (!$id) {
             return false;
@@ -39,9 +40,10 @@ class InquiryRepository
 
     public function update(Inquiry $inquiry, array $keys = array())
     {
-        $inquiryTranslator = new InquiryTranslator();
-        $inquiryArray = $inquiryTranslator->objectToArray($inquiry, $keys);
-        return $this->inquiryRowCacheQuery->update($inquiryArray);
+        
+        $inquiryArray = $this->translator->objectToArray($inquiry, $keys);
+        $conditionArray[$this->inquiryRowCacheQuery->getPrimaryKey()] = $inquiry->getId();
+        return $this->inquiryRowCacheQuery->update($inquiryArray, $conditionArray);
     }
 
     /**
@@ -56,12 +58,16 @@ class InquiryRepository
             return false;
         }
 
-        //翻译器 -- 开始
-        $inquiryTranslator = new InquiryTranslator();
-        //翻译器 -- 结束
-        $inquiry = $inquiryTranslator->arrayToObject($inquiryInfo);
-        //获取图片 -- 开始
-        //获取图片 -- 结束
+        $inquiry = $this->translator->arrayToObject($inquiryInfo);
+        //获取附件 -- 开始
+        //获取附件 -- 结束
+
+        if ($inquiry->getProduct()->getId() > 0) {
+            $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+            $product = $repository->getOne($inquiry->getProduct()->getId());
+            $inquiry->setProduct($product);
+        }
+
         return $inquiry;
     }
 
@@ -77,10 +83,7 @@ class InquiryRepository
         $inquiryInfoList = $this->inquiryRowCacheQuery->getList($ids);
         
         foreach ($inquiryInfoList as $inquiryInfo) {
-            //翻译器 -- 开始
-            $inquiryTranslator = new inquiryTranslator();
-            //翻译器 -- 结束
-            $inquiry = $inquiryTranslator->arrayToObject($inquiryInfo);
+            $inquiry = $this->translator->arrayToObject($inquiryInfo);
 
             $inquiryList[] = $inquiry;
         }
@@ -94,12 +97,28 @@ class InquiryRepository
     public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
     {
 
-        $condition = '1';
+        $conjection = $condition = '';
 
-        if (isset($filter['status'])) {
-            $condition = 'status = '.$filter['status'];
-        }
+        $inquiry = new Inquiry();
         
+        if (!empty($filter)) {
+            if (isset($filter['status'])) {
+                $inquiry->setStatus($filter['status']);
+            }
+
+            $inquiryArray = $this->translator->objectToArray($inquiry, array_keys($filter));
+
+            foreach ($inquiryArray as $key => $val) {
+                $val = is_numeric($val) ? $val : '\''.$val.'\'';
+                $condition .= $conjection.$key.' = '.$val;
+                $conjection = ' AND ';
+            }
+        }
+
+        if (empty($condition)) {
+            $condition = ' 1 ';
+        }
+
         $inquiryList = $this->inquiryRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($inquiryList)) {
@@ -107,8 +126,12 @@ class InquiryRepository
         }
         $ids = array();
         foreach ($inquiryList as $inquiryInfo) {
-            $ids[] = $inquiryInfo['inquiry_id'];
+            $ids[] = $inquiryInfo[$this->inquiryRowCacheQuery->getPrimaryKey()];
         }
-        return $this->getList($ids);
+
+        //计算总数
+        $count = $this->inquiryRowCacheQuery->count($condition);
+        
+        return array($count, $this->getList($ids));
     }
 }

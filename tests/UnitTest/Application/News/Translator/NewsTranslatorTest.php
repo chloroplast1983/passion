@@ -94,7 +94,6 @@ class NewsTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($expectedArray['status_time'], $newsInfo['status_time']);
         $this->assertEquals($expectedArray['status'], $newsInfo['status']);
         //比较content数组
-        $this->assertEquals($expectedArray['news_id'], $newsContent['news_id']);
         $this->assertEquals($expectedArray['content'], $newsContent['content']);
     }
 

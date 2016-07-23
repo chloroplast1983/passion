@@ -23,12 +23,13 @@
 			<td>{$product->getBrand()->getName()}</td>
 			<td>{$product->getCreateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
 			<td>{$product->getUpdateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
-			<td><a href="/Admin/Product/{$product->getId()}">查看</a>&nbsp;&nbsp;<a href="/Admin/Product/Save/{$product->getId()}">编辑</a>&nbsp;&nbsp;<a href="/Admin/Product/Delete/{$product->getId()}" class="del">删除</a></td>
+			<td><a href="/Admin/Product/{$product->getId()}">查看</a>&nbsp;&nbsp;<a href="/Admin/Product/Save/{$product->getId()}">编辑</a>&nbsp;&nbsp;<a href="/Admin/Product/Delete/{$product->getId()}" class="del">删除</a>&nbsp;&nbsp;<a href="/Admin/Product/{$product->getId()}/Slides">轮播图</a></td>
 		</tr>
 		{/foreach}
 		{/if}
 	</table>
 	<div class="pages">
+	{include file="Admin/pages.tpl"}
 	</div>
 </div>	
 {include file="Admin/footer.tpl"}

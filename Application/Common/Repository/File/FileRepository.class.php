@@ -74,7 +74,6 @@ class FileRepository
             //翻译器 -- 结束
             $fileList[] = $this->translator->arrayToObject($fileInfo);
         }
-        
         return $fileList;
     }
 }

@@ -19,6 +19,8 @@ use System\Interfaces;
 abstract class RowCacheQuery
 {
 
+    use RowQueryFindable;
+
     private $primaryKey;//查询键值在数据库中的命名,行缓存和数据库的交互使用键值
 
     private $cacheLayer;//缓存层
@@ -39,6 +41,11 @@ abstract class RowCacheQuery
         unset($this->dbLayer);
     }
 
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+    
     /**
      * @param array $data 添加数据
      */
@@ -56,18 +63,10 @@ abstract class RowCacheQuery
      * @param array $data 更新数据
      * @param array $condition 更新条件 | 默认为主键
      */
-    public function update(array $data, array $condition = array())
+    public function update(array $data, array $condition)
     {
-        $cacheKey = '';
-
-        if (empty($condition)) {
-            $condition[$this->primaryKey] = $data[$this->primaryKey];
-            $cacheKey = $condition[$this->primaryKey];
-            unset($data[$this->primaryKey]);
-        } else {
-            $cacheKey = explode('_', $condition);
-        }
-
+        $cacheKey = $condition[$this->primaryKey];
+        
         $row = $this->dbLayer->update($data, $condition);
         if (!$row) {
             return false;
@@ -113,6 +112,7 @@ abstract class RowCacheQuery
             return false;
         }
 
+
         list($hits, $miss) = $this->cacheLayer->getList($ids);
 
         if ($miss) {
@@ -143,30 +143,5 @@ abstract class RowCacheQuery
             unset($result);
         }
         return $resArray;
-    }
-    
-    /**
-     * 根据条件查询匹配到条件的id数组
-     *
-     * @param mix $condition 查询条件
-     * @param integer $offset 偏移量
-     * @param integer $size 查询数量
-     *
-     * @return [] 查询到的id数组
-     */
-    public function find(string $condition, int $offset, int $size)
-    {
-        return $this->dbLayer->select($condition.' LIMIT '.$offset.','.$size, $this->primaryKey);
-    }
-
-    /**
-     * 根据条件获取查询结果总数
-     *
-     * @return integer 查询数据总数
-     */
-    public function count(string $condition)
-    {
-        $count = $this->dbLayer->select($condition, 'COUNT(*) as count');
-        return $count[0]['count'];
     }
 }

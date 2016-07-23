@@ -11,7 +11,6 @@ trait VectorDbQuery
     public function add($data)
     {
         $result = $this->dbLayer->insert($data);
-
         if (!$result) {
             return false;
         }

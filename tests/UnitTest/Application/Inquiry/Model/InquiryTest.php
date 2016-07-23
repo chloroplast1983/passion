@@ -28,8 +28,8 @@ class InquiryTest extends tests\GenericTestCase
         $this->assertEquals(0, $idParameter->getValue($this->stub));
 
         //测试初始化标题
-        $titleParameter = $this->getPrivateProperty('\Inquiry\Model\Inquiry', 'title');
-        $this->assertEmpty($titleParameter->getValue($this->stub));
+        $nameParameter = $this->getPrivateProperty('\Inquiry\Model\Inquiry', 'name');
+        $this->assertEmpty($nameParameter->getValue($this->stub));
 
         //测试初始化内容
         $contentParameter = $this->getPrivateProperty('\Inquiry\Model\Inquiry', 'content');
@@ -74,26 +74,26 @@ class InquiryTest extends tests\GenericTestCase
         $this->assertEquals(1, $this->stub->getId());
     }
     //id 测试 ----------------------------------------------------------   end
-    //title 测试 ------------------------------------------------------- start
+    //name 测试 ------------------------------------------------------- start
     /**
-     * 设置 Inquiry setTitle() 正确的传参类型, 期望传值正确
+     * 设置 Inquiry setName() 正确的传参类型, 期望传值正确
      */
-    public function testSetTitleCorrectType()
+    public function testSetNameCorrectType()
     {
-        $this->stub->setTitle('string');
-        $this->assertEquals('string', $this->stub->getTitle());
+        $this->stub->setName('string');
+        $this->assertEquals('string', $this->stub->getName());
     }
 
     /**
-     * 设置 Inquiry setTitle() 错误的传参类型, 期望期望抛出TypeError exception
+     * 设置 Inquiry setName() 错误的传参类型, 期望期望抛出TypeError exception
      *
      * @expectedException TypeError
      */
-    public function testSetTitleWrongType()
+    public function testSetNameWrongType()
     {
-        $this->stub->setTitle(array(1, 2, 3));
+        $this->stub->setName(array(1, 2, 3));
     }
-    //title 测试 -------------------------------------------------------   end
+    //name 测试 -------------------------------------------------------   end
     //content 测试 ----------------------------------------------------- start
     /**
      * 设置 Inquiry setContent() 正确的传参类型, 期望传值正确

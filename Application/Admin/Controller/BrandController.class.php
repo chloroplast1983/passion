@@ -22,18 +22,36 @@ class BrandController extends Controller
      */
     public function index()
     {
+        $perpage = 20;
+        $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($curpage-1)*$perpage;
+
         //触发导航栏链接高亮
         $this->getResponse()->view()->assign('inquiryListRef', true);
 
         $brandList = array();
 
+        $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array();
+
         $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
-        $brandList = $repository->filter(
-            array('status'=>STATUS_NORMAL)
+        list($num, $brandList) = $repository->filter(
+            $filter,
+            array(),
+            $start,
+            $perpage
         );
 
+        $urlCondition = http_build_query(array('filter'=>$filter));
+
+        $multi = $this->getResponse()->multiPages(
+            $num,
+            $perpage,
+            $curpage,
+            '/Admin/Brand?'.$urlCondition
+        );
 
         $this->getResponse()->view()->assign('brandList', $brandList);
+        $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/brandIndex.tpl');
     }
 

@@ -2,6 +2,8 @@
 namespace Inquiry\Model;
 
 use Common\Model\ModifyTime;
+use Product\Model\Product;
+use Marmot\Core;
 
 /**
  * Inquiry 询价领域对象
@@ -20,9 +22,9 @@ class Inquiry
      */
     private $id;
     /**
-     * @var string $title 标题
+     * @var string $name 标题
      */
-    private $title;
+    private $name;
     /**
      * @var string $content 内容
      */
@@ -31,6 +33,10 @@ class Inquiry
      * @var string $email 邮箱
      */
     private $email;
+    /**
+     * @var Product $product 商品对象
+     */
+    private $product;
 
     /**
      * Inquiry 询价领域对象 构造函数
@@ -39,11 +45,12 @@ class Inquiry
     {
         global $_FWGLOBAL;
         $this->id = !empty($id) ? $id : 0;
-        $this->title = '';
+        $this->name = '';
         $this->content = '';
         $this->createTime = $_FWGLOBAL['timestamp'];
         $this->updateTime = $_FWGLOBAL['timestamp'];
         $this->email = '';
+        $this->product = new Product();
     }
 
     /**
@@ -52,11 +59,12 @@ class Inquiry
     public function __destruct()
     {
         unset($this->id);
-        unset($this->title);
+        unset($this->name);
         unset($this->content);
         unset($this->createTime);
         unset($this->updateTime);
         unset($this->email);
+        unset($this->product);
     }
 
     /**
@@ -78,20 +86,20 @@ class Inquiry
     }
     /**
      * 设置标题
-     * @param string $title 标题
+     * @param string $name 标题
      */
-    public function setTitle(string $title)
+    public function setName(string $name)
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     /**
      * 获取标题
-     * @return string $title 标题
+     * @return string $name 标题
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
     /**
      * 设置内容
@@ -127,5 +135,32 @@ class Inquiry
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * 设置product对象
+     * @param Product $product 商品
+     */
+    public function setProduct(Product $product)
+    {
+        $this->product = $product;
+    }
+
+    /**
+     * 获取商品对象
+     * @return Product $product 商品
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * 保存询价
+     */
+    public function save()
+    {
+        $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
+        return $repository->add($this);
     }
 }

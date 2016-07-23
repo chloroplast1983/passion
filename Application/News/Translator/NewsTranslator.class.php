@@ -41,7 +41,9 @@ class NewsTranslator extends Translator
 
         $expression = $newsContent = array();
 
-        $expression['news_id'] = $news->getId();
+        if (in_array('id', $keys)) {
+            $expression['news_id'] = $news->getId();
+        }
         
         if (in_array('title', $keys)) {
             $expression['title'] = $news->getTitle();
@@ -58,13 +60,12 @@ class NewsTranslator extends Translator
         if (in_array('statusTime', $keys)) {
             $expression['status_time'] = $news->getStatusTime();
         }
-
+       
         if (in_array('status', $keys)) {
             $expression['status'] = $news->getStatus();
         }
 
         if (in_array('content', $keys)) {
-            $newsContent['news_id'] = $expression['news_id'];
             $newsContent['content'] = $news->getContent();
         }
 

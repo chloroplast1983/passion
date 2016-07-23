@@ -1,7 +1,7 @@
 {include file="Admin/header.tpl"}
 <h3><em></em>商品管理</h3>
 <div class="submsg">
-	<h5><a href="/Admin/Product">返回商品列表</a></h5>
+	<h5><a href="/Admin/Product?filter[status]=0">返回商品列表</a></h5>
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
 			<th>商品标题</th>
@@ -53,6 +53,14 @@
 			{/if}
 			</td>
 		</tr>	
+		{if $product->getSlides() neq ""}
+		{foreach $product->getSlides() as $slide}
+		<tr>
+			<th>轮播图&nbsp;{$slide@index+1}</th>
+			<td><img src="{$slide->getFileURL()}" width="100" height="100"/></td>
+		</tr>
+		{/foreach}
+		{/if}
 		<tr>
 			<th>内容</th>
 			<td>{html_entity_decode($product->getContent())}</td>

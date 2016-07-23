@@ -22,15 +22,35 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $perpage = 20;
+        $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($curpage-1)*$perpage;
+
         $this->getResponse()->view()->assign('productListRef', true);
 
         $productList = array();
 
+        $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array();
+
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
-        $productList = $repository->filter(
-            array('status'=>STATUS_NORMAL)
+        list($num, $productList) = $repository->filter(
+            $filter,
+            array(),
+            $start,
+            $perpage
         );
+
+        $urlCondition = http_build_query(array('filter'=>$filter));
+       
+        $multi = $this->getResponse()->multiPages(
+            $num,
+            $perpage,
+            $curpage,
+            '/Admin/Product?'.$urlCondition
+        );
+
         $this->getResponse()->view()->assign('productList', $productList);
+        $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/productIndex.tpl');
     }
 
@@ -49,7 +69,11 @@ class ProductController extends Controller
         //品牌
         $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
         $brandList = $repository->filter(
-            array('status'=>STATUS_NORMAL)
+            array('status'=>STATUS_NORMAL),
+            array(),
+            0,
+            0,
+            false
         );
 
         $this->getResponse()->view()->assign('product', $product);
@@ -138,6 +162,58 @@ class ProductController extends Controller
 
         $product = new Product();
         $product = $repository->getOne($productId);
+        
         $this->getResponse()->view()->assign('product', $product);
+        $this->getResponse()->view()->display('Admin/productSlides.tpl');
+    }
+
+    /**
+     * 添加幻灯片页面
+     */
+    public function slidesSave(int $productId)
+    {
+        $this->getResponse()->view()->assign('productListRef', true);
+
+        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+
+        $product = new Product();
+        $product = $repository->getOne($productId);
+        
+        $this->getResponse()->view()->assign('product', $product);
+        $this->getResponse()->view()->display('Admin/productSlidesSave.tpl');
+    }
+
+    /**
+     * 保存幻灯片
+     */
+    public function slidesAction(int $productId)
+    {
+        // $productId = $this->getRequest()->post('productId');
+        $product = new Product($productId);
+
+        if (isset($_FILES)) {
+            $file = Core::$container->make('Common\Model\File');
+            $file->upload('slide');
+            $product->addSlide($file);
+
+            $this->message('添加轮播图成功', '/Admin/Product/'.$productId.'/Slides');
+        }
+
+        return false;
+    }
+
+    /**
+     * 删除幻灯片
+     */
+    public function slidesDelete(int $productId, int $fileId)
+    {
+        $this->getResponse()->view()->assign('productListRef', true);
+
+        $file = Core::$container->make('Common\Model\File', ['id'=>$fileId]);
+        
+        $product = new Product($productId);
+        $product->deleteSlide($file);
+
+        $this->message('删除成功', '/Admin/Product/'.$productId.'/Slides');
     }
 }

@@ -32,22 +32,22 @@ class NewsRepository
     
         $this->newsRowCacheQuery = $newsRowCacheQuery;
         $this->newsContentRowCacheQuery = $newsContentRowCacheQuery;
+        $this->translator = new NewsTranslator();
     }
 
     public function add(News $news)
     {
         $newsArray = $newsContentArray = array();
-        $newsTranslator = new NewsTranslator();
 
         //list
-        list($newsArray, $newsContentArray) = $newsTranslator->objectToArray($news);
+        list($newsArray, $newsContentArray) = $this->translator->objectToArray($news);
 
         $id = $this->newsRowCacheQuery->add($newsArray);
         if (!$id) {
             return false;
         }
         $news->setId($id);
-        $newsContentArray['news_id'] = $id;
+        $newsContentArray[$this->newsContentRowCacheQuery->getPrimaryKey()] = $id;
 
         $rows = $this->newsContentRowCacheQuery->add($newsContentArray, false);
         if (!$rows) {
@@ -58,20 +58,21 @@ class NewsRepository
 
     public function update(News $news, array $keys = array())
     {
-        $newsTranslator = new NewsTranslator();
 
         $newsArray = $newsContentArray = array();
 
-        list($newsArray, $newsContentArray) = $newsTranslator->objectToArray($news, $keys);
+        list($newsArray, $newsContentArray) = $this->translator->objectToArray($news, $keys);
         
-        $result = $this->newsRowCacheQuery->update($newsArray);
+        $conditionArray[$this->newsRowCacheQuery->getPrimaryKey()] = $news->getId();
+
+        $result = $this->newsRowCacheQuery->update($newsArray, $conditionArray);
 
         if (!$result) {
             return false;
         }
 
         if (!empty($newsContentArray)) {
-            return $this->newsContentRowCacheQuery->update($newsContentArray);
+            return $this->newsContentRowCacheQuery->update($newsContentArray, $conditionArray);
         }
 
         return true;
@@ -92,10 +93,8 @@ class NewsRepository
         $newsContentInfo = $this->newsContentRowCacheQuery->getOne($id);
 
         $newsInfo = array_merge($newsInfo, $newsContentInfo);
-        //翻译器 -- 开始
-        $newsTranslator = new NewsTranslator();
-        //翻译器 -- 结束
-        $news = $newsTranslator->arrayToObject($newsInfo);
+
+        $news = $this->translator->arrayToObject($newsInfo);
         //获取图片 -- 开始
         //获取图片 -- 结束
         return $news;
@@ -111,13 +110,17 @@ class NewsRepository
         $newsList = array();
         //获取用户数据
         $newsInfoList = $this->newsRowCacheQuery->getList($ids);
+
+        $newsContentInfoList = $this->newsContentRowCacheQuery->getList($ids);
         
         foreach ($newsInfoList as $newsInfo) {
-            //翻译器 -- 开始
-            $newsTranslator = new NewsTranslator();
-            //翻译器 -- 结束
-            $news = $newsTranslator->arrayToObject($newsInfo);
-
+            $news = $this->translator->arrayToObject(
+                array_merge(
+                    $newsInfo,
+                    current($newsContentInfoList)
+                )
+            );
+            next($newsContentInfoList);
             $newsList[] = $news;
         }
         
@@ -127,27 +130,54 @@ class NewsRepository
     /**
      * 根据条件查询询价
      */
-    public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
-    {
+    public function filter(
+        array $filter = array(),
+        array $sort = array(),
+        int $offset = 0,
+        int $size = 20,
+        bool $countAble = true
+    ) {
 
-        $condition = '1';
+        $conjection = $condition = '';
 
-        if (isset($filter['status'])) {
-            $condition = 'status = '.$filter['status'];
+        if (!empty($filter)) {
+            $news = new News();
+
+            if (isset($filter['status'])) {
+                $news->setStatus($filter['status']);
+            }
+            
+            list($newsArray, $newsContentArray) = $this->translator->objectToArray($news, array_keys($filter));
+
+            foreach ($newsArray as $key => $val) {
+                $val = is_numeric($val) ? $val : '\''.$val.'\'';
+                $condition .= $conjection.$key.' = '.$val;
+                $conjection = ' AND ';
+            }
         }
-
+        if (empty($condition)) {
+            $condition = ' 1 ';
+        }
+        
         $newsList = $this->newsRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($newsList)) {
             return false;
         }
+
         $ids = array();
         foreach ($newsList as $newsInfo) {
-            $ids[] = $newsInfo['news_id'];
+            $ids[] = $newsInfo[$this->newsRowCacheQuery->getPrimaryKey()];
         }
 
         if (empty($ids)) {
             return false;
+        }
+
+        if ($countAble) {
+            //计算总数
+            $count = $this->newsRowCacheQuery->count($condition);
+            return array($count, $this->getList($ids));
         }
 
         return $this->getList($ids);

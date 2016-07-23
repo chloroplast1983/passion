@@ -44,7 +44,10 @@ class CategoryRepository
     public function update(Category $category, array $keys = array())
     {
         $categoryArray = $this->translator->objectToArray($category, $keys);
-        return $this->categoryRowCacheQuery->update($categoryArray);
+
+        $conditionArray[$this->categoryRowCacheQuery->getPrimaryKey()] = $category->getId();
+
+        return $this->categoryRowCacheQuery->update($categoryArray, $conditionArray);
     }
 
     /**
@@ -86,21 +89,45 @@ class CategoryRepository
     /**
      * 根据条件查询询价
      */
-    public function filter(array $filter = array(), array $sort = array(), int $offset = 0, int $size = 20)
-    {
+    public function filter(
+        array $filter = array(),
+        array $sort = array(),
+        int $offset = 0,
+        int $size = 20,
+        bool $countAble = true
+    ) {
 
-        $condition = '1';
+        $conjection = $condition = '';
 
-        if (isset($filter['type'])) {
-            $condition .= ' AND type = '.$filter['type'];
+        if (!empty($filter)) {
+            $category = new Category();
+
+            if (isset($filter['type'])) {
+                $category->setType($filter['type']);
+                // $condition .= ' AND type = '.$filter['type'];
+            }
+
+            if (isset($filter['parentId'])) {
+                $category->setParentId($filter['parentId']);
+                // $condition .= ' AND parent_id = '.$filter['parentId'];
+            }
+
+            if (isset($filter['status'])) {
+                $category->setStatus($filter['status']);
+                // $condition .= ' AND status = '.$filter['status'];
+            }
+
+            $categoryArray = $this->translator->objectToArray($category, array_keys($filter));
+
+            foreach ($categoryArray as $key => $val) {
+                $val = is_numeric($val) ? $val : '\''.$val.'\'';
+                $condition .= $conjection.$key.' = '.$val;
+                $conjection = ' AND ';
+            }
         }
 
-        if (isset($filter['parentId'])) {
-            $condition .= ' AND parent_id = '.$filter['parentId'];
-        }
-
-        if (isset($filter['status'])) {
-            $condition .= ' AND status = '.$filter['status'];
+        if (empty($condition)) {
+            $condition = ' 1 ';
         }
 
         $categoryList = $this->categoryRowCacheQuery->find($condition, $offset, $size);
@@ -110,8 +137,15 @@ class CategoryRepository
         }
         $ids = array();
         foreach ($categoryList as $categoryInfo) {
-            $ids[] = $categoryInfo['category_id'];
+            $ids[] = $categoryInfo[$this->categoryRowCacheQuery->getPrimaryKey()];
         }
+        
+        if ($countAble) {
+            //计算总数
+            $count = $this->categoryRowCacheQuery->count($condition);
+            return array($count, $this->getList($ids));
+        }
+        
         return $this->getList($ids);
     }
 }

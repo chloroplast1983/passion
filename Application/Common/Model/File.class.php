@@ -2,6 +2,7 @@
 namespace Common\Model;
 
 use Marmot\Core;
+use Intervention\Image\ImageManagerStatic as ImageThumb;
 
 /**
  * 旧类需要重构
@@ -319,7 +320,37 @@ class File
 
         return $repository->add($this);
     }
-    
+
+    public function getFileURL(int $width = 0, int $height = 0, int $waterMark = 0)
+    {
+        if ($width == 0 && $height == 0 && !$waterMark) {
+            return $this->siteUrl.$this->getAttachDir().$this->getFilePath();
+        }
+        
+        if ($width > 0 && $height > 0) {
+            $filePath = $this->getAttachDir().$this->getFilePath();
+            
+            $thumbImg = ImageThumb::make($filePath);
+            $thumbImg->resize($width, $height);
+            
+            $filePathWithiutExt = explode('.', $filePath);
+            $filePathWithiutExt = $filePathWithiutExt[0];
+
+            $thumFilePath = $filePathWithiutExt.'.'.$width.'_'.$height.'_'.$waterMark.'.'.$this->getFileExt();
+
+            if (file_exists($thumFilePath)) {
+                return $this->siteUrl.$thumFilePath;
+            }
+            if ($waterMark) {
+                $thumbImg->insert('Global/Style/Home/images/watermark.png');
+            }
+
+            $thumbImg->save($thumFilePath);
+
+            return $this->siteUrl.$thumFilePath;
+        }
+    }
+
     //基础错误判断
     private function checkFileTemp()
     {
@@ -386,11 +417,6 @@ class File
             $this->fileExt = '_'.$this->fileExt;
         }
         return true;
-    }
-    //内外地址转换
-    public function getFileURL()
-    {
-        return $this->siteUrl.$this->getAttachDir().$this->getFilePath();
     }
     
     //获取文件大小

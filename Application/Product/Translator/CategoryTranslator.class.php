@@ -40,8 +40,10 @@ class CategoryTranslator extends Translator
         }
 
         $expression = array();
-        $expression['category_id'] = $category->getId();
-
+        if (in_array('id', $keys)) {
+            $expression['category_id'] = $category->getId();
+        }
+        
         if (in_array('name', $keys)) {
             $expression['category_name'] = $category->getName();
         }
