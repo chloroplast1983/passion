@@ -27,7 +27,6 @@ class IndexController extends Controller
             $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
             $hotProducts =  $repository->getList($hotProductIds);
         }
-
         $featuredCategories = include S_ROOT.'Application/featuredCategoriesConfig.php';
         $this->getResponse()->view()->assign('hotProducts', $hotProducts);
         $this->getResponse()->view()->assign('featuredCategories', $featuredCategories);

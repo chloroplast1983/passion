@@ -2,14 +2,14 @@
 namespace Product\Translator;
 
 use System\Classes\Translator;
-use Product\Model\product;
+use Product\Model\Product;
 
 class ProductTranslator extends Translator
 {
 
     public function arrayToObject(array $expression)
     {
-        $product = new product($expression['product_id']);
+        $product = new Product($expression['product_id']);
         $product->setTitle($expression['title']);
         $product->setUpdateTime($expression['update_time']);
         $product->setCreateTime($expression['create_time']);
