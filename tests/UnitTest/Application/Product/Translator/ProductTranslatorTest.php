@@ -119,7 +119,6 @@ class ProductTranslatorTest extends GenericTestsDatabaseTestCase
         $this->assertEquals($expectedArray['logo'], $productInfo['logo']);
 
         //比较content
-        $this->assertEquals($expectedArray['product_id'], $productContent['product_id']);
         $this->assertEquals($expectedArray['content'], $productContent['content']);
     }
 

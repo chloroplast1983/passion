@@ -110,7 +110,6 @@ class ProductTranslator extends Translator
         }
 
         if (in_array('content', $keys)) {
-            $productContent['product_id'] = $expression['product_id'];
             $productContent['content'] = $product->getContent();
         }
 
