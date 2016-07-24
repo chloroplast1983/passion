@@ -1,8 +1,7 @@
 {include file="Admin/header.tpl"}
 <h3><em></em>分类管理</h3>
 	<div class="submsg">
-<!-- 	<h4>{if $type eq 1}扶梯分类{else}<a href="/Admin/Category?filter[type]=1">扶梯分类</a>{/if}&nbsp;&nbsp;{if $type eq 2}直梯分类{else}<a href="/Admin/Category?filter[type]=2">直梯分类</a>{/if}</h4> -->
-	<h5><a href="/Admin/Category/Save">添加分类</a></h5>
+	<h5><a href="/Admin/Category/Save">添加分类</a>&nbsp;&nbsp;{if $type eq 1}扶梯分类{else}<a href="/Admin/Category?filter[type]=1">扶梯分类</a>{/if}&nbsp;&nbsp;{if $type eq 2}直梯分类{else}<a href="/Admin/Category?filter[type]=2">直梯分类</a>{/if}</h5>
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
 			<th>分类名称</th>
