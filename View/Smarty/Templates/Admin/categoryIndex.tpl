@@ -27,7 +27,7 @@
 					无
 				{/if}
 			</td>
-			<td><a href="/Admin/Category/Save/{$category->getId()}">编辑</a>&nbsp;&nbsp;<a href="/Admin/Category/Delete/{$category->getId()}" class="del">删除</a></td>
+			<td><a href="/Admin/Category/Save/{$category->getId()}">编辑</a></td>
 		</tr>
 		{/foreach}
 		{/if}

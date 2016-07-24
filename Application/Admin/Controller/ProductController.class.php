@@ -114,14 +114,16 @@ class ProductController extends Controller
         $product->setCertificates($certificates);
 
         Transaction::beginTransaction();
-        if (isset($_FILES)) {
+        if (!empty($_FILES['logo']['size'])) {
             if (!$product->getLogo()->upload('logo')) {
                 Transaction::rollBack();
+                $this->message('保存产品出错-logo', '/Admin/Product?filter[status]=0');
             }
         }
         
         if (!$product->save()) {
             Transaction::rollBack();
+            $this->message('保存产品出错-save', '/Admin/Product?filter[status]=0');
         }
 
         Transaction::Commit();
