@@ -40,6 +40,10 @@ class IndexController extends Controller
 
         $filter = is_array($filter) ? $filter : array('status'=>STATUS_NORMAL);
 
+        if (isset($filter['brand'])) {
+            $this->getResponse()->view()->assign('leftNavBrandActive', true);
+        }
+
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
 
         if (isset($filter['parentCategory']) || isset($filter['type']) || isset($filter['keyword'])) {
@@ -72,9 +76,13 @@ class IndexController extends Controller
         if (empty($productList)) {
             $hotProductIds = include S_ROOT.'Application/hotProductsConfig.php';
 
-            $hotProductIds = array_slice($hotProductIds, 0, 4);
-            $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
-            $hotProducts =  $repository->getList($hotProductIds);
+            $hotProducts = array();
+            
+            if (!empty($hotProductIds)) {
+                $hotProductIds = array_slice($hotProductIds, 0, 4);
+                $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+                $hotProducts =  $repository->getList($hotProductIds);
+            }
             $this->getResponse()->view()->assign('hotProducts', $hotProducts);
         }
 

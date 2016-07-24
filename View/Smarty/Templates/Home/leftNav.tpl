@@ -2,8 +2,8 @@
 			<div class="side_menu">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Products</a></li>
-					<li role="presentation"><a href="#brands" aria-controls="brands" role="tab" data-toggle="tab">Brands</a></li>
+					<li role="presentation" {if !$leftNavBrandActive}class="active"{/if}><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Products</a></li>
+					<li role="presentation" {if $leftNavBrandActive}class="active"{/if}><a href="#brands" aria-controls="brands" role="tab" data-toggle="tab">Brands</a></li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">

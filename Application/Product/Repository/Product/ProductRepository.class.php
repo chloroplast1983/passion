@@ -333,6 +333,14 @@ class ProductRepository
             $ids[] = $productId['product_id'];
         }
 
+        if (empty($ids)) {
+            if ($countAble) {
+                return array(0, array());
+            }
+
+            return array();
+        }
+
         if ($countAble) {
             $count = Core::$dbDriver->query('
                         SELECT count(*) as count FROM pcore_product AS product 
