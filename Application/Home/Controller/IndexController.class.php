@@ -23,8 +23,10 @@ class IndexController extends Controller
 
         $hotProductIds = include S_ROOT.'Application/hotProductsConfig.php';
        
-        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
-        $hotProducts =  $repository->getList($hotProductIds);
+        if (!empty($hotProductIds)) {
+            $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+            $hotProducts =  $repository->getList($hotProductIds);
+        }
 
         $featuredCategories = include S_ROOT.'Application/featuredCategoriesConfig.php';
         $this->getResponse()->view()->assign('hotProducts', $hotProducts);
