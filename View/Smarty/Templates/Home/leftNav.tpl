@@ -7,7 +7,7 @@
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="products">
+					<div role="tabpanel" class="tab-pane {if !$leftNavBrandActive}active{/if}" id="products">
 						<dl class="side_menu_items">
 							<dt>
 								<a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>
@@ -58,7 +58,7 @@
 							<dt><a href="javascript:;">See All</a></dt>
 						</dl> -->
 					</div>
-					<div role="tabpanel" class="tab-pane" id="brands">
+					<div role="tabpanel" class="tab-pane {if $leftNavBrandActive}active{/if}" id="brands">
 						<ul class="side_brands_items list-unstyled">
 							{foreach $brandList as $brand}
 							<li>
