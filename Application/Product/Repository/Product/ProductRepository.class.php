@@ -56,7 +56,7 @@ class ProductRepository
             return false;
         }
         $product->setId($id);
-        $productContentArray['product_id'] = $id;
+        $productContentArray[$this->productRowCacheQuery->getPrimaryKey()] = $id;
         $rows = $this->productContentRowCacheQuery->add($productContentArray, false);
 
         if (!$rows) {
