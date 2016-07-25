@@ -18,7 +18,7 @@
 					<a class="product_item_img" href="/Product/{$product->getId()}">
 						<span>
 							{if $product->getLogo()->getId() > 0}
-							<img src="{$product->getLogo()->getFileURL(250, 200, 1)}" >
+							<img src="{$product->getLogo()->getFileURL(250, 200)}" >
 							{else}
 							<img src="/Global/Style/Home/images/product_img.png" >
 							{/if}
@@ -66,7 +66,7 @@
 						<a class="rp_item_img" href="javascript:;">
 							<span>
 							{if $product->getLogo()->getId() > 0}
-								<img src="{$product->getLogo()->getFileURL(250, 200, 1)}" >
+								<img src="{$product->getLogo()->getFileURL(250, 200)}" >
 							{else}
 								<img src="/Global/Style/Home/images/product_img.png" >
 							{/if}
