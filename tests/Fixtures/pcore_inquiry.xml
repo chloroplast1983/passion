@@ -9,6 +9,7 @@
 		<field name="content">询价内容1</field>
 		<field name="email">41893204@qq.com</field>
 		<field name="product_id">1</field>
+		<field name="client_ip">clinent_ip</field>
 	</row>
 	<row>
 		<field name="inquiry_id">2</field>
@@ -17,6 +18,7 @@
 		<field name="content">询价内容2</field>
 		<field name="email">41893201@qq.com</field>
 		<field name="product_id">1</field>
+		<field name="client_ip">clinent_ip</field>
 	</row>
 	<row>
 		<field name="inquiry_id">3</field>
@@ -25,6 +27,7 @@
 		<field name="content">询价内容3</field>
 		<field name="email">41893202@qq.com</field>
 		<field name="product_id">1</field>
+		<field name="client_ip">clinent_ip</field>
 	</row>
 	</table_data>
 </database>
