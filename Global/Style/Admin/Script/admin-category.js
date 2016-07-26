@@ -1,6 +1,7 @@
 (function(){
 
 	Category = {};
+	Category.selectedParentCategory = 0;
 	Category.selectedCategory = 0;
 	Category.ajaxGetCategoryListByTypeUrl = '/Admin/Category?filter[parentId]=0&filter[status]=0&filter[type]=';
 	Category.ajaxGetCategoryListByParentUrl = '/Admin/Category?filter[status]=0&filter[parentId]=';
@@ -25,8 +26,8 @@
 			Category.getCategoryListByParent($(this).val());
 		});
 
-		var parentId = $("select.parentCategory").val();
-		Category.getCategoryListByParent(parentId);
+		// var parentId = $("select.parentCategory").val();
+		Category.getCategoryListByParent(Category.selectedParentCategory);
 	}
 
 	Category.getCategoryListByParent = function(parentId){
@@ -44,7 +45,7 @@
 					selected = '';
 
 					if(Category.selectedCategory == value.id){
-						selected="selected";
+						selected="selected='selected'";
 					}
 
 					html[n] = '<option value=\''+value.id+'\''+selected+'>'+value.name+'</option>';
@@ -70,8 +71,8 @@
 
 					selected = '';
 
-					if(Category.selectedCategory == value.id){
-						selected="selected";
+					if(Category.selectedParentCategory == value.id){
+						selected="selected='selected'";
 					}
 
 					html[n] = '<option value=\''+value.id+'\''+selected+'>'+value.name+'</option>';

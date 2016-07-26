@@ -88,8 +88,9 @@
 <script type="text/javascript" src="/Global/Style/Admin/Script/admin-category.js"></script>
 <script type="text/javascript">
 jQuery(function ($) {
+	Category.selectedParentCategory = {$product->getCategory()->getParentId()}
+	Category.selectedCategory = {$product->getCategory()->getId()}
 	Category.init();
-	Category.selectedCategory = {$product->getCategory()->getParentId()}
 })
 </script>
 <script type="text/javascript">
