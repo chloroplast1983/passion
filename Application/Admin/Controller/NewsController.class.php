@@ -31,7 +31,9 @@ class NewsController extends Controller
 
         $newsList = array();
 
-        $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array('status'=>STATUS_NORMAL);
+        $filter = is_array($this->getRequest()->get('filter')) ?
+        $this->getRequest()->get('filter') :
+        array('status'=>STATUS_NORMAL);
         
         $repository = Core::$container->get('News\Repository\News\NewsRepository');
         list($num, $newsList) = $repository->filter(
