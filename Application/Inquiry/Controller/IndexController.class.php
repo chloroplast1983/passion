@@ -21,6 +21,8 @@ class IndexController extends Controller
     public function index(int $productId = 0)
     {
 
+        $hotProducts = array();
+        
         $product = new Product();
         if ($productId > 0) {
             $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
@@ -30,9 +32,12 @@ class IndexController extends Controller
 
         $hotProductIds = include S_ROOT.'Application/hotProductsConfig.php';
 
-        $hotProductIds = array_slice($hotProductIds, 0, 4);
-        $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
-        $hotProducts =  $repository->getList($hotProductIds);
+        if (!empty($hotProductIds)) {
+            $hotProductIds = array_slice($hotProductIds, 0, 4);
+            $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
+            $hotProducts =  $repository->getList($hotProductIds);
+        }
+
         $this->getResponse()->view()->assign('hotProducts', $hotProducts);
 
         $this->getResponse()->view()->assign('product', $product);

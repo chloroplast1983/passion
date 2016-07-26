@@ -13,7 +13,7 @@
 								<a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>
 							</dt>
 							{foreach $categoryList['type'][1] as $parentCategory}
-							<dd class="side_has_submenu">
+							<dd {if $categoryList['parent'][$parentCategory->getId()] neq ""}class="side_has_submenu"{/if}>
 								<a href=
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
 								"/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}"
@@ -36,7 +36,7 @@
 								<a href="/Product?filter[status]=0&filter[type]=2">Elevator Parts</a>
 							</dt>
 							{foreach $categoryList['type'][2] as $parentCategory}
-							<dd class="side_has_submenu">
+							<dd {if $categoryList['parent'][$parentCategory->getId()] neq ""}class="side_has_submenu"{/if}>
 								<a href=
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
 								"/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}"

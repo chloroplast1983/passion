@@ -37,6 +37,10 @@ class Inquiry
      * @var Product $product 商品对象
      */
     private $product;
+    /**
+     * @var string $clientIp 客户IP
+     */
+    private $clientIp;
 
     /**
      * Inquiry 询价领域对象 构造函数
@@ -51,6 +55,7 @@ class Inquiry
         $this->updateTime = $_FWGLOBAL['timestamp'];
         $this->email = '';
         $this->product = new Product();
+        $this->clientIp = $_SERVER["REMOTE_ADDR"];
     }
 
     /**
@@ -65,6 +70,7 @@ class Inquiry
         unset($this->updateTime);
         unset($this->email);
         unset($this->product);
+        unset($this->clientIp);
     }
 
     /**
@@ -153,6 +159,22 @@ class Inquiry
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * 设置客户端IP
+     */
+    public function setClientIp($clientIp)
+    {
+        $this->clientIp = $clientIp;
+    }
+
+    /**
+     * 获取客户端ip
+     */
+    public function getClientIp()
+    {
+        return $this->clientIp;
     }
 
     /**

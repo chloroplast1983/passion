@@ -90,9 +90,12 @@ class ProductController extends Controller
         $this->getResponse()->view()->assign('producSaveRef', true);
 
         $title = $this->getRequest()->post('title');
-        $content = $this->getRequest()->post('content');
+        $content = $this->getRequest()->post('content', '');
         $brand = $this->getRequest()->post('brand');
         $categroy = $this->getRequest()->post('categroy');
+        if ($categroy == 0) {
+            $categroy = $this->getRequest()->post('parentCategory');
+        }
         $model = $this->getRequest()->post('model');
         $number = $this->getRequest()->post('number');
         $moq = $this->getRequest()->post('moq');

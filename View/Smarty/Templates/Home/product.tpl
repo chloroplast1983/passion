@@ -9,7 +9,18 @@
 <!--content-->
 		<div class="content">
 			<div class="site_navigation">
-				<span>You are here:</span><a href="/">Home</a>><a href="javascript:;">products</a>><a href="javascript:;">Escalator Parts</a>><a href="javascript:;">Wheels</a>><span>{$product->getTitle()}</span>
+				<span>You are here:</span><a href="/">Home</a>><a href="/Product">products</a>>
+				{if $product->getCategory()->getType()==1}
+				<a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>>
+				{/if}
+				{if $product->getCategory()->getType()==2}
+				<a href="/Product?filter[status]=0&filter[type]=2">Elevator Parts</a>>
+				{/if}
+				{if $product->getCategory()->getParentId() > 0}
+				<a href="/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}">{$parentCategory->getName()}</a>>
+				{/if}
+				<a href="/Product?filter[status]=0&filter[category]={$product->getCategory()->getId()}">{$product->getCategory()->getName()}</a>>
+				<span>{$product->getTitle()}</span>
 			</div>
 			<!--products intro-->
 			<div class="product_intro clearfix">
@@ -34,7 +45,7 @@
 							{if !empty($product->getSlides())}
 							<ul id="thumblist" class="list-unstyled">
 								{foreach $product->getSlides() as $slide}
-								<li class="active" data-img="{$slide->getFileURL(350, 320, 1)}" data-zoom-img="{$slide->getFileURL()}">
+								<li {if $slide@index==0}class="active"{/if} data-img="{$slide->getFileURL(350, 320, 1)}" data-zoom-img="{$slide->getFileURL()}">
 									<a href="javascript:;">
 										<img src="{$slide->getFileURL(60, 60, 1)}">
 									</a>
@@ -49,10 +60,10 @@
 						<a class="add_favorites" href="javascript:;">Add to My Favorites</a>
 						<div class="share_items">
 							<span>Share to:</span>
-							<a href="javascript:;"><img src="/Global/Style/Home/images/f.png" ></a>
-							<a href="javascript:;"><img src="/Global/Style/Home/images/t.png" ></a>
+							<a href="http://www.facebook.com/share.php?u=www.passionelevator.com"><img src="/Global/Style/Home/images/f.png" ></a>
+							<a href="http://twitter.com/home/?status=passionelevator www.passionelevator.com"><img src="/Global/Style/Home/images/t.png" ></a>
 							<a href="javascript:;"><img src="/Global/Style/Home/images/g.png" ></a>
-							<a href="javascript:;"><img src="/Global/Style/Home/images/in.png" ></a>
+							<a href="http://www.linkedin.com/shareArticle?mini=true&url=www.passionelevator.com&title=passionelevator"><img src="/Global/Style/Home/images/in.png" ></a>
 						</div>
 					</div>
 				</div>

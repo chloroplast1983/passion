@@ -158,7 +158,7 @@ class Product
      * 设置内容
      * @param string $content 内容
      */
-    public function setContent(string $content)
+    public function setContent(string $content = '')
     {
         $this->content = $content;
     }

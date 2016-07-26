@@ -101,6 +101,12 @@ class IndexController extends Controller
         $product = $repository->getOne($productId);
         
         $this->getResponse()->view()->assign('product', $product);
+        if ($product->getCategory()->getParentId() > 0) {
+            $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
+            $parentCategory = $repository->getOne($product->getCategory()->getParentId());
+            $this->getResponse()->view()->assign('parentCategory', $parentCategory);
+        }
+
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
         $this->getResponse()->view()->display('Home/product.tpl');

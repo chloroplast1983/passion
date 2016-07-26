@@ -16,6 +16,10 @@
 			<td>{$inquiry->getCreateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
 		</tr>
 		<tr>
+			<th>询价人ip</th>
+			<td>{$inquiry->getClientIp()}</td>
+		</tr>
+		<tr>
 			<th>询价内容</th>
 			<td>{$inquiry->getContent()}</td>
 		</tr>

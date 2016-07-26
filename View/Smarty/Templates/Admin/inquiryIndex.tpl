@@ -6,6 +6,7 @@
 			<th>询价人</th>
 			<th>询价人邮件</th>
 			<th>询价时间</th>
+			<th>询价人IP</th>
 			<th>操作</th>
 		</tr>
 		{if $inquiryList neq ""}
@@ -14,6 +15,7 @@
 			<td>{$inquiry->getName()}</td>
 			<td>{$inquiry->getEmail()}</td>
 			<td>{$inquiry->getCreateTime()|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+			<td>{$inquiry->getClientIp()}</td>
 			<td><a href="/Admin/Inquiry/{$inquiry->getId()}">查看</a>&nbsp;&nbsp;<a href="/Admin/Inquiry/Delete/{$inquiry->getId()}">删除</a></td>
 		</tr>
 		{/foreach}

@@ -26,7 +26,7 @@
 					<option value="2" {if $product->getCategory()->getType() eq 2}selected="selected"{/if}>直梯</option>
 				</select>
 				&nbsp;
-				<select name="" class="select parentCategory">
+				<select name="parentCategory" class="select parentCategory">
 					<option value="0">-----</option>
 				</select>
 				&nbsp;

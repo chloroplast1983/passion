@@ -7,6 +7,7 @@
 	Category.ajaxGetCategoryListByParentUrl = '/Admin/Category?filter[status]=0&filter[parentId]=';
 
 	Category.init = function(){
+
 		Category.initGetCategoryListByType();
 		Category.initGetCategoryListByParent();
 	};
@@ -27,7 +28,10 @@
 		});
 
 		// var parentId = $("select.parentCategory").val();
-		Category.getCategoryListByParent(Category.selectedParentCategory);
+		if (Category.selectedParentCategory > 0) {
+			Category.getCategoryListByParent(Category.selectedParentCategory);
+		}
+		
 	}
 
 	Category.getCategoryListByParent = function(parentId){
@@ -71,7 +75,9 @@
 
 					selected = '';
 
-					if(Category.selectedParentCategory == value.id){
+					if(Category.selectedParentCategory > 0 && Category.selectedParentCategory == value.id) {
+						selected="selected='selected'";
+					}else if(Category.selectedCategory == value.id){
 						selected="selected='selected'";
 					}
 
