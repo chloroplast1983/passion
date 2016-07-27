@@ -34,12 +34,22 @@ class ProductController extends Controller
         $filter = is_array($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : array();
 
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');
-        list($num, $productList) = $repository->filter(
-            $filter,
-            array(),
-            $start,
-            $perpage
-        );
+        
+        if (isset($filter['type']) || isset($filter['keyword'])) {
+            list($num, $productList) = $repository->search(
+                $filter,
+                array(),
+                $start,
+                $perpage
+            );
+        } else {
+            list($num, $productList) = $repository->filter(
+                $filter,
+                array(),
+                $start,
+                $perpage
+            );
+        }
 
         $urlCondition = http_build_query(array('filter'=>$filter));
        
@@ -50,6 +60,18 @@ class ProductController extends Controller
             '/Admin/Product?'.$urlCondition
         );
 
+        //品牌
+        $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
+        $brandList = $repository->filter(
+            array('status'=>STATUS_NORMAL),
+            array(),
+            0,
+            0,
+            false
+        );
+
+        $this->getResponse()->view()->assign('filter', $filter);
+        $this->getResponse()->view()->assign('brandList', $brandList);
         $this->getResponse()->view()->assign('productList', $productList);
         $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->display('Admin/productIndex.tpl');
@@ -227,5 +249,23 @@ class ProductController extends Controller
         $product->deleteSlide($file);
 
         $this->message('删除成功', '/Admin/Product/'.$productId.'/Slides');
+    }
+
+    /**
+     * 产品搜索
+     */
+    public function search()
+    {
+        $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
+        $brandList = $repository->filter(
+            array('status'=>STATUS_NORMAL),
+            array(),
+            0,
+            0,
+            false
+        );
+
+        $this->getResponse()->view()->assign('brandList', $brandList);
+        $this->getResponse()->view()->display('Admin/productSearch.tpl');
     }
 }

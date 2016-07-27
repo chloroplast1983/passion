@@ -305,13 +305,18 @@ class ProductRepository
 
         $ids = array();
 
-        if (isset($filter['parentCategory'])) {
-            $condition .= $conjection.'parent_id='.$filter['parentCategory'];
+        if (isset($filter['parentCategory']) && intval($filter['parentCategory']) > 0) {
+            $condition .= $conjection.'parent_id='.intval($filter['parentCategory']);
             $conjection = ' AND ';
         }
 
-        if (isset($filter['type'])) {
-            $condition .= $conjection.'type='.$filter['type'];
+        if (isset($filter['type']) && intval($filter['type']) > 0) {
+            $condition .= $conjection.'type='.intval($filter['type']);
+            $conjection = ' AND ';
+        }
+
+        if (isset($filter['brand']) && intval($filter['brand']) > 0) {
+            $condition .= $conjection.'product.brand_id='.intval($filter['brand']);
             $conjection = ' AND ';
         }
 

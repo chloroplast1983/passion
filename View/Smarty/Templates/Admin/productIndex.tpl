@@ -2,6 +2,39 @@
 <h3><em></em>商品管理</h3>
 	<div class="submsg">
 	<h5><a href="/Admin/Product/Save">添加商品</a></h5>
+
+	<form method="get" action="/Admin/Product" enctype="multipart/form-data">
+	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
+		<tr>
+			<th>标题</th>
+			<td><input type="text" name="filter[keyword]" value="{$filter['keyword']}" class="txt"/></td>
+		</tr>
+		<tr>
+			<th>品牌</th>
+			<td>
+				<select name="filter[brand]" class="select">
+					<option value="0" selected="selected">-----</option>
+					{foreach $brandList as $brand}
+					<option value="{$brand->getId()}" {if $filter['brand'] == $brand->getId()}selected="selected"{/if}>{$brand->getName()}</option>
+					{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>分类</th>
+			<td>
+				<select name="filter[type]" class="select categoryType">
+					<option value="0">-----</option>
+					<option value="1" {if $filter['type'] == 1}selected="selected"{/if}>扶梯</option>
+					<option value="2" {if $filter['type'] == 2}selected="selected"{/if}>直梯</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" name="filter[status]" value="0">
+	<input type="submit" name="" value="搜索" class="submit" style="margin-left:380px;"/>
+	</form>	
+
 	<table border="0" cellspacing="0" cellpadding="0" class="msgtable">
 		<tr>
 			<th>商品标题</th>

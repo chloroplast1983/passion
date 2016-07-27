@@ -178,6 +178,14 @@ return [
             'delete'
         ]
     ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Admin/Product/Search',
+        'controller'=>[
+            'Admin\Controller\ProductController',
+            'search'
+        ]
+    ],
     //productSlide
     [
         'method'=>'GET',
