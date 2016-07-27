@@ -32,6 +32,7 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('featuredCategories', $featuredCategories);
 
         $this->getResponse()->view()->assign('homeNavActive', true);
+        $this->getResponse()->view()->assign('grayBg', true);
         $this->getResponse()->view()->assign('newsList', $newsList);
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());

@@ -9,7 +9,7 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          syntaxCheck="true"
-         forceCoversAnnotation="true"
+         forceCoversAnnotation="false"
          bootstrap="./tests/bootstrap.php">
 
      <php>

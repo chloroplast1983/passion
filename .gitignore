@@ -1,6 +1,8 @@
 vendor
 config.php
 !Application/config.php 
+Application/hotProductsConfig.php
+Application/featuredCategoriesConfig.php
 Global/attachment
 .DS_Store
 Cli/autoCreate/Model
@@ -8,3 +10,4 @@ Cli/autoCreate/UnitTest
 Cli/autoCreate/Profile
 tags
 View/Smarty/Compile/
+

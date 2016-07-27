@@ -87,6 +87,7 @@ class IndexController extends Controller
         }
 
         $this->getResponse()->view()->assign('multi', $multi);
+        $this->getResponse()->view()->assign('grayBg', true);
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
         $this->getResponse()->view()->display('Home/productIndex.tpl');

@@ -21,7 +21,7 @@
 	<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body>
+<body {if $grayBg}class="grayBg"{/if}>
 <!--Header-->
 <div class="header">
 	<div class="container-fluid">

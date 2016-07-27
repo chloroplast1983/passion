@@ -124,7 +124,7 @@
 					</div>
 				</div>
 			</li>
-			<li {if $productEscalatorNavActive}class="active"{/if}><a href="/Product?filter[status]=0">Escalator Parts</a></li>
+			<li {if $productEscalatorNavActive}class="active"{/if}><a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a></li>
 			<li {if $inquiryNavActive}class="active"{/if}><a href="/Inquiry">Inquiry</a></li>
 			<li {if $aboutNavActive}class="active"{/if}><a href="/About">About</a></li>
 			<li {if $contactsNavActive}class="active"{/if}><a href="/Contacts">Contacts</a></li>
