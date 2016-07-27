@@ -46,7 +46,7 @@ class Transaction
     
     public static function rollBack()
     {
-        self::$transactionSubject -> notifyObserver();
+        self::$transactionSubject->notifyObserver();
         self::$inTransaction = false;//关闭事务
         self::$transactionSubject = null;//释放subject
         return Core::$dbDriver->rollBack();
