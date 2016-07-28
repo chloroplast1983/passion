@@ -250,22 +250,4 @@ class ProductController extends Controller
 
         $this->message('删除成功', '/Admin/Product/'.$productId.'/Slides');
     }
-
-    /**
-     * 产品搜索
-     */
-    public function search()
-    {
-        $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
-        $brandList = $repository->filter(
-            array('status'=>STATUS_NORMAL),
-            array(),
-            0,
-            0,
-            false
-        );
-
-        $this->getResponse()->view()->assign('brandList', $brandList);
-        $this->getResponse()->view()->display('Admin/productSearch.tpl');
-    }
 }
