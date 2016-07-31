@@ -72,7 +72,6 @@
 		</div>
 		<div class="hp_box">
 			<div class="hp_items clearfix">
-				{assign var="i" value="1"}
 				{foreach $hotProducts as $product}
 				<div class="hp_item">
 					<a class="hp_item_img" href="/Product/{$product->getId()}">
@@ -93,11 +92,10 @@
 						</div>
 					</div>
 				</div>
-					{if $i == 5}
+				{if $product@index == 4}
 			</div>
 			<div class="hp_items clearfix">
-					{/if}
-					{assign var="i" value=$i+1}
+				{/if}
 				{/foreach}
 			</div>
 		</div>
