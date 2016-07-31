@@ -4,6 +4,9 @@
 <!--main-->
 <div class="main">
 	<div class="container-fluid clearfix">
+		<!--add-->
+		<!--span只是占位符，有广告的时候直接替换就可以-->
+		<a class="add" href="javascript:;"><span class="add_img">广告位置</span></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -13,15 +16,15 @@
 			</div>
 			<!--contact-->
 			<div class="contact_main">
-				<div class="contact_company">XI'AN PASSION ELEVATOR PARTS CO.LTD</div>
+				<div class="contact_company">XI'AN Passion Elevator Parts Co.,Ltd</div>
 				<ul class="contact_info list-unstyled">
 					<li>
 						<span class="dt">Address:</span>
-						<span class="dd"> No.1 Changxingli,Hezhuang Villa,No.799 West Changjiang Road, High Tech Zone, Hefei, Anhui</span>
+						<span class="dd">31803,Daming Palace Wanda Plaza,Taihua North RD,Weiyang    Dist.Xi'an,Shaanxi prov.China</span>
 					</li>
 					<li>
 						<span class="dt">Tel:</span>
-						<span class="dd">+86-551-62376776</span>
+						<span class="dd"> +86 15339083622</span>
 					</li>
 					<li>
 						<span class="dt">Website:</span>
@@ -29,7 +32,7 @@
 					</li>
 					<li>
 						<span class="dt">Contact person:</span>
-						<span class="dd">MRS</span>
+						<span class="dd">MS Abby</span>
 					</li>
 					<li>
 						<span class="dt">E-mail:</span>
@@ -37,7 +40,7 @@
 					</li>
 					<li>
 						<span class="dt">Zip:</span>
-						<span class="dd">230088</span>
+						<span class="dd">710016</span>
 					</li>
 				</ul>
 				<div class="contact_info_items clearfix">
@@ -54,12 +57,8 @@
 						<h3 class="ci_title">E-Mail</h3>
 						<div class="ci_content">
 							<ul class="list-unstyled">
-								<li>Abbey Ji E-mail:
-									<a href="javascript:;">bb@passionelevator.com</a>
-								</li>
-								<li>
-									Frania Yan E-mail:
-									<a href="javascript:;">aa@passionelevator.com</a>
+								<li>Abby Ji  E-Mail
+									<a href="javascript:;">sale@passionelevator.com</a>
 								</li>
 							</ul>
 						</div>
@@ -71,12 +70,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Abbey  Skype:
+									Abby Ji
 									<span>sale@passionelevator.com</span>
-								</li>
-								<li>
-									Lili  Skype:
-									<span>info@passionelevator.com</span>
 								</li>
 							</ul>
 						</div>
@@ -88,12 +83,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Abbey:
-									<span>+86 13333333333333</span>
-								</li>
-								<li>
-									Abbey:
-									<span>+86 13333333333333</span>
+									Abby Ji
+									<span>0086 15339083622</span>
 								</li>
 							</ul>
 						</div>

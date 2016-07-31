@@ -60,7 +60,7 @@
 								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 							<dl>
-								<dt><a href="javascript:;" >Elevator</a></dt>
+								<dt><a href="javascript:;" >Elevator Wheel</a></dt>
 								<dd><a href="javascript:;" >Wheel</a></dd>
 								<dd><a href="javascript:;" >Door Roller</a></dd>
 							</dl>

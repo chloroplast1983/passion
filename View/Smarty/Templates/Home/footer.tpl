@@ -40,18 +40,18 @@
 						<a href="javascript:;">About Passion</a>
 						<a href="javascript:;">FAQ</a>
 						<a href="javascript:;">Shipping/Payment</a>
-						<a href="javascript:;">Send Inpuiry</a>
+						<a href="javascript:;">Send Inquiry</a>
 					</dd>
 				</dl>
 			</div>
 			<div class="contacts">
 				<dl>
-					<dt>Contacts</dt>
+					<dt>Contact Us</dt>
 					<dd>
-						<span class="footer_contacts_person"><em>Contact Person: </em>Ms.XXXX</span>
-						<span class="footer_contacts_email"><em>EMAIL: </em>SALES@PACO1.COM</span>
-						<span class="footer_contacts_skype"><em>Skype: </em>888-796-7278</span>
-						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>0086 15389448152</span>
+						<span class="footer_contacts_person"><em>Contact Person: </em>Abby Ji</span>
+						<span class="footer_contacts_email"><em>E-mail: </em>info@passionelevator.com</span>
+						<span class="footer_contacts_skype"><em>Skype: </em>sale@passionelevator.com</span>
+						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>0086 15339083622</span>
 					</dd>
 				</dl>
 			</div>
@@ -62,6 +62,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/Global/Style/Home/js/bootstrap.min.js"></script>
 <script src="/Global/Style/Home/js/bootstrapValidator.min.js"></script>
+<script src="/Global/Style/Home/js/jquery.simplyscroll.min.js"></script>
 <script src="/Global/Style/Home/js/global.js"></script>
 </body>
 </html>

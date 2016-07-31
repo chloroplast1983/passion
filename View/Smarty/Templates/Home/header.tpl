@@ -12,6 +12,7 @@
 	<!-- Bootstrap -->
 	<link href="/Global/Style/Home/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/Global/Style/Home/css/style.css" rel="stylesheet">
+	<link href="/Global/Style/Home/css/jquery.simplyscroll.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="/Global/Style/Home/js/jquery-1.12.4.min.js"></script>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -36,7 +37,7 @@
 			</div>
 			<div class="top_whatsapp">
 				<span class="dt">Whatsapp</span>
-				<span class="dd">+86 15339083622</span>
+				<span class="dd">0086 15339083622</span>
 				<i class="top_line"></i>
 			</div>
 			<div class="top_skype">

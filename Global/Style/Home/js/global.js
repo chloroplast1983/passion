@@ -10,10 +10,10 @@ $(document).ready(function(){
 	$('#validate_form').bootstrapValidator({
 		message: 'This value is not valid',
 		fields: {
-			message: {
+			content: {
 				validators: {
 					notEmpty: {
-						message: 'The message cannot be empty'
+						message: 'The content cannot be empty'
 					}
 				}
 			},
@@ -46,8 +46,10 @@ $(document).ready(function(){
 
 	/*side menu show sub menu*/
 	$('.side_has_submenu').hover(function(){
+		$(this).addClass('hover');
 		$(this).find('.side_submenu').fadeIn();
 	},function(){
+		$(this).removeClass('hover');
 		$(this).find('.side_submenu').fadeOut();
 	});
 	/*nav fixed to top*/
@@ -82,4 +84,33 @@ $(document).ready(function(){
 			return bv;
 		}
 	)());
+	/*Hot Products page turning*/
+	//$('#hp_list')
+	/*var hp_item = $('#hp_list'),
+		_num = 1,
+		r_width = 0,
+		_left = 0,
+		v_width = hp_item.parent().outerWidth(),
+		hp_item_num = hp_item.children('.hp_item').length,
+		hp_item_width = hp_item.children('.hp_item').outerWidth(),
+		hp_width = hp_item_num * (hp_item_width + 14),
+		h_width = hp_item.css('width', hp_width + 'px');
+
+	$('.js_prev').click(function(){
+
+	});
+	$('.js_next').click(function(){
+		r_width = h_width - v_width;
+		if(r_width > 0) {
+			_num++;
+			_left = (-1) * _num * v_width;
+		}
+		hp_item.css('left', _left);
+	});*/
+	/*Brands Horizontal scrolling*/
+	(function($) {
+		$(function() { //on DOM ready
+			$("#scroller").simplyScroll();
+		});
+	})(jQuery);
 });

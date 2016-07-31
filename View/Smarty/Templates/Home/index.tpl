@@ -7,12 +7,13 @@
 		<!--slide-->
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			</ol>
-
+			<div class="indicators-content">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+			</div>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
@@ -42,7 +43,7 @@
 			<form id="validate_form" method="POST" action="/Inquiry" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="sr-only">message</label>
-					<textarea class="form-control" rows="3" name="content" placeholder="message" data-bv-field="message"></textarea>
+					<textarea class="form-control" rows="3" name="content" placeholder="message" data-bv-field="content"></textarea>
 				</div>
 				<div class="form-group">
 					<label class="sr-only">name</label>
@@ -65,32 +66,40 @@
 		<div class="hp_header clearfix">
 			<h3 class="hp_title">Hot Products</h3>
 			<div class="hp_page clearfix">
-				<a class="prev_menu" href="javascript:;"><</a>
-				<a class="next_menu" href="javascript:;">></a>
+				<a class="prev_menu js_prev" href="javascript:;"><</a>
+				<a class="next_menu js_next" href="javascript:;">></a>
 			</div>
 		</div>
-		<div class="hp_items clearfix">
-			{foreach $hotProducts as $product}
-			<div class="hp_item js_item">
-				<a class="hp_item_img" href="/Product/{$product->getId()}">
-					<span>
-						{if $product->getLogo()->getId() > 0}
-						<img src="{$product->getLogo()->getFileURL(250, 200)}" >
-						{else}
-						<img src="/Global/Style/Home/images/product_img.png" >
-						{/if}
-					</span>
-				</a>
-				<div class="hp_item_details">
-					<h4 class="hp_item_title"><a href="/Product/{$product->getId()}">{$product->getTitle()}</a></h4>
-					<p class="hp_item_model">Model:{$product->getModel()}</p>
-					<p class="hp_item_brand">Brand:{$product->getBrand()->getName()}</p>
-					<div class="text-center">
-						<a class="btn btn-orange" href="/Inquiry/Product/{$product->getId()}">Inquiry</a>
+		<div class="hp_box">
+			<div class="hp_items clearfix">
+				{assign var="i" value="1"}
+				{foreach $hotProducts as $product}
+				<div class="hp_item">
+					<a class="hp_item_img" href="/Product/{$product->getId()}">
+						<span>
+							{if $product->getLogo()->getId() > 0}
+							<img src="{$product->getLogo()->getFileURL(250, 200)}" >
+							{else}
+							<img src="/Global/Style/Home/images/product_img.png" >
+							{/if}
+						</span>
+					</a>
+					<div class="hp_item_details">
+						<h4 class="hp_item_title"><a href="/Product/{$product->getId()}">{$product->getTitle()}</a></h4>
+						<p class="hp_item_model">Model:{$product->getModel()}</p>
+						<p class="hp_item_brand">Brand:{$product->getBrand()->getName()}</p>
+						<div class="text-center">
+							<a class="btn btn-orange" href="/Inquiry/Product/{$product->getId()}">Inquiry</a>
+						</div>
 					</div>
 				</div>
+					{if $i == 5}
 			</div>
-			{/foreach}
+			<div class="hp_items clearfix">
+					{/if}
+					{assign var="i" value=$i+1}
+				{/foreach}
+			</div>
 		</div>
 	</div>
 </div>
@@ -108,13 +117,18 @@
 				</a>
 			</div>
 			<div class="fc_items">
+				{assign var="i" value="0"}
 				{foreach $featuredCategories as $info}
+					{assign var="i" value=$i+1}
 				<div class="fc_item js_item">
 					<a href="{$info['href']}">
 						<span class="fc_item_img"><b><img src="{$info['img']}"></b></span>
 						<p class="fc_item_title">{$info['title']}</p>
 					</a>
 				</div>
+				{if $i % 4 == 0}
+				<div class="bar"></div>
+				{/if}
 				{/foreach}
 			</div>
 		</div>
@@ -128,15 +142,17 @@
 			<a class="brands_more" href="/Product">more</a>
 		</div>
 		<div class="brands_items clearfix">
-			<ul class="list-unstyled">
+			<ul id="scroller" class="list-unstyled clearfix">
 				{foreach $brandList as $brand}
 				<li>
 					<a href="javascript:;">
+						<span>
 						{if $brand->getLogo()->getId() > 0}
-						<img src="{$brand->getLogo()->getFileURL()}"/>
+							<img src="{$brand->getLogo()->getFileURL()}"/>
 						{else}
 						{$brand->getName()}
 						{/if}
+						</span>
 					</a>
 				</li>
 				{/foreach}
@@ -148,7 +164,7 @@
 <div class="passion">
 	<div class="container-fluid clearfix">
 		<div class="passion_news">
-			<h3 class="news_title">News</h3>
+			<h3 class="news_title"><a href="/News" target="_blank">News</a></h3>
 			<ul class="list-unstyled">
 				{foreach $newsList as $news}
 				<li>

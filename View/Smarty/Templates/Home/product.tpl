@@ -3,7 +3,9 @@
 {include file="Home/nav.tpl"}
 <!--main-->
 <div class="main">
-	<div class="container-fluid clearfix">
+	<div class="container-fluid clearfix"><!--add-->
+		<!--span只是占位符，有广告的时候直接替换就可以-->
+		<a class="add" href="javascript:;"><img src="/Global/Style/Home/images/ad2.png"></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -31,12 +33,12 @@
 							{assign var=slide value=current($product->getSlides())}
 							<div class="image_view">
 								<a href="javascript:;">
-									<img class="triumph" src="{$slide->getFileURL(350, 320, 1)}">
+									<img class="triumph" src="{$slide->getFileURL(348, 320, 1)}">
 								</a>
 							</div>
 							<div class="zoom_pup" id="move"></div>
 							<div id="detailPic" class="imagezoom_lens">
-								<img src="{$slide->getFileURL()}}">
+								<img src="{$slide->getFileURL(696,640,1)}}">
 							</div>
 							{/if}
 						</div>
@@ -105,10 +107,10 @@
 					</ul>
 					<div class="p_contact">
 						<ul class="list-unstyled">
-							<li class="n"><span>Contact Person:</span> Frania Yan</li>
-							<li class="e"><span>Email:</span> <a href="javascript:;">sales@eastelevator.cn</a></li>
-							<li class="s"><span>Skype:</span> yuanqipj</li>
-							<li class="w"><span>Whatsapp:</span> 0086 15389448152</li>
+							<li class="n"><span>Contact Person:</span>Abby Ji</li>
+							<li class="e"><span>Email:</span> <a href="javascript:;">sale@passionelevator.com</a></li>
+							<li class="s"><span>Skype:</span>sale@passionelevator.com</li>
+							<li class="w"><span>Whatsapp:</span>0086 15339083622</li>
 						</ul>
 					</div>
 					<div class="p_btn_bar clearfix">
@@ -290,8 +292,8 @@
 			var picTop = $(".triumph").offset().top;
 			var picWidth = $(".triumph").width();
 			var picHeight = $(".triumph").height();
-			var xLength = mouseX - picLeft;
-			var yLength = mouseY - picTop;
+			var xLength = parseInt(mouseX - picLeft);
+			var yLength = parseInt(mouseY - picTop);
 			var qWidth = picWidth / 4;
 			var lastQWidth = picWidth - picWidth / 4;
 			var qHeight = picHeight / 4;
@@ -310,13 +312,13 @@
 				$("#move").css("top", "0px");
 			} else {
 				if (yLength > lastQHeight) {
-					$("#move").css("top", (lastQHeight - qHeight -15) + "px");
+					$("#move").css("top", (lastQHeight - qHeight) + "px");
 				} else {
-					$("#move").css("top", (yLength - qHeight -15) + "px");
+					$("#move").css("top", (yLength - qHeight) + "px");
 				}
 			}
 			$('#detailPic').css('display', 'block');
-			$("#detailPic > img").css("left", parseInt($("#move").css("left")) * (-800 / picWidth) + "px").css("top", parseInt($("#move").css("top")) * (-800 / picWidth) + "px").css("position", "absolute");
+			$("#detailPic > img").css("left", parseInt($("#move").css("left")) * (-2) + "px").css("top", parseInt($("#move").css("top")) * (-2) + "px").css("position", "absolute");
 		});
 		$(".imagezoom_wrap").bind("mouseout", function () {
 			$("#move").css("display","none");
