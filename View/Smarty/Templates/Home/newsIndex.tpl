@@ -3,7 +3,9 @@
 {include file="Home/nav.tpl"}
 <!--main-->
 <div class="main">
-	<div class="container-fluid clearfix">
+	<div class="container-fluid clearfix"><!--add-->
+		<!--span只是占位符，有广告的时候直接替换就可以-->
+		<a class="add" href="javascript:;"><span class="add_img">广告位置</span></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->

@@ -85,7 +85,7 @@
 					<ul class="list-unstyled">
 						<li><b>E-mail: </b><a href="javascript:;">info@passionelevator.com</a></li>
 						<li><b>SKype: </b>sale@passionelevator.com</li>
-						<li><b>Whatsapp: </b>+86 15339083622</li>
+						<li><b>Whatsapp: </b>0086 15339083622</li>
 						<li><b>Tel: </b>+86 15339083622</li>
 					</ul>
 				</div>
