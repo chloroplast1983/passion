@@ -41,7 +41,7 @@
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
 								"/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}"
 								{else}
-								"/Product?filter[status]=0&filter[category]=$parentCategory->getId()"
+								"/Product?filter[status]=0&filter[category]={$parentCategory->getId()}"
 								{/if}
 								>{$parentCategory->getName()}</a>
 								{if $categoryList['parent'][$parentCategory->getId()] neq ""}
