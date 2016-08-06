@@ -62,16 +62,16 @@
 </div>
 <!--Hot Products-->
 <div class="hot_products">
-	<div class="container-fluid">
+	<div id="hp" class="container-fluid carousel slide" data-ride="carousel">
 		<div class="hp_header clearfix">
 			<h3 class="hp_title">Hot Products</h3>
 			<div class="hp_page clearfix">
-				<a class="prev_menu js_prev" href="javascript:;"><</a>
-				<a class="next_menu js_next" href="javascript:;">></a>
+				<a class="prev_menu carousel-control right" href="#hp" data-slide="next"><</a>
+				<a class="next_menu carousel-control left " href="#hp" data-slide="prev">></a>
 			</div>
 		</div>
-		<div class="hp_box">
-			<div class="hp_items clearfix">
+		<div class="hp_box carousel-inner">
+			<div class="hp_items item active clearfix">
 				{foreach $hotProducts as $product}
 				<div class="hp_item">
 					<a class="hp_item_img" href="/Product/{$product->getId()}">
@@ -94,7 +94,7 @@
 				</div>
 				{if $product@index == 4}
 			</div>
-			<div class="hp_items clearfix">
+			<div class="hp_items item clearfix">
 				{/if}
 				{/foreach}
 			</div>
