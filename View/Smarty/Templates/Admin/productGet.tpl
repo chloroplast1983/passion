@@ -24,24 +24,34 @@
 			<td>{$product->getCategory()->getName()}</td>
 		</tr>
 		<tr>
-			<th>尺寸</th>
+			<th>Model</th>
 			<td>{$product->getModel()}</td>
 		</tr>
 		<tr>
-			<th>产品编号</th>
+			<th>Goods No.</th>
 			<td>{$product->getNumber()}</td>
 		</tr>
 		<tr>
-			<th>最小订单量</th>
+			<th>MOQ</th>
 			<td>{$product->getMoq()}</td>
 		</tr>
 		<tr>
-			<th>质保时间</th>
+			<th>Warranty Time</th>
 			<td>{$product->getWarrantyTime()}</td>
 		</tr>	
 		<tr>
-			<th>证书</th>
+			<th>Certificates</th>
 			<td>{$product->getCertificates()}</td>
+		</tr>
+		<tr>
+			<th>关键词</th>
+			<td>{$product->getSeoKeyWord()}</td>
+		</tr>
+		<tr>
+			<th>描述</th>
+			<td>
+			{$product->getSeoDescription()}
+			</td>
 		</tr>
 		<tr>
 			<th>logo</th>

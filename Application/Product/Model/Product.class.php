@@ -4,6 +4,7 @@ namespace Product\Model;
 use Common\Model\ModifyTime;
 use Common\Model\Status;
 use Common\Model\File;
+use Common\Model\Seo;
 use Marmot\Core;
 
 /**
@@ -22,6 +23,10 @@ class Product
      * @var Status 状态性状
      */
     use Status;
+    /**
+     * @var Seo seo性状
+     */
+    use Seo;
     /**
      * @var int $id 新闻id
      */
@@ -93,6 +98,9 @@ class Product
         $this->certificates = '';
         $this->slides = array();
         $this->logo = Core::$container->make('Common\Model\File');
+        $this->seoKeyWord = '';
+        $this->seoTitle = '';
+        $this->seoDescription = '';
     }
 
     /**
@@ -116,6 +124,9 @@ class Product
         unset($this->certificates);
         unset($this->slides);
         unset($this->logo);
+        unset($this->seoKeyWord);
+        unset($this->seoTitle);
+        unset($this->seoDescription);
     }
 
     /**
@@ -337,6 +348,9 @@ class Product
                 'certificates',
                 'warrantyTime',
                 'content',
+                'seoKeyWord',
+                'seoTitle',
+                'seoDescription',
                 ));
         }
     }

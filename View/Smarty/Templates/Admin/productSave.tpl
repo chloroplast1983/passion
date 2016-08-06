@@ -55,6 +55,16 @@
 			<th>Certificates</th>
 			<td><input type="text" name="certificates" value="{$product->getCertificates()}" class="txt"/></td>
 		</tr>
+		<tr>
+			<th>关键词</th>
+			<td><input type="text" name="seoKeyWord" value="{$product->getSeoKeyWord()}" class="txt"/></td>
+		</tr>
+		<tr>
+			<th>描述</th>
+			<td>
+			<textarea name="seoDescription">{$product->getSeoDescription()}</textarea>
+			</td>
+		</tr>
 		{if $product->getLogo()->getId() neq 0}
 		<tr>
 			<th>logo</th>
