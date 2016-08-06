@@ -14,7 +14,7 @@
 	<link href="/Global/Style/Home/css/style.css" rel="stylesheet">
 	<link href="/Global/Style/Home/css/jquery.simplyscroll.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/Global/Style/Home/js/jquery-1.12.4.min.js"></script>
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>

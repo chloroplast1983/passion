@@ -3,6 +3,7 @@ namespace Product\Model;
 
 use Common\Model\ModifyTime;
 use Common\Model\Status;
+use Common\Model\Seo;
 use Marmot\Core;
 
 /**
@@ -21,6 +22,10 @@ class Category
      * @var Status 状态性状
      */
     use Status;
+    /**
+     * @var Seo seo性状
+     */
+    use Seo;
     /**
      * @var int $id 分类id
      */
@@ -56,6 +61,9 @@ class Category
         $this->statusTime = $_FWGLOBAL['timestamp'];
         $this->status = STATUS_NORMAL;
         $this->type = TYPE_ELEVATOR;
+        $this->seoKeyWord = '';
+        $this->seoTitle = '';
+        $this->seoDescription = '';
     }
 
     /**
@@ -71,6 +79,9 @@ class Category
         unset($this->statusTime);
         unset($this->status);
         unset($this->type);
+        unset($this->seoKeyWord);
+        unset($this->seoTitle);
+        unset($this->seoDescription);
     }
 
     /**
@@ -152,7 +163,7 @@ class Category
         if ($this->getId() == 0) {
             return $repository->add($this);
         } else {
-            return $repository->update($this, array('parentId','name','type'));
+            return $repository->update($this, array('parentId','name','type','seoKeyWord','seoTitle','seoDescription'));
         }
     }
 }

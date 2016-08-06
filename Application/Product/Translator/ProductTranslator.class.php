@@ -26,6 +26,9 @@ class ProductTranslator extends Translator
         if (isset($expression['content'])) {
             $product->setContent($expression['content']);
         }
+        $product->setSeoTitle($expression['seo_title']);
+        $product->setSeoKeyWord($expression['seo_keyword']);
+        $product->setSeoDescription($expression['seo_description']);
         return $product;
     }
 
@@ -115,6 +118,18 @@ class ProductTranslator extends Translator
 
         if (in_array('logo', $keys)) {
             $expression['logo'] = $product->getLogo()->getId();
+        }
+
+        if (in_array('seoKeyWord', $keys)) {
+            $expression['seo_keyword'] = $product->getSeoKeyword();
+        }
+
+        if (in_array('seoTitle', $keys)) {
+            $expression['seo_title '] = $product->getSeoTitle();
+        }
+
+        if (in_array('seoDescription', $keys)) {
+            $expression['seo_description'] = $product->getSeoDescription();
         }
         
         return array($expression, $productContent);

@@ -54,9 +54,7 @@
 							</dd>
 							{/foreach}
 						</dl>
-<!-- 						<dl class="side_menu_items">
-							<dt><a href="javascript:;">See All</a></dt>
-						</dl> -->
+
 					</div>
 					<div role="tabpanel" class="tab-pane {if $leftNavBrandActive}active{/if}" id="brands">
 						<ul class="side_brands_items list-unstyled">

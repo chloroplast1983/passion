@@ -113,6 +113,10 @@ class CategoryController extends Controller
         $name = $this->getRequest()->post('name');
         $type = $this->getRequest()->post('type');
         $parentId = $this->getRequest()->post('parentId');
+        $seoKeyword = $this->getRequest()->post('seoKeyWord');
+        $seoTitle = $this->getRequest()->post('seoTitle');
+        $seoDescription = $this->getRequest()->post('seoDescription');
+
         $id = $this->getRequest()->post('categoryId');
 
         //检查父id和类型是否匹配
@@ -131,6 +135,9 @@ class CategoryController extends Controller
         $category->setName($name);
         $category->setType($type);
         $category->setParentId($parentId);
+        $category->setSeoKeyWord($seoKeyword);
+        $category->setSeoDescription($seoDescription);
+        $category->setSeoTitle($seoTitle);
         // var_dump($category);exit();
         $category->save();
 

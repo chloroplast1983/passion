@@ -17,6 +17,9 @@ class CategoryTranslator extends Translator
         $category->setStatus($expression['status']);
         $category->setParentId($expression['parent_id']);
         $category->setType($expression['type']);
+        $category->setSeoTitle($expression['seo_title']);
+        $category->setSeoKeyWord($expression['seo_keyword']);
+        $category->setSeoDescription($expression['seo_description']);
         return $category;
     }
 
@@ -36,6 +39,9 @@ class CategoryTranslator extends Translator
                         'status',
                         'parentId',
                         'type',
+                        'seoKeyWord',
+                        'seoTitle',
+                        'seoDescription',
                     );
         }
 
@@ -70,6 +76,18 @@ class CategoryTranslator extends Translator
 
         if (in_array('type', $keys)) {
             $expression['type'] = $category->getType();
+        }
+
+        if (in_array('seoKeyWord', $keys)) {
+            $expression['seo_keyword'] = $category->getSeoKeyword();
+        }
+
+        if (in_array('seoTitle', $keys)) {
+            $expression['seo_title '] = $category->getSeoTitle();
+        }
+
+        if (in_array('seoDescription', $keys)) {
+            $expression['seo_description'] = $category->getSeoDescription();
         }
 
         return $expression;

@@ -20,6 +20,20 @@
 				</select>
 			</td>
 		</tr>
+		<tr>
+			<th>关键词</th>
+			<td><input type="text" name="seoKeyWord" value="{$category->getSeoKeyWord()}" class="txt"/></td>
+		</tr>
+		<tr>
+			<th>标题</th>
+			<td><input type="text" name="seoTitle" value="{$category->getSeoTitle()}" class="txt"/></td>
+		</tr>
+		<tr>
+			<th>描述</th>
+			<td>
+			<textarea name="seoDescription">{$category->getSeoDescription()}</textarea>
+			</td>
+		</tr>
 	</table>
 	<input type="hidden" name="categoryId" value="{$category->getId()}"/>
 	<input type="submit" name="" value="提交" class="submit" style="margin-left:380px;"/>

@@ -16,7 +16,6 @@
 <a class="sideul productSideBar" href="#" id="menu2"><em class="shrink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>产品</a>
 	<div class="subinfo productSideBar" id="menu3" {if !$productSideBar} style="display:none" {/if}>
 		<a href="/Admin/Product?filter[status]=0" class ="{if $productListRef} tabon {/if}">产品管理</a>
-		<a href="/Admin/Product/Search" class ="{if $productSearchRef} tabon {/if}">产品搜索</a>
 		<a href="/Admin/Product/Save" class ="{if $producSaveRef} tabon {/if}">添加产品</a>
 		<a href="/Admin/Brand?filter[status]=0" class ="{if $brandListRef} tabon {/if}">品牌管理</a>
 		<a href="/Admin/Category?filter[status]=0" class ="{if $categoryListRef} tabon {/if}">分类管理</a>

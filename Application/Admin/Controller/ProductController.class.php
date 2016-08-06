@@ -123,6 +123,9 @@ class ProductController extends Controller
         $moq = $this->getRequest()->post('moq');
         $warrantyTime = $this->getRequest()->post('warrantyTime');
         $certificates = $this->getRequest()->post('certificates');
+        $seoKeyword = $this->getRequest()->post('seoKeyWord');
+        $seoTitle = $this->getRequest()->post('seoTitle');
+        $seoDescription = $this->getRequest()->post('seoDescription');
         $id = $this->getRequest()->post('productId');
         /**
          * 数据校验
@@ -137,6 +140,9 @@ class ProductController extends Controller
         $product->setMoq($moq);
         $product->setWarrantyTime($warrantyTime);
         $product->setCertificates($certificates);
+        $product->setSeoKeyWord($seoKeyword);
+        $product->setSeoDescription($seoDescription);
+        $product->setSeoTitle($title);
 
         Transaction::beginTransaction();
         if (!empty($_FILES['logo']['size'])) {
