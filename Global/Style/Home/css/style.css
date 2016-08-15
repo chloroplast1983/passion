@@ -1180,6 +1180,21 @@ body {
 }
 .list_pagination .pagination {
 	margin-bottom: 0;
+	margin-top: 0;
+}
+.list_pagination .total_data,
+.list_pagination .total_page {
+	float: left;
+	margin-bottom: 0;
+	line-height: 34px;
+	padding: 0 6px;
+}
+.list_pagination .pagination>li>a {
+	border-radius: 3px !important;
+	margin: 0 6px;
+}
+.list_pagination .pagination>.active>a {
+	background-color: #0093FF;
 }
 .send_message {
 	margin-left: 14px;
