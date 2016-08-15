@@ -46,6 +46,11 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
         $this->getResponse()->view()->assign('multi', $multi);
         $this->getResponse()->view()->assign('newsList', $newsList);
+
+        $this->getResponse()->view()->assign('seoTitle', 'Company News - Passion Elevator Parts Company News');
+        $this->getResponse()->view()->assign('seoKeyWords', 'passion elevator parts news, elevator parts company');
+        $this->getResponse()->view()->assign('seoDescription', 'Passion elevator parts company news, Provide information of supply and demand in elevator area. We can know more about the elevator parts news everywhere at anytime.');
+        
         $this->getResponse()->view()->display('Home/newsIndex.tpl');
     }
 

@@ -43,6 +43,11 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('product', $product);
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
+
+        $this->getResponse()->view()->assign('seoTitle', 'Elevator Parts Inquiry & Escalator Parts Inquiry on passionelevator.com');
+        $this->getResponse()->view()->assign('seoKeyWords', 'elevator parts inquiry, escalator parts inquiry');
+        $this->getResponse()->view()->assign('seoDescription', 'Welcome to the passion elevator parts inquiry platform, we provide the elevator parts inquiry and escalator parts inquiry, exclusive service system by one to one is timely and correct.');
+            
         $this->getResponse()->view()->display('Home/inquiry.tpl');
     }
 
