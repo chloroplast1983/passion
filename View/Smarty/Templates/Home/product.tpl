@@ -5,7 +5,7 @@
 <div class="main">
 	<div class="container-fluid clearfix"><!--add-->
 		<!--span只是占位符，有广告的时候直接替换就可以-->
-		<a class="add" href="javascript:;"><img src="/Global/Style/Home/images/ad2.png"></a>
+		<!-- <a class="add" href="javascript:;"><img src="/Global/Style/Home/images/ad2.png"></a> -->
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->

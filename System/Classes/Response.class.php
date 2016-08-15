@@ -78,7 +78,7 @@ class Response
             }
             $multipage[0] = empty($multipage) ? array() : array(
                 'url'=>'',
-                'html'=>'<span>共 '.$num.' 条数据</span> <a>共 '.$pages.' 页</a> '
+                'html'=>'<p class="total_data">共 '.$num.' 条数据</p> <p class="total_page">共 '.$pages.' 页</p> '
             );
         }
         ksort($multipage);

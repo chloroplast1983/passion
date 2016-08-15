@@ -6,7 +6,7 @@
 	<div class="container-fluid clearfix">
 <!--add-->
 		<!--span只是占位符，有广告的时候直接替换就可以-->
-		<a class="add" href="javascript:;"><span class="add_img">广告位置</span></a>
+		<!-- <a class="add" href="javascript:;"><span class="add_img">广告位置</span></a> -->
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -83,7 +83,7 @@
 						</div>
 					</div>
 				</div>
-				<p class="s_example">You searched for: <i>aaaaaaaa</i></p>
+				<!-- <p class="s_example">You searched for: <i>aaaaaaaa</i></p> -->
 				<div class="s_explain">
 					<h3>Didn't find any results? </h3>
 					<p>Just in case, double check spelling </p>
