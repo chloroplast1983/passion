@@ -31,11 +31,11 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 -moz-border-radius: 3px;
 box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
 -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
--moz-box-shadow: 0 1px 2px rgb;}
+-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .35);}
 .smalltext{width:50px;}
 /* header */
 .header { height: 69px; line-height: 69px; background: url(Images/headbg.gif) repeat-x; }
-	.logo { width:106px; height: 40px; margin: 20px 0 0 47px; background: url(Images/logo.gif) no-repeat; float: left; text-indent: -9999px; overflow: hidden;}
+	.logo { width:127px; height: 40px; margin: 15px 0 0 15px; background: url(Images/logo.png) no-repeat; background-size: 127px 40px; float: left; text-indent: -9999px; overflow: hidden;}
 	.uinfo{ float: right; display: inline; margin-right: 40px; }
 		.uinfo a{ color: #FFF; }
 		.uinfo em{ margin-right: 5px; font-weight: 700; }
@@ -74,7 +74,7 @@ box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
 -moz-border-radius: 4px;
 box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
 -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
--moz-box-shadow: 0 1px 3px rgb; background: #FCFCFC; padding:10px 20px; margin:16px 0;}
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .35); background: #FCFCFC; padding:10px 20px; margin:16px 0;}
 		.mainbox div.mainmsg:first-letter { padding-left: 2em; }
 /* title */
 h3 { background:url(Images/nav_bg.png) repeat-x; font-size:14px; padding-left: 15px; margin: 10px 0 5px 0px; height:30px; line-height:30px;
@@ -83,7 +83,7 @@ border-radius: 4px;
 -moz-border-radius: 4px;
 box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
 -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
--moz-box-shadow: 0 1px 3px rgb; }
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .35); }
 h3 em { background:url(Images/page_icon.gif) no-repeat; width:32px; height:30px; padding-right:10px; display:inline-block; float:left;}
 /*{display: none;
 width: 100%;
@@ -141,7 +141,7 @@ pre { font-family: Courier, Courier New; font-weight: normal; color:#000; margin
 .pic th { padding: 5px 15px 5px 15px; } 
 	.pic td { width: 10px; }
 	.pic th { text-align: center; }
-	.pic th.box { border: background: #F3F3F3;border: 1px solid #CCC; }
+	.pic th.box {background: #F3F3F3;border: 1px solid #CCC; }
 	.pic td.rr { background: url(Images/arrowr.gif);background-repeat: no-repeat; background-position: left 50%;}
 	
 	/*height: 30px;background: #F3F3F3;border: 1px solid #ccc; */

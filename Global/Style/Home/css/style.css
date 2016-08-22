@@ -108,13 +108,20 @@ body {
 .top_skype span.dt:before {
 	background: url("../images/top_skype_business.png") no-repeat 0 0;
 }
-.top_email span.dd,
+.top_email span.dd a,
 .top_whatsapp span.dd,
-.top_skype span.dd {
+.top_skype span.dd a {
 	font-size: 16px;
 	line-height: 16px;
 	color: #333;
 }
+.top_email span.dd a:active,
+.top_email span.dd a:hover,
+.top_skype span.dd a:active,
+.top_skype span.dd a:hover {
+	color: #0093FF;
+}
+
 /*.top_contact {
 	float: right;
 	margin-top: 22px;
@@ -826,10 +833,16 @@ body {
 	color: #666;
 }
 .contacts dd span.footer_contacts_email,
+.contacts dd span.footer_contacts_email a,
 .contacts dd span.footer_contacts_skype,
+.contacts dd span.footer_contacts_skype a,
 .contacts dd span.footer_contacts_whatsapp {
 	color: #000;
 }
+.contacts dd span.footer_contacts_email a:active,
+.contacts dd span.footer_contacts_email a:hover,
+.contacts dd span.footer_contacts_skype a:active,
+.contacts dd span.footer_contacts_skype a:hover,
 .featured_products dd a:active,
 .featured_products dd a:hover,
 .featured_products dd a:focus,
@@ -974,9 +987,10 @@ body {
 	font-weight: normal;
 	padding-left: 28px;
 }
-.side_menu_items dd.hover a:active,
+/*.side_menu_items dd.hover a:active,
 .side_menu_items dd.hover a:focus,
-.side_menu_items dd.hover a:hover,
+.side_menu_items dd.hover a:hover,*/
+.side_has_submenu.hover a,
 .side_menu_items dd a:active,
 .side_menu_items dd a:focus,
 .side_menu_items dd a:hover {
@@ -1017,12 +1031,12 @@ body {
 	padding-left: 14px;
 	font-size: 12px;
 	line-height: 28px;
-	color: #666;
+	color: #666 !important;
 }
 .side_submenu>li>a:active,
 .side_submenu>li>a:focus,
 .side_submenu>li>a:hover {
-	color: #0093FF;
+	color: #0093FF !important;
 	text-decoration: none;
 }
 .side_brands_items {
@@ -1182,12 +1196,22 @@ body {
 	margin-bottom: 0;
 	margin-top: 0;
 }
-.list_pagination .total_data,
+/*.list_pagination .total_data,
 .list_pagination .total_page {
 	float: left;
 	margin-bottom: 0;
 	line-height: 34px;
 	padding: 0 6px;
+}*/
+.list_pagination .total {
+	float: left;
+	margin-bottom: 0;
+	line-height: 34px;
+	padding: 0 6px;
+	color: #999;
+}
+.list_pagination .total b {
+	color: #333;
 }
 .list_pagination .pagination>li>a {
 	border-radius: 3px !important;
@@ -1988,7 +2012,7 @@ body {
 }
 .new_item {
 	position: relative;
-	padding: 14px 0 14px 100px;
+	padding: 14px 0 14px 14px;
 	min-height: 118px;
 	border-bottom: 1px solid #e5e5e5;
 }
