@@ -81,10 +81,11 @@
 				<div class="side_contact_content">
 					<h3 class="scc_title">XI'AN PASSION ELEVATOR PARTS CO.LTD</h3>
 					<ul class="list-unstyled">
-						<li><b>E-mail: </b><a href="javascript:;">info@passionelevator.com</a></li>
-						<li><b>SKype: </b>sale@passionelevator.com</li>
-						<li><b>Whatsapp: </b>0086 15339083622</li>
-						<li><b>Tel: </b>+86 15339083622</li>
+						<li><b>Contact Person: </b>Mrs. Vicky</li>
+						<li><b>E-mail: </b><a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a></li>
+						<li><b>Skype: </b><a href="javascript:;">vicky.passion1</a></li>
+						<li><b>WhatsApp: </b>+86 18049060438</li>
+						<li><b>Mobile: </b>+86 18049060438</li>
 					</ul>
 				</div>
 			</div>

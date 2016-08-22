@@ -6,7 +6,7 @@
 	<div class="container-fluid clearfix">
 		<!--add-->
 		<!--span只是占位符，有广告的时候直接替换就可以-->
-		<!-- <a class="add" href="javascript:;"><span class="add_img">广告位置</span></a> -->
+		<a class="add" href="javascript:;"><span class="add_img">广告位置</span></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -20,27 +20,27 @@
 				<ul class="contact_info list-unstyled">
 					<li>
 						<span class="dt">Address:</span>
-						<span class="dd">31803,Daming Palace Wanda Plaza,Taihua North RD,Weiyang    Dist.Xi'an,Shaanxi prov.China</span>
+						<span class="dd">31803,Daming Palace Wanda Plaza,Taihua North RD,Weiyang Dist.Xi'an,Shaanxi prov.China 710016</span>
 					</li>
 					<li>
-						<span class="dt">Tel:</span>
-						<span class="dd"> +86 15339083622</span>
-					</li>
-					<li>
-						<span class="dt">Website:</span>
-						<span class="dd">www.passionelevator.com</span>
-					</li>
-					<li>
-						<span class="dt">Contact person:</span>
-						<span class="dd">MS Abby</span>
+						<span class="dt">Contact Person:</span>
+						<span class="dd"> Mrs. Vicky</span>
 					</li>
 					<li>
 						<span class="dt">E-mail:</span>
-						<span class="dd"><a href="javascript:;">info@passionelevator.com</a></span>
+						<span class="dd"><a href="mailto:vicky@passionelevator.coms" target="_blank">vicky@passionelevator.com</a></span>
 					</li>
 					<li>
-						<span class="dt">Zip:</span>
-						<span class="dd">710016</span>
+						<span class="dt">Skype:</span>
+						<span class="dd"><a href="javascript:;">vicky.passion1</a></span>
+					</li>
+					<li>
+						<span class="dt">WhatsApp:</span>
+						<span class="dd">+86 18049060438</span>
+					</li>
+					<li>
+						<span class="dt">Mobile:</span>
+						<span class="dd"> +86 18049060438</span>
 					</li>
 				</ul>
 				<div class="contact_info_items clearfix">
@@ -57,8 +57,8 @@
 						<h3 class="ci_title">E-Mail</h3>
 						<div class="ci_content">
 							<ul class="list-unstyled">
-								<li>Abby Ji  E-Mail
-									<a href="javascript:;">sale@passionelevator.com</a>
+								<li>Mrs. Vicky
+									<a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a>
 								</li>
 							</ul>
 						</div>
@@ -70,8 +70,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Abby Ji
-									<span>sale@passionelevator.com</span>
+									Mrs. Vicky
+									<span><a href="javascript:;">vicky.passion1</a></span>
 								</li>
 							</ul>
 						</div>
@@ -83,8 +83,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Abby Ji
-									<span>0086 15339083622</span>
+									Mrs. Vicky
+									<span>+86 18049060438</span>
 								</li>
 							</ul>
 						</div>

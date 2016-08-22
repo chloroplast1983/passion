@@ -62,7 +62,7 @@
 </div>
 <!--Hot Products-->
 <div class="hot_products">
-	<div id="hp" class="container-fluid carousel slide" data-ride="carousel">
+	<div id="hp" class="container-fluid carousel slide" data-ride="carousel" data-interval="8000">
 		<div class="hp_header clearfix">
 			<h3 class="hp_title">Hot Products</h3>
 			<div class="hp_page clearfix">

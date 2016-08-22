@@ -13,7 +13,6 @@
 	<link href="/Global/Style/Home/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/Global/Style/Home/css/style.css" rel="stylesheet">
 	<link href="/Global/Style/Home/css/jquery.simplyscroll.css" rel="stylesheet">
-	<script src="/Global/Style/Home/js/jquery-1.12.4.min.js"></script>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -28,22 +27,22 @@
 <div class="header">
 	<div class="container-fluid">
 		<h1 class="logo">
-			<a href="javascript:;" title="Passion Elevator">Passion Elevator</a>
+			<a href="/" title="Passion Elevator">Passion Elevator</a>
 		</h1>
 		<div class="top_contact clearfix">
 			<div class="top_email">
 				<span class="dt">E-mail</span>
-				<span class="dd">info@passionelevator.com</span>
+				<span class="dd"><a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a></span>
 				<i class="top_line"></i>
 			</div>
 			<div class="top_whatsapp">
 				<span class="dt">Whatsapp</span>
-				<span class="dd">0086 15339083622</span>
+				<span class="dd">+86 18049060438</span>
 				<i class="top_line"></i>
 			</div>
 			<div class="top_skype">
 				<span class="dt">Skype</span>
-				<span class="dd">sale@passionelevator.com</span>
+				<span class="dd"><a href="javascript:;">vicky.passion1</a></span>
 			</div>
 		</div>
 	</div>

@@ -60,7 +60,7 @@ class Response
                 $n++;
             }
             if ($curpage > 1) {
-                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage - 1),'html'=>'&lsaquo;&lsaquo;');
+                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage - 1),'html'=>'&lsaquo; Prev');
                 $n++;
             }
             for ($i = $from; $i <= $to; $i++) {
@@ -69,7 +69,7 @@ class Response
                 $n++;
             }
             if ($curpage < $pages) {
-                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage + 1),'html'=>'&rsaquo;&rsaquo;');
+                $multipage[$n] = array('url'=>$mpurl.'page='.($curpage + 1),'html'=>'Next &rsaquo;');
                 $n++;
             }
             if ($to < $pages) {
@@ -78,7 +78,8 @@ class Response
             }
             $multipage[0] = empty($multipage) ? array() : array(
                 'url'=>'',
-                'html'=>'<p class="total_data">共 '.$num.' 条数据</p> <p class="total_page">共 '.$pages.' 页</p> '
+//                'html'=>'<p class="total_data">共 '.$num.' 条数据</p> <p class="total_page">共 '.$pages.' 页</p> '
+                'html'=>'<p class="total">Showing <b>1-12</b> of <b>'.$num.'</b> Products</p>'
             );
         }
         ksort($multipage);

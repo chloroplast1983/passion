@@ -48,10 +48,10 @@
 				<dl>
 					<dt>Contact Us</dt>
 					<dd>
-						<span class="footer_contacts_person"><em>Contact Person: </em>Abby Ji</span>
-						<span class="footer_contacts_email"><em>E-mail: </em>info@passionelevator.com</span>
-						<span class="footer_contacts_skype"><em>Skype: </em>sale@passionelevator.com</span>
-						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>0086 15339083622</span>
+						<span class="footer_contacts_person"><em>Contact Person: </em>Mrs. Vicky</span>
+						<span class="footer_contacts_email"><em>E-mail: </em><a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a></span>
+						<span class="footer_contacts_skype"><em>Skype: </em><a href="javascript:;">vicky.passion1</a></span>
+						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>+86 18049060438</span>
 					</dd>
 				</dl>
 			</div>
@@ -60,6 +60,7 @@
 	</div>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/Global/Style/Home/js/jquery-1.12.4.min.js"></script>
 <script src="/Global/Style/Home/js/bootstrap.min.js"></script>
 <script src="/Global/Style/Home/js/bootstrapValidator.min.js"></script>
 <script src="/Global/Style/Home/js/jquery.simplyscroll.min.js"></script>

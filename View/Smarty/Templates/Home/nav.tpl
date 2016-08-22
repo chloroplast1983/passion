@@ -9,12 +9,13 @@
 						<div class="menu_body">
 							<dl>
 								<dt><a href="javascript:;" >Escalator Parts</a></dt>
-								<dd><a href="javascript:;" >Wheels</a></dd>
 								<dd><a href="javascript:;" >Step</a></dd>
 								<dd><a href="javascript:;" >Chain</a></dd>
+								<dd><a href="javascript:;" >Handrail</a></dd>
+								<dd><a href="javascript:;" >Step Roller</a></dd>
 								<dd><a href="javascript:;" >Comb Plate</a></dd>
 								<dd><a href="javascript:;" >Yellow Side</a></dd>
-								<dd><a href="javascript:;" >Switch&Lock</a></dd>
+								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 						</div>
 						<div class="menu_footer">
@@ -31,20 +32,20 @@
 								<dt><a href="javascript:;" >Elevator PCB</a></dt>
 								<dd><a href="javascript:;" >OTIS</a></dd>
 								<dd><a href="javascript:;" >KONE</a></dd>
-								<dd><a href="javascript:;" >Mitsubishi</a></dd>
-								<dd><a href="javascript:;" >Hitachi</a></dd>
-								<dd><a href="javascript:;" >Thyssen</a></dd>
 								<dd><a href="javascript:;" >Sigma</a></dd>
 								<dd><a href="javascript:;" >Schindler</a></dd>
-								<dd><a href="javascript:;" >Fujitec</a></dd>
-								<dd><a href="javascript:;" >Hyunda</a></dd>
+								<dd><a href="javascript:;" >Thyssen</a></dd>
+								<dd><a href="javascript:;" >Hyundai</a></dd>
+								<dd><a href="javascript:;" >Schindler</a></dd>
+								<dd><a href="javascript:;" >Mitsubishi</a></dd>
+								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 						</div>
 						<div class="menu_footer">
 							<dl>
 								<dt><a href="javascript:;" >Elevator Motor</a></dt>
 								<dt><a href="javascript:;" >Elevator Module</a></dt>
-								<dt><a href="javascript:;" >Elevator Inverter</a></dt>
+								<dt><a href="javascript:;" >Elevator Encoder</a></dt>
 							</dl>
 						</div>
 					</div>
@@ -52,24 +53,24 @@
 						<div class="menu_body">
 							<dl>
 								<dt><a href="javascript:;" >Elevator Safety Parts</a></dt>
-								<dd><a href="javascript:;" >Weighing Device</a></dd>
-								<dd><a href="javascript:;" >Light Curtain</a></dd>
 								<dd><a href="javascript:;" >Belt</a></dd>
+								<dd><a href="javascript:;" >Weighing Device</a></dd>
 								<dd><a href="javascript:;" >Light Curtain</a></dd>
 								<dd><a href="javascript:;" >Guide Device</a></dd>
 								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 							<dl>
 								<dt><a href="javascript:;" >Elevator Wheel</a></dt>
-								<dd><a href="javascript:;" >Wheel</a></dd>
 								<dd><a href="javascript:;" >Door Roller</a></dd>
+								<dd><a href="javascript:;" >Traction Sheave</a></dd>
+								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 						</div>
 						<div class="menu_footer">
 							<dl>
-								<dt><a href="javascript:;" >Elevator Encoder</a></dt>
 								<dt><a href="javascript:;" >Elevator Brakes</a></dt>
 								<dt><a href="javascript:;" >Elevator Door Slider</a></dt>
+								<dt><a href="javascript:;" >Elevator Door Vane</a></dt>
 							</dl>
 						</div>
 					</div>
@@ -78,25 +79,25 @@
 							<dl>
 								<dt><a href="javascript:;" >Elevator Guide Shoe</a></dt>
 								<dd><a href="javascript:;" >Guide Shoe</a></dd>
+								<dd><a href="javascript:;" >Guide Shoe Roller</a></dd>
 								<dd><a href="javascript:;" >Guide Shoe Busher</a></dd>
 							</dl>
 							<dl>
-								<dt><a href="javascript:;" >Elevator Spare Parts</a></dt>
-								<dd><a href="javascript:;" >Oil Can</a></dd>
-								<dd><a href="javascript:;" >Fan</a></dd>
-								<dd><a href="javascript:;" >Phone</a></dd>
+								<dt><a href="javascript:;" >Elevator Electrical</a></dt>
+								<dd><a href="javascript:;" >Relay</a></dd>
+								<dd><a href="javascript:;" >Contactors</a></dd>
+								<dd><a href="javascript:;" >Controller</a></dd>
 							</dl>
 							<dl>
 								<dt><a href="javascript:;" >Elevator Sensor</a></dt>
 								<dd><a href="javascript:;" >Leveling Inductor</a></dd>
-								<dd><a href="javascript:;" >Photoelectric Sw</a></dd>
+								<dd><a href="javascript:;" >Photoelectric Switch</a></dd>
 							</dl>
 						</div>
 						<div class="menu_footer">
 							<dl>
-								<dt><a href="javascript:;" >Elevator Door Slider</a></dt>
-								<dt><a href="javascript:;" >Elevator Door Vane</a></dt>
-								<dt><a href="javascript:;" >Elevator COP</a></dt>
+								<dt><a href="javascript:;" >Elevator Switch</a></dt>
+								<dt><a href="javascript:;" >Elevator COP LOP</a></dt>
 							</dl>
 						</div>
 					</div>
@@ -108,18 +109,20 @@
 								<dd><a href="javascript:;" >Female Lock</a></dd>
 								<dd><a href="javascript:;" >Door Lock</a></dd>
 								<dd><a href="javascript:;" >Triangular Lock</a></dd>
+								<dd><a href="javascript:;" >Base Station Lock</a></dd>
 							</dl>
 							<dl>
-								<dt><a href="javascript:;" >Elevator Electrical</a></dt>
-								<dd><a href="javascript:;" >Contactors</a></dd>
-								<dd><a href="javascript:;" >Relay</a></dd>
-								<dd><a href="javascript:;" >Controller</a></dd>
+								<dt><a href="javascript:;" >Elevator Spare Parts</a></dt>
+								<dd><a href="javascript:;" >Fan</a></dd>
+								<dd><a href="javascript:;" >Phone</a></dd>
+								<dd><a href="javascript:;" >Oil Can</a></dd>
+								<dd><a href="javascript:;" >Others</a></dd>
 							</dl>
 						</div>
 						<div class="menu_footer">
-							<dl>
+							{*<dl>
 								<dt><a href="javascript:;" >Elevator Switch</a></dt>
-							</dl>
+							</dl>*}
 						</div>
 					</div>
 				</div>

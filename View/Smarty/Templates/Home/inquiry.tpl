@@ -6,7 +6,7 @@
 	<div class="container-fluid clearfix">
 		<!--add-->
 		<!--span只是占位符，有广告的时候直接替换就可以-->
-		<!-- <a class="add" href="javascript:;"><span class="add_img">广告位置</span></a> -->
+		<a class="add" href="javascript:;"><span class="add_img">广告位置</span></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -16,7 +16,7 @@
 			</div>
 			<!--contact-->
 			<div class="message_wrap">
-				<p class="company">XI'AN PASSION ELEVATOR PARTS CO.LTD<<a href="javascript:;" >info@passionelevator.com</a>></p>
+				<p class="company">XI'AN PASSION ELEVATOR PARTS CO.LTD<<a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a>></p>
 				{if $product->getId() > 0}
 				<div class="as_products clearfix">
 					<span class="dt">Product:</span>

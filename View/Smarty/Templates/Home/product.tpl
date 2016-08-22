@@ -5,7 +5,7 @@
 <div class="main">
 	<div class="container-fluid clearfix"><!--add-->
 		<!--span只是占位符，有广告的时候直接替换就可以-->
-		<!-- <a class="add" href="javascript:;"><img src="/Global/Style/Home/images/ad2.png"></a> -->
+		<a class="add" href="javascript:;"><img src="/Global/Style/Home/images/ad2.png"></a>
 <!--aside-->
 {include file="Home/leftNav.tpl"}
 <!--content-->
@@ -107,10 +107,10 @@
 					</ul>
 					<div class="p_contact">
 						<ul class="list-unstyled">
-							<li class="n"><span>Contact Person:</span>Abby Ji</li>
-							<li class="e"><span>Email:</span> <a href="javascript:;">sale@passionelevator.com</a></li>
-							<li class="s"><span>Skype:</span>sale@passionelevator.com</li>
-							<li class="w"><span>Whatsapp:</span>0086 15339083622</li>
+							<li class="n"><span>Contact Person:</span>Mrs. Vicky</li>
+							<li class="e"><span>Email:</span> <a href="mailto:vicky@passionelevator.coms">vicky@passionelevator.com</a></li>
+							<li class="s"><span>Skype:</span><a href="javascript:;">vicky.passion1</a></li>
+							<li class="w"><span>Whatsapp:</span>+86 18049060438</li>
 						</ul>
 					</div>
 					<div class="p_btn_bar clearfix">
