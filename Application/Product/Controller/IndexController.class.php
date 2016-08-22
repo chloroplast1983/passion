@@ -20,7 +20,15 @@ class IndexController extends Controller
 
         if ($filter['type'] == 1) {
             $this->getResponse()->view()->assign('productEscalatorNavActive', true);
+
+            $this->getResponse()->view()->assign('seoTitle', 'Escalator Parts – Cheap Escalator Step, Escalator Rollers, Escalator Comb Plate online Sale');
+            $this->getResponse()->view()->assign('seoKeyWords', 'escalator parts, escalator step, escalator rollers, escalator comb plate, escalator handrail');
+            $this->getResponse()->view()->assign('seoDescription', 'Escalator parts product on buyelevatorparts.com. Choose quality escalator step, escalator rollers, escalator comb plate, escalator handrail products from escalator parts manufacturers and suppliers.');
         } else {
+
+        $this->getResponse()->view()->assign('seoTitle', 'Escalator Parts - OTIS Elevator Parts and LG Elevator Parts on Elevator Parts Website Sale');
+        $this->getResponse()->view()->assign('seoKeyWords', 'OTIS elevator parts, LG elevator parts, escalator parts, elevator parts website');
+        $this->getResponse()->view()->assign('seoDescription', 'OTIS elevator parts,LG elevator parts and escalator parts, please choose the  sanjin elevator parts website, we are the professional manufacturer in elevator and Escalator parts field, we will offer the best service and the optimal price to you.');
             $this->getResponse()->view()->assign('productNavActive', true);
         }
     }

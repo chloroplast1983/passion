@@ -39,6 +39,7 @@ class ProductTranslator extends Translator
         }
 
         if (empty($keys)) {
+
             $keys = array(
                         'id',
                         'title',
@@ -54,7 +55,10 @@ class ProductTranslator extends Translator
                         'warrantyTime',
                         'certificates',
                         'content',
-                        'logo'
+                        'logo',
+                        'seoTitle',
+                        'seoKeyWord',
+                        'seoDescription'
                     );
         }
 
@@ -125,7 +129,7 @@ class ProductTranslator extends Translator
         }
 
         if (in_array('seoTitle', $keys)) {
-            $expression['seo_title '] = $product->getSeoTitle();
+            $expression['seo_title'] = $product->getSeoTitle();
         }
 
         if (in_array('seoDescription', $keys)) {
