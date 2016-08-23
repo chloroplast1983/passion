@@ -2215,7 +2215,7 @@ body {
 	margin: 0 0 10px 0;
 }
 .add {
-	display: block;
+	display: none;
 	width: 100%;
 	clear: both;
 	overflow: hidden;
