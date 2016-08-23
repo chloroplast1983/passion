@@ -6,7 +6,7 @@ Offical Style for UCenter
 /* common */
 *{ word-wrap:break-word; outline:none; }
 html { background:url(Images/system_bg.png) repeat 0 0; text-align:center; height: 100%; }
-body { background:url(Images/wrapbg.gif) repeat-y 0 0; text-align:center; height: 100%; }
+body {text-align:center; height: 100%; }
 body, td, input, textarea, select, button{  color: #555; font: 12px/1.6em Helvetica, Arial, sans-serif; }
 body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
 h1, h2, h3, h4, h5, h6{ font-size:12px; }
