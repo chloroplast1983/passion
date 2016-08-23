@@ -37,9 +37,9 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
 
-        $this->getResponse()->view()->assign('seoTitle', 'Buy Elevator Parts, Escalator Parts from China Elevator Parts Suppliers');
-        $this->getResponse()->view()->assign('seoKeyWords', 'elevator parts, escalator parts, elevator parts suppliers, elevator parts company, elevator parts manufacturer');
-        $this->getResponse()->view()->assign('seoDescription', 'We are the professional elevator parts manufacturer in china. We can produce elevator parts and escalator parts to your requirements. If you want get more types of elevator parts please contact us');
+        $this->getResponse()->view()->assign('seoTitle', 'Top10 Elevator Parts and Escalator Parts Supplier | Passion Elevator Parts');
+        $this->getResponse()->view()->assign('seoKeyWords', '');
+        $this->getResponse()->view()->assign('seoDescription', "We are a professional elevator parts and escalator parts supplier in China which have a great variety of goods such as OTIS, Schindler, KONE, Sigma, Mitsubishi, Hyundai,etc. Contact us for any elevator parts need - we're here to help !");
 
         $this->getResponse()->view()->display('Home/index.tpl');
     }
@@ -50,9 +50,9 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
 
-        $this->getResponse()->view()->assign('seoTitle', 'Elevator Parts Wholesale from The Elevator Parts Website');
-        $this->getResponse()->view()->assign('seoKeyWords', 'elevator parts, escalator parts, elevator parts website, elevator parts wholesale, elevator parts factory');
-        $this->getResponse()->view()->assign('seoDescription', 'Passion elevator parts factory supply elevator parts&escalator parts, elevator parts wholesale from the elevator parts website. Our product has spreaded the whole elevator parts market, welcome to buy.');
+        $this->getResponse()->view()->assign('seoTitle', 'Elevator Components Sale on Passion Elevator Parts Manufacturer');
+        $this->getResponse()->view()->assign('seoKeyWords', '');
+        $this->getResponse()->view()->assign('seoDescription', 'We are the professional elevator parts manufacturer in china. We can produce elevator parts and escalator parts to your requirements. If you want get more types of  elevator components please contact us.');
             
         $this->getResponse()->view()->display('Home/about.tpl');
     }
@@ -63,9 +63,9 @@ class IndexController extends Controller
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
         $this->getResponse()->view()->assign('contactsNavActive', true);
 
-        $this->getResponse()->view()->assign('seoTitle', 'Buy Elevator Parts, Escalator Parts, Elevator Spare Parts Please Contact US');
-        $this->getResponse()->view()->assign('seoKeyWords', 'elevator parts, escalator parts, elevator spare parts, elevator encoder, escalator step');
-        $this->getResponse()->view()->assign('seoDescription', "xi'an passion elevator parts co.,Ltd supplies elevator parts & escalator parts, elevator encoder,escalator step. If you need elevator parts and know more about the parts information ,please contact us.");
+        $this->getResponse()->view()->assign('seoTitle', 'Get Elevator Parts Price and Information Please Contact Us');
+        $this->getResponse()->view()->assign('seoKeyWords', '');
+        $this->getResponse()->view()->assign('seoDescription', 'Passion elevator parts factory sales directly with cheaper price. Welcome to contact us for the elevator parts.');
 
         $this->getResponse()->view()->display('Home/contacts.tpl');
     }
