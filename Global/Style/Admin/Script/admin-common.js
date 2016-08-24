@@ -13,12 +13,12 @@
 		$.each(Common.sideBar,function(index, element){
 			$("a."+element).bind("click",function(){
 				if($("div."+element).is(":hidden")){
-					$(this).find("em").removeClass("spread");
-					$(this).find("em").addClass("shrink");	
+					$(this).removeClass("spread");
+					$(this).addClass("shrink");
 					$("div."+element).slideDown("slow");
 				}else{
-					$(this).find("em").removeClass("shrink");
-					$(this).find("em").addClass("spread");		
+					$(this).removeClass("shrink");
+					$(this).addClass("spread");
 					$("div."+element).slideUp("slow");
 				}
 			});		
@@ -27,7 +27,7 @@
 
 	Common.quickGuide = function(){
 		$("a.othersoff").click(function() {
-			$("div#toggle").find("ul").toggle();
+			$("div#toggle").slideToggle();
 		});
 	};
 
