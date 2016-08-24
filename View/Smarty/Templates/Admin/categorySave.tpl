@@ -10,14 +10,17 @@
 		</tr>
 		<tr>
 			<th>分类类型</th>
-			<td><select name="type" class="select categoryType">
-					<option value="1" {if $category->getType() eq 1}selected="selected"{/if}>扶梯</option>
-					<option value="2" {if $category->getType() eq 2}selected="selected"{/if}>直梯</option>
-				</select>
-				&nbsp;
-				<select name="parentId" class="select parentCategory">
-					<option value="0">-----</option>
-				</select>
+			<td>
+				<div class="cl inline-select">
+					<select name="type" class="select categoryType">
+						<option value="1" {if $category->getType() eq 1}selected="selected"{/if}>扶梯</option>
+						<option value="2" {if $category->getType() eq 2}selected="selected"{/if}>直梯</option>
+					</select>
+					&nbsp;
+					<select name="parentId" class="select parentCategory">
+						<option value="0">-----</option>
+					</select>
+				</div>
 			</td>
 		</tr>
 		<tr>

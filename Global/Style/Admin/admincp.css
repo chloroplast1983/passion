@@ -12,7 +12,7 @@ em, cite, th{ font-style:normal; font-weight:normal; }
 table { empty-cells: show; border-collapse: collapse; }
 
 .cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-　　.cl {zoom:1;} 
+	.cl {zoom:1;}
 /* form */
 input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#09C; background:#F5F9FD; }
 .radio{ border:none; }
@@ -20,7 +20,7 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus{ border-color:#
 .btn{ margin:3px 0; padding:2px 5px; *padding:4px 5px 1px; border-color:#ddd #666 #666 #ddd; background:#DDD; color:#000; cursor:pointer; }
 .sgbtn{ margin-left:20px; padding:3px 7px; *padding:4px 7px 2px; border:1px solid #B5CFD9; background:#F2F9FD; color:#666; font-size:12px; font-weight:400; }
 	.sgbtn:hover{ text-decoration:none; }
-.submit{margin:3px 0;padding:1px 12px; *padding:4px 5px 1px; border-color:#ddd #666 #666 #ddd; color:#000; cursor:pointer;border-radius: 3px;
+.submit{padding:1px 12px; *padding:4px 5px 1px; border-color:#ddd #666 #666 #ddd; color:#000; cursor:pointer;border-radius: 3px;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
@@ -85,8 +85,8 @@ h6 a.shrink, em.shrink { background:url(Images/shrink.gif) no-repeat 0 50%; }
 		.pages a:hover{ text-decoration:none; border:1px solid #09C; background:#09C; color:#FFF; }
 	.pages strong{ border:none; font-weight:700; }
 /*form*/
-.select, .txt { display: block; width: 50%; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); box-shadow: inset 0 1px 1px rgba(0,0,0,.075); -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
-textarea { display: block; width: 50%; height: 102px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); box-shadow: inset 0 1px 1px rgba(0,0,0,.075); -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+.select, .txt { display: block; width: 360px; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); box-shadow: inset 0 1px 1px rgba(0,0,0,.075); -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+textarea { display: block; width: 480px; height: 102px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143; color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); box-shadow: inset 0 1px 1px rgba(0,0,0,.075); -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s; -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .submit {display: inline-block; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; -ms-touch-action: manipulation; touch-action: manipulation;  cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; background-image: none; background-color: #0093FF; border: 1px solid #006C9F; color: #fff;  border-radius: 4px; outline: none;}
 .submit:active,.submit:hover { background-color: #006C9F;}
 /* code */
@@ -95,8 +95,8 @@ textarea { display: block; width: 50%; height: 102px; padding: 6px 12px; font-si
 cite { color:#000; margin: 0; padding: 0; }
 pre { font-family: Courier, Courier New; font-weight: normal; color:#000; margin: 0; padding: 0; }
 
-.msgtable { width: 100%; border-left: 1px solid #CBCBCB; border-top: 1px solid #CBCBCB; margin-top:10px; margin-bottom:10px;}
-.msgtable th { font-weight: 700; width: 200px; padding:4px 8px; border-bottom: 1px solid #CBCBCB; border-right: 1px solid #CBCBCB;}
+.msgtable { width: 100%; border-left: 1px solid #CBCBCB; border-top: 1px solid #CBCBCB; margin-top:10px;}
+.msgtable th { font-weight: 700; width: 200px; padding:8px 12px; border-bottom: 1px solid #CBCBCB; border-right: 1px solid #CBCBCB;}
 .msgtable td { border-bottom: 1px solid #CBCBCB; border-right: 1px solid #CBCBCB; height:28px; line-height:28px; padding: 8px 12px;}
 	.msgtable thead td { font-weight: 700; background: #F3F3F3; color: #333; }
 	.msgtable tfoot td { background: #F2F9FD; color: #333; }
@@ -201,8 +201,20 @@ body.login { background:#FFF;}
 .log_box .log_form p { padding:6px 0;}
 .log_box .log_form p input.box { background:url(Images/input_box3.jpg) no-repeat; width:164px; height:24px; line-height:24px;  color:#666; text-indent:8px; font-size:12px; border:0;}
 .log_box .log_form p input.button { background:url(Images/button_bg2.png) no-repeat; width:80px; height:24px; line-height:24px; text-align:center; color:#666; cursor:pointer; border:0;}
-.grids { background:url(Images/nav_bg.png) repeat-x 0 0; width: 98%; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; box-shadow: 0 1px 3px rgba(0, 0, 0, .35); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .35); -moz-box-shadow: 0 1px 3px rgba(0,0,0,.175); margin-bottom:10px; padding-bottom:10px; background: #FCFCFC;}
-.grids table th { background:url(Images/nav_bg.png) repeat-x 0 0; font-size:14px; padding-left: 15px; margin: 10px 0 5px 0px;}
+.grids { width: 100%; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; box-shadow: 0 1px 3px rgba(0, 0, 0, .35); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .35); -moz-box-shadow: 0 1px 3px rgba(0,0,0,.175); margin-bottom:10px; background: #FCFCFC;}
+.grids table th { font-size:14px; padding-left: 15px; margin: 10px 0 5px 0px;}
 .buy_form {}
 	.buy_form p { display:block; padding:3px 0;}
 		.buy_form p em { display:inline-block; width:80px; text-align:right; padding:0 20px 0 0px;}
+.shortcut_menu { list-style: none; padding: 0; margin: 20px 0;}
+.shortcut_menu li {float: left; padding-left: 30px;}
+.shortcut_menu li a {display: block; width: 120px; height: 110px; text-align: center; background-color: #f7f7f7; border: 1px solid #d7d7d7;}
+.shortcut_menu li a img {display: block; width: 60px; height: 61px; margin: 14px auto 0 auto;}
+.shortcut_menu li a span {display: block; color: #333; margin-top: 10px; font-size: 14px; line-height: 14px;}
+.shortcut_menu li a:hover { text-decoration: none;}
+.search_bar {padding-top: 10px;}
+.search_bar .button-group { float: left;}
+.search_bar .form-group { float: left; position: relative; padding-left: 40px; padding-right: 20px;}
+.search_bar .txt, .search_bar .select { width: 160px;}
+.search_bar .form-group .label-control { position: absolute;left: 0; top: 0; line-height: 34px; display: block; width: 40px; text-align: right; padding-right: 12px;}
+.inline-select .select { float: left; margin-right: 20px;}

@@ -21,18 +21,20 @@
 		<tr>
 			<th>分类</th>
 			<td>
-				<select name="" class="select categoryType">
-					<option value="1" {if $product->getCategory()->getType() eq 1}selected="selected"{/if}>扶梯</option>
-					<option value="2" {if $product->getCategory()->getType() eq 2}selected="selected"{/if}>直梯</option>
-				</select>
-				&nbsp;
-				<select name="parentCategory" class="select parentCategory">
-					<option value="0">-----</option>
-				</select>
-				&nbsp;
-				<select name="categroy" class="select categroy">
-					<option value="0">-----</option>
-				</select>
+				<div class="cl inline-select">
+					<select name="" class="select categoryType">
+						<option value="1" {if $product->getCategory()->getType() eq 1}selected="selected"{/if}>扶梯</option>
+						<option value="2" {if $product->getCategory()->getType() eq 2}selected="selected"{/if}>直梯</option>
+					</select>
+					&nbsp;
+					<select name="parentCategory" class="select parentCategory">
+						<option value="0">-----</option>
+					</select>
+					&nbsp;
+					<select name="categroy" class="select categroy">
+						<option value="0">-----</option>
+					</select>
+				</div>
 			</td>
 		</tr>
 		<tr>
