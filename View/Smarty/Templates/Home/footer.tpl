@@ -19,16 +19,16 @@
 					<dt>Featured Products</dt>
 					<dd>
 						<span class="l">
-							<a href="javascript:;">Elevator PCB</a>
-							<a href="javascript:;">Elevator Inverter</a>
-							<a href="javascript:;">Elevator Module</a>
-							<a href="javascript:;">Elevator Brakes</a>
+							<a href="/Product?filter[status]=0&filter[parentCategory]=15">Elevator PCB</a>
+							<a href="/Product?filter[status]=0&filter[category]=16">Elevator Inverter</a>
+							<a href="/Product?filter[status]=0&filter[category]=20">Elevator Module</a>
+							<a href="/Product?filter[status]=0&filter[category]=21">Elevator Brakes</a>
 						</span>
 						<span class="r">
-							<a href="javascript:;">Escalator Parts</a>
-							<a href="javascript:;">Elevator Buttons</a>
-							<a href="javascript:;">Elevator Encoder</a>
-							<a href="javascript:;">Elevator Wheel</a>
+							<a href="/Product?filter[status]=0&filter[type]=2">Escalator Parts</a>
+							<a href="/Product?filter[status]=0&filter[category]=18">Elevator Buttons</a>
+							<a href="/Product?filter[status]=0&filter[category]=6">Elevator Encoder</a>
+							<a href="/Product?filter[status]=0&filter[parentCategory]=22">Elevator Wheel</a>
 						</span>
 					</dd>
 				</dl>
@@ -37,10 +37,10 @@
 				<dl>
 					<dt>Customer Service </dt>
 					<dd>
-						<a href="javascript:;">About Passion</a>
+						<a href="/About">About Passion</a>
 						<a href="javascript:;">FAQ</a>
 						<a href="javascript:;">Shipping/Payment</a>
-						<a href="javascript:;">Send Inquiry</a>
+						<a href="/Inquiry">Send Inquiry</a>
 					</dd>
 				</dl>
 			</div>
