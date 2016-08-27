@@ -9,47 +9,47 @@
                 <td width="100%">
                     <ul class="shortcut_menu cl">
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/Inquiry">
                                 <img src="./Global/Style/Admin/Images/admin_icon1.png">
-                                <span>管理员管理</span>
+                                <span>询价管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/Product/Save">
                                 <img src="./Global/Style/Admin/Images/admin_icon2.png">
-                                <span>管理员管理</span>
+                                <span>添加产品</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/Product?filter[status]=0">
                                 <img src="./Global/Style/Admin/Images/admin_icon3.png">
-                                <span>管理员管理</span>
+                                <span>产品管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/Category?filter[status]=0">
                                 <img src="./Global/Style/Admin/Images/admin_icon4.png">
-                                <span>管理员管理</span>
+                                <span>分类管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/Brand?filter[status]=0">
                                 <img src="./Global/Style/Admin/Images/admin_icon5.png">
-                                <span>管理员管理</span>
+                                <span>品牌管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:;">
+                            <a href="/Admin/News/Save">
                                 <img src="./Global/Style/Admin/Images/admin_icon6.png">
-                                <span>管理员管理</span>
+                                <span>添加新闻</span>
                             </a>
                         </li>
-                        <li>
+                        {*<li>
                             <a href="javascript:;">
                                 <img src="./Global/Style/Admin/Images/admin_icon7.png">
                                 <span>管理员管理</span>
                             </a>
-                        </li>
+                        </li>*}
                     </ul>
                 </td>
             </tr>

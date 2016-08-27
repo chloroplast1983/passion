@@ -273,6 +273,7 @@
 </div>
 <div class="bar_40"></div>
 <!--Footer-->
+{include file="Home/footer.tpl"}
 <script>
 	$(document).ready(function(){
 		$('#thumblist li').mousemove(function () {
@@ -343,4 +344,3 @@
 		});
 	});
 </script>
-{include file="Home/footer.tpl"}

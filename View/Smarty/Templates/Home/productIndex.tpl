@@ -83,7 +83,6 @@
 						</div>
 					</div>
 				</div>
-				<p class="s_example">You searched for: <i>aaaaaaaa</i></p>
 				<div class="s_explain">
 					<h3>Didn't find any results? </h3>
 					<p>Just in case, double check spelling </p>
