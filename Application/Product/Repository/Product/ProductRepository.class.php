@@ -323,7 +323,7 @@ class ProductRepository
         if (isset($filter['keyword'])) {
             $condition .= $conjection.
             ' (title like \'%'.$filter['keyword'].
-            '%\' OR brand_name like \'%'.$filter['keyword'].'%\')';
+            '%\' OR brand_name like \'%'.$filter['keyword'].'%\' OR number like \'%'.$filter['keyword'].'%\')';
         }
 
         $productIds = Core::$dbDriver->query('

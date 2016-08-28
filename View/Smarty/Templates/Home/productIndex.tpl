@@ -12,7 +12,25 @@
 <!--content-->
 		<div class="content">
 			<div class="site_navigation">
-				<span>You are here:</span><a href="/">Home</a>><span>products</span>
+				<span>You are here:</span><a href="/">Home</a>><a href="/Product">products</a>>
+				{if $categorySearch}
+					{if $category->getType()==1}
+					<a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>>
+					{/if}
+					{if $category->getType()==2}
+					<a href="/Product?filter[status]=0&filter[type]=2">Elevator Parts</a>>
+					{/if}
+					{if $category->getParentId() > 0}
+					<a href="/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}">{$parentCategory->getName()}</a>>
+					{/if}
+					<a href="/Product?filter[status]=0&filter[category]={$category->getId()}">{$category->getName()}</a>
+				{/if}
+				{if $brandSearch eq True}
+					<a href="/Product?filter[status]=0&filter[brand]={$brand->getId()}">{$brand->getName()}</a>
+				{/if}
+				{if $parentCategorySearch}
+					<a href="/Product?filter[status]=0&filter[parentCategory]={$parentCategory->getId()}">{$parentCategory->getName()}</a>
+				{/if}
 			</div>
 			{if !empty($productList)}
 			<div class="products_items clearfix">

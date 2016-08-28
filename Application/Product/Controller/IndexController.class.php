@@ -13,7 +13,6 @@ class IndexController extends Controller
 
     public function __construct()
     {
-        
         parent::__construct();
 
         $filter = $this->getRequest()->get('filter');
@@ -49,7 +48,48 @@ class IndexController extends Controller
         $filter = is_array($filter) ? $filter : array('status'=>STATUS_NORMAL);
 
         if (isset($filter['brand'])) {
-            $this->getResponse()->view()->assign('leftNavBrandActive', true);
+
+            $filter['brand'] = intval($filter['brand']);
+
+            $repository = Core::$container->get('Product\Repository\Brand\BrandRepository');
+            $brand = $repository->getOne($filter['brand']);
+
+            if ($brand instanceof \Product\Model\Brand) {
+
+                $this->getResponse()->view()->assign('brandSearch', true);
+                $this->getResponse()->view()->assign('brand', $brand);
+                $this->getResponse()->view()->assign('leftNavBrandActive', true);
+            }
+        }
+
+        if (isset($filter['category'])) {
+
+            $filter['category'] = intval($filter['category']);
+
+            if (!empty($filter['category'])) {
+                $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
+                $category = $repository->getOne($filter['category']);
+
+                if($category instanceof \Product\Model\Category) {
+                    $this->getResponse()->view()->assign('categorySearch', true);
+                    $this->getResponse()->view()->assign('category', $category);
+
+                    $parentCategory = $repository->getOne($category->getParentId());
+                    $this->getResponse()->view()->assign('parentCategory', $parentCategory);
+                }
+            }
+        }
+
+        if (isset($filter['parentCategory'])) {
+            $filter['parentCategory'] = intval($filter['parentCategory']);
+            $repository = Core::$container->get('Product\Repository\Category\CategoryRepository');
+            $parentCategory = $repository->getOne($filter['parentCategory']);
+            
+            if($parentCategory instanceof \Product\Model\Category) {
+
+                $this->getResponse()->view()->assign('parentCategorySearch', true);
+                $this->getResponse()->view()->assign('parentCategory', $parentCategory);
+            }
         }
 
         $repository = Core::$container->get('Product\Repository\Product\ProductRepository');

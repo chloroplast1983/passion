@@ -183,6 +183,23 @@ class Inquiry
     public function save()
     {
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
-        return $repository->add($this);
+        if ($repository->add($this)) {
+            $this->email();
+        }
+        return true;
+    }
+
+    private function email()
+    {
+        $transport = \Swift_SmtpTransport::newInstance('smtp.passionelevator.com', 25)
+                     ->setUsername('mail@passionelevator.com')
+                     ->setPassword('19831030dkbJICAIJUAN');
+        $mailer = \Swift_Mailer::newInstance($transport);
+        $message = \Swift_Message::newInstance($this->name)
+        ->setFrom(array('mail@passionelevator.com' => 'Inquiry'))
+        ->setTo(array('sherry@passionelevator.com'))
+        ->setBody($this->content.' 询价人邮箱:'.$this->email);
+
+        $result = $mailer->send($message);
     }
 }
