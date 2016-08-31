@@ -76,6 +76,9 @@ class IndexController extends Controller
 
                     $parentCategory = $repository->getOne($category->getParentId());
                     $this->getResponse()->view()->assign('parentCategory', $parentCategory);
+                    $this->getResponse()->view()->assign('seoTitle', $category->getSeoTitle());
+                    $this->getResponse()->view()->assign('seoKeyWords', $category->getSeoKeyword());
+                    $this->getResponse()->view()->assign('seoDescription', $category->getSeoDescription());
                 }
             }
         }
@@ -89,6 +92,9 @@ class IndexController extends Controller
 
                 $this->getResponse()->view()->assign('parentCategorySearch', true);
                 $this->getResponse()->view()->assign('parentCategory', $parentCategory);
+                $this->getResponse()->view()->assign('seoTitle', $parentCategory->getSeoTitle());
+                $this->getResponse()->view()->assign('seoKeyWords', $parentCategory->getSeoKeyword());
+                $this->getResponse()->view()->assign('seoDescription', $parentCategory->getSeoDescription());
             }
         }
 
@@ -155,6 +161,10 @@ class IndexController extends Controller
             $parentCategory = $repository->getOne($product->getCategory()->getParentId());
             $this->getResponse()->view()->assign('parentCategory', $parentCategory);
         }
+
+        $this->getResponse()->view()->assign('seoTitle', $product->getSeoTitle());
+        $this->getResponse()->view()->assign('seoKeyWords', $product->getSeoKeyword());
+        $this->getResponse()->view()->assign('seoDescription', $product->getSeoDescription());
 
         $this->getResponse()->view()->assign('categoryList', $this->getCategories());
         $this->getResponse()->view()->assign('brandList', $this->getBrands());
