@@ -17,7 +17,7 @@
 					{if $type==1}
 					><a href="/Product?filter[status]=0&filter[type]=1">Escalator Parts</a>
 					{/if}
-					{if $type==1}
+					{if $type==2}
 					><a href="/Product?filter[status]=0&filter[type]=2">Elevator Parts</a>
 					{/if}
 				{/if}
