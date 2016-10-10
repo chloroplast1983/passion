@@ -342,6 +342,7 @@ class Product
                 'content',
                 'brand',
                 'category',
+                'logo',
                 'model',
                 'moq',
                 'number',
