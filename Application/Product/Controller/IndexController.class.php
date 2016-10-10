@@ -47,6 +47,11 @@ class IndexController extends Controller
 
         $filter = is_array($filter) ? $filter : array('status'=>STATUS_NORMAL);
 
+        if (isset($filter['type'])) {
+            $this->getResponse()->view()->assign('typeSearch', true);
+            $this->getResponse()->view()->assign('type', $filter['type']);
+        }
+
         if (isset($filter['brand'])) {
 
             $filter['brand'] = intval($filter['brand']);
