@@ -133,37 +133,55 @@
 						{html_entity_decode($product->getContent())}
 					</div>
 					<div role="tabpanel" class="tab-pane" id="shipping_payment">
-						<figure class="p_img_content"></figure>
+						<figure class="p_img_content"><img src="/Global/Style/Home/images/shppingandpayment.jpg"></img></figure>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="faq">
-						<p>This is a short list of our most frequently asked questions. For more information about Instagram, or if you need support, please visit our support center.</p>
-						<h3>What is Instagram?</h3>
-						<p>Instagram is a fun and quirky way to share your life with friends through a series of pictures. Snap a photo with your mobile phone, then choose a filter to transform the image into a memory to keep around forever. We're building Instagram to allow you to experience moments in your friends' lives through pictures as they happen. We imagine a world more connected through photos.</p>
-						<h3>How much is your app?</h3>
-						<p>$0.00 - available for free in the Apple App Store and Google Play store.</p>
-						<h3>Where does the name come from?</h3>
-						<p>When we were kids we loved playing around with cameras. We loved how different types of old cameras marketed themselves as "instant" - something we take for granted today. We also felt that the snapshots people were taking were kind of like telegrams in that they got sent over the wire to others - so we figured why not combine the two?</p>
-						<h3>How did the idea come about?</h3>
-						<p>We love taking photos. We always assumed taking interesting photos required a big bulky camera and a couple years of art school. But as mobile phone cameras got better and better, we decided to challenge that assumption. We created Instagram to solve three simple problems:</p>
-						<p>Mobile photos always come out looking mediocre. Our awesome looking filters transform your photos into professional-looking snapshots.
-						Sharing on multiple platforms is a pain - we help you take a picture once, then share it (instantly) on multiple services.
-						Most uploading experiences are clumsy and take forever - we've optimized the experience to be fast and efficient.
-						What other services are you compatible with?</p>
-						<p>Currently, you can share your photos on a photo-by-photo basis on Flickr, Facebook, and Twitter. Additionally, if you specify a location with your photo, you can opt to have us check you in on Foursquare. Going forward, we plan on supporting additional services but have nothing else to announce at this time.</p>
-						<h3>Are you hiring?</h3>
-						<p>Absolutely, yes. If you're a talented engineer or designer we want to talk to you. Check out our jobs page.</p>
-						<p>I have a technical problem or support issue I need resolved, who do I email?</p>
-						<p>The best way to get in touch with us is to visit our support center.</p>
-						<h3>Is there an API or developer program?</h3>
-						<p>Developers can register for our api at our developer site.</p>
-						<h3>How does privacy work?</h3>
-						<p>We have adopted a follower model that means if you're "public" on Instagram, anyone can subscribe to follow your photos. We do, however, have a special private option. In this mode, a user can make sure he/she must approve all follow requests before they go through.</p>
-						<h3>Who can see my photos?</h3>
-						<p>All photos are public by default which means they are visible to anyone using Instagram or on the instagram.com website. If you choose to make your account private, then only people who follow you on Instagram will be able to see your photos.</p>
-						<h3>How can I print my photos?</h3>
-						<p>We save all the photos you process with Instagram to your camera roll. You can then sync with your computer and print as many as you'd like.</p>
-						<h3>When are you going to make the app for Blackberry, Windows Phone 7, iPad, etc?</h3>
-						<p>We are currently working on making the iPhone and Android experiences as solid as possible. Only then will we consider other platforms, but currently we have nothing to announce.</p>
+						<h3>Q:How to order?</h3>
+						<p>A: inquiry→quotation→confirm→send PI→make the payment→arrange the parts→delivery→receive the parts</p>
+						<h3>Q:Which shipping way is available and how to track?</h3>
+						<p>A: By sea to your nearest port</p>
+						<p>By air to your nearest airport</p>
+						<p>By express (DHL,UPS,FEDEX,TNT,EMS)to your door</p>
+						<p>When your order shipping out . we will provide you a tracking number. then you can know clearly the status of the goods</p>
+						<h3>Q: What is the delivery:</h3>
+						<p>A:  Motsly parts we have stock before you want to book with us pls email us and confirm the delivery time and price. Usually 1-5 working days.</p>
+						<table class="table table-bordered content-table">
+							<tbody>
+								<tr>
+									<th>DHL</th>
+									<td>Around 3-5 working days</td>
+								</tr>
+								<tr>
+									<th>FedEx</th>
+									<td>Around 3-5 working days</td>
+								</tr>
+								<tr>
+									<th>UPS/TNT</th>
+									<td>Around 6-8 working days</td>
+								</tr>
+								<tr>
+									<th>EMS</th>
+									<td>Around 10-15 working days</td>
+								</tr>
+								<tr>
+									<th>AIR</th>
+									<td>Around 5-7 working days</td>
+								</tr>
+								<tr>
+									<th>SEA</th>
+									<td>Around 15-30 working days</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3>Q: Sorry, I place a wrong order, the goods are not the one I need, can I exchange it?</h3>
+						<p>A: Of course, common products are allowed to be exchanged as long as you pay the freight and custom cost</p>
+						<h3>Q: Do you have any warranty for your parts?</h3>
+						<p>A: Yes, we have warranty for our parts. 3 months for PCB, 2 years for original roller and other roller, 3-5 years for COMI roller and 1 year for Yaskawa inverter. Please contact us to get more information for other products.</p>
+						<h3>Q: What should I do when the goods doesn’t work under warranty ?</h3>
+						<p>A: You can send it back to repair ,but the freight and repair charge will be paid by you.</p>
+						<h3>Q:Which payment way is available ?</h3>
+						<p>A: TT, Western Union, Pay pal, You can choose a convinient way for you .</p>
+						<p>Kindly contact our staff to get more answers. Thanks for your cooperation!!!"</p>
 					</div>
 				</div>
 			</div>

@@ -336,23 +336,26 @@ class Product
         if ($this->getId() == 0) {
             return $repository->add($this);
         } else {
-            return $repository->update($this, array(
-                'updateTime',
-                'title',
-                'content',
-                'brand',
-                'category',
-                'logo',
-                'model',
-                'moq',
-                'number',
-                'certificates',
-                'warrantyTime',
-                'content',
-                'seoKeyWord',
-                'seoTitle',
-                'seoDescription',
-                ));
+            $modifyKeys = array(
+                                'updateTime',
+                                'title',
+                                'content',
+                                'brand',
+                                'category',
+                                'model',
+                                'moq',
+                                'number',
+                                'certificates',
+                                'warrantyTime',
+                                'content',
+                                'seoKeyWord',
+                                'seoTitle',
+                                'seoDescription'
+                            );
+            if ($this->getLogo()->getId() > 0) {
+                $modifyKeys[] = 'logo';
+            }
+            return $repository->update($this, $modifyKeys);
         }
     }
 

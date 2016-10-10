@@ -31,7 +31,7 @@
 						<p>Elevator and escalator parts， whatever you need，we have！</p>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="shipping_payment">
-						<figure class="p_img_content">1111</figure>
+						<figure class="p_img_content"><img src="/Global/Style/Home/images/shppingandpayment.jpg"></img></figure>
 					</div>
 					<div role="tabpanel" class="tab-pane" id="faq">
 						<h3>Q:How to order?</h3>
