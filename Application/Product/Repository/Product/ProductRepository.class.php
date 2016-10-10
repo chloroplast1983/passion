@@ -269,6 +269,8 @@ class ProductRepository
         if (empty($condition)) {
             $condition = ' 1 ';
         }
+
+        $condition .= ' ORDER BY product_id DESC';
        
         $productList = $this->productRowCacheQuery->find($condition, $offset, $size);
 
