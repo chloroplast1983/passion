@@ -323,12 +323,17 @@ class ProductRepository
             $conjection = ' AND ';
         }
 
+        if (isset($filter['status'])) {
+            $condition .= $conjection.'product.status='.intval($filter['status']);
+            $conjection = ' AND ';
+        }
+
         if (isset($filter['keyword'])) {
             $condition .= $conjection.
             ' (title like \'%'.$filter['keyword'].
             '%\' OR brand_name like \'%'.$filter['keyword'].'%\' OR number like \'%'.$filter['keyword'].'%\')';
         }
-
+        
         $productIds = Core::$dbDriver->query('
                         SELECT product_id FROM pcore_product AS product 
                         LEFT JOIN pcore_product_category AS category 
