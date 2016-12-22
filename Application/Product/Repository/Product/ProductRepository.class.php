@@ -362,8 +362,7 @@ class ProductRepository
                         LEFT JOIN pcore_product_brand AS brand 
                         ON product.brand_id=brand.brand_id
                         WHERE '.$condition);
-
-            return array($count['count'], $this->getList($ids));
+            return array($count[0]['count'], $this->getList($ids));
         }
 
         return $this->getList($ids);
