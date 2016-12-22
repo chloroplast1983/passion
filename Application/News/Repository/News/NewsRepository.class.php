@@ -140,8 +140,9 @@ class NewsRepository
 
         $conjection = $condition = '';
 
+         $news = new News();
+
         if (!empty($filter)) {
-            $news = new News();
 
             if (isset($filter['status'])) {
                 $news->setStatus($filter['status']);
@@ -159,6 +160,9 @@ class NewsRepository
             $condition = ' 1 ';
         }
         
+        list($newsArray, $newsContentArray) = $this->translator->objectToArray($news, array('id'));
+        $condition .= ' ORDER BY '.key($newsArray).' DESC';
+
         $newsList = $this->newsRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($newsList)) {

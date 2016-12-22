@@ -147,7 +147,7 @@ class Core
     {
         global $_FWGLOBAL;
         //开启session
-        // session_start();
+        session_start();
         
         $_FWGLOBAL = array();
         

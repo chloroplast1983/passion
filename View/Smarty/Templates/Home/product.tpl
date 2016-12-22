@@ -219,7 +219,7 @@
 				</form>
 			</div>
 			<!--Related Products-->
-			<div class="related_products">
+<!-- 			<div class="related_products">
 				<div class="rp_header clearfix">
 					<h3 class="rp_title">Related Products</h3>
 				</div>
@@ -239,53 +239,8 @@
 							</div>
 						</div>
 					</div><!--//end item-->
-					<div class="rp_item js_item">
-						<a class="rp_item_img" href="javascript:;">
-							<span>
-								<img src="/Global/Style/Home/images/product_img.png" >
-							</span>
-						</a>
-						<div class="rp_item_details">
-							<h4 class="rp_item_title"><a href="javascript:;">Elevator PCB elevator parts SI-JE2 K21A</a></h4>
-							<p class="rp_item_model">Model:h05VVH6-F</p>
-							<p class="rp_item_brand">Brand:JK/OEM</p>
-							<div class="text-center">
-								<a class="btn btn-orange" href="javascript:;">Inquiry</a>
-							</div>
-						</div>
-					</div><!--//end item-->
-					<div class="rp_item js_item">
-						<a class="rp_item_img" href="javascript:;">
-							<span>
-								<img src="/Global/Style/Home/images/product_img.png" >
-							</span>
-						</a>
-						<div class="rp_item_details">
-							<h4 class="rp_item_title"><a href="javascript:;">Elevator PCB elevator parts SI-JE2 K21A</a></h4>
-							<p class="rp_item_model">Model:h05VVH6-F</p>
-							<p class="rp_item_brand">Brand:JK/OEM</p>
-							<div class="text-center">
-								<a class="btn btn-orange" href="javascript:;">Inquiry</a>
-							</div>
-						</div>
-					</div><!--//end item-->
-					<div class="rp_item js_item">
-						<a class="rp_item_img" href="javascript:;">
-							<span>
-								<img src="/Global/Style/Home/images/product_img.png" >
-							</span>
-						</a>
-						<div class="rp_item_details">
-							<h4 class="rp_item_title"><a href="javascript:;">Elevator PCB elevator parts SI-JE2 K21A</a></h4>
-							<p class="rp_item_model">Model:h05VVH6-F</p>
-							<p class="rp_item_brand">Brand:JK/OEM</p>
-							<div class="text-center">
-								<a class="btn btn-orange" href="javascript:;">Inquiry</a>
-							</div>
-						</div>
-					</div><!--//end item-->
 				</div>
-			</div>
+			<!-- </div> --> 
 		</div>
 	</div>
 </div>

@@ -15,6 +15,8 @@ class BrandController extends Controller
     {
         parent::__construct();
 
+        $this->checkLogin();
+        
         $this->getResponse()->view()->assign('productSideBar', true);
         $this->getResponse()->view()->assign('brandListRef', true);
     }

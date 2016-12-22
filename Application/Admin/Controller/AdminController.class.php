@@ -15,4 +15,14 @@ trait AdminController
         $this->getResponse()->view()->display('Admin/message.tpl');
         exit();
     }
+
+    public function checkLogin()
+    {
+        if ($_SESSION['adminAuth'] != md5('passion-abby')) {
+            header("Location: /");
+            exit();
+        }
+
+        return true;
+    }
 }

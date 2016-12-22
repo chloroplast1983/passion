@@ -270,8 +270,9 @@ class ProductRepository
             $condition = ' 1 ';
         }
 
-        $condition .= ' ORDER BY product_id DESC';
-       
+        list($productArray, $productContentArray) = $this->translator->objectToArray($product, array('id'));
+        $condition .= ' ORDER BY '.key($productArray).' DESC';
+
         $productList = $this->productRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($productList)) {

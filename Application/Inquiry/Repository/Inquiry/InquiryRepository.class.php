@@ -119,6 +119,9 @@ class InquiryRepository
             $condition = ' 1 ';
         }
 
+        $inquiryArray = $this->translator->objectToArray($inquiry, array('id'));
+        $condition .= ' ORDER BY '.key($inquiryArray).' DESC';
+
         $inquiryList = $this->inquiryRowCacheQuery->find($condition, $offset, $size);
 
         if (empty($inquiryList)) {

@@ -15,6 +15,8 @@ class NewsController extends Controller
     {
         parent::__construct();
 
+        $this->checkLogin();
+        
         $this->getResponse()->view()->assign('newsSideBar', true);
     }
     /**
