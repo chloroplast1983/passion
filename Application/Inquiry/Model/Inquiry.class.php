@@ -184,7 +184,7 @@ class Inquiry
     {
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
         if ($repository->add($this)) {
-            // $this->email();
+            $this->email();
         }
         return true;
     }
