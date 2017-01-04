@@ -7,7 +7,7 @@
 		<div class="search_bar cl">
 			<div class="form-group">
 				<label class="label-control">标题</label>
-				<input type="text" class="txt" placeholder="请输入标题">
+				<input type="text" name="filter[keyword]" value="{$filter['keyword']}" class="txt" placeholder="请输入标题">
 			</div>
 			<div class="form-group">
 				<label class="label-control">品牌</label>
