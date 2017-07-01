@@ -108,9 +108,9 @@
 					<div class="p_contact">
 						<ul class="list-unstyled">
 							<li class="n"><span>Contact Person:</span>Mrs. Vicky</li>
-							<li class="e"><span>Email:</span> <a href="mailto:vicky@passionelevator.coms">vicky@passionelevator.com</a></li>
-							<li class="s"><span>Skype:</span><a href="javascript:;">vicky.passion1</a></li>
-							<li class="w"><span>Whatsapp:</span>+86 18049060438</li>
+							<li class="e"><span>Email:</span> <a href="mailto:sherry@passionelevator.coms">sherry@passionelevator.com</a></li>
+							<li class="s"><span>Skype:</span><a href="skype:peng.sherry3?add">peng.sherry3</a></li>
+							<li class="w"><span>Whatsapp:</span>+86 13309214901</li>
 						</ul>
 					</div>
 					<div class="p_btn_bar clearfix">
