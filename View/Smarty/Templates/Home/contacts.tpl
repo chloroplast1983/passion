@@ -24,23 +24,23 @@
 					</li>
 					<li>
 						<span class="dt">Contact Person:</span>
-						<span class="dd"> Mrs. Vicky</span>
+						<span class="dd">Mrs. Sherry</span>
 					</li>
 					<li>
 						<span class="dt">E-mail:</span>
-						<span class="dd"><a href="mailto:vicky@passionelevator.coms" target="_blank">vicky@passionelevator.com</a></span>
+						<span class="dd"><a href="mailto:sherry@passionelevator.coms" target="_blank">sherry@passionelevator.com</a></span>
 					</li>
 					<li>
 						<span class="dt">Skype:</span>
-						<span class="dd"><a href="javascript:;">vicky.passion1</a></span>
+						<span class="dd"><a href="skype:peng.sherry3?add">peng.sherry3</a></span>
 					</li>
 					<li>
 						<span class="dt">WhatsApp:</span>
-						<span class="dd">+86 18049060438</span>
+						<span class="dd">+86 13309214901</span>
 					</li>
 					<li>
 						<span class="dt">Mobile:</span>
-						<span class="dd"> +86 18049060438</span>
+						<span class="dd">+86 13309214901</span>
 					</li>
 				</ul>
 				<div class="contact_info_items clearfix">
@@ -58,7 +58,7 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>Mrs. Vicky
-									<a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a>
+									<a href="mailto:sherry@passionelevator.com">sherry@passionelevator.com</a>
 								</li>
 							</ul>
 						</div>

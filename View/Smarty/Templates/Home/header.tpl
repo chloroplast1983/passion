@@ -34,17 +34,17 @@
 		<div class="top_contact clearfix">
 			<div class="top_email">
 				<span class="dt">E-mail</span>
-				<span class="dd"><a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a></span>
+				<span class="dd"><a href="mailto:sherry@passionelevator.com">sherry@passionelevator.com</a></span>
 				<i class="top_line"></i>
 			</div>
 			<div class="top_whatsapp">
 				<span class="dt">Whatsapp</span>
-				<span class="dd">+86 18049060438</span>
+				<span class="dd">0086 13309214901</span>
 				<i class="top_line"></i>
 			</div>
 			<div class="top_skype">
 				<span class="dt">Skype</span>
-				<span class="dd"><a href="javascript:;">vicky.passion1</a></span>
+				<span class="dd"><a href="skype:peng.sherry3?add">peng.sherry3</a></span>
 			</div>
 		</div>
 	</div>

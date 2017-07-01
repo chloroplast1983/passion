@@ -5,10 +5,10 @@
 				<dl>
 					<dt>Follow Us</dt>
 					<dd class="clearfix">
-						<a href="javascript:;"><img src="/Global/Style/Home/images/f.png" ></a>
-						<a href="javascript:;"><img src="/Global/Style/Home/images/t.png" ></a>
-						<a href="javascript:;"><img src="/Global/Style/Home/images/g.png" ></a>
-						<a href="javascript:;"><img src="/Global/Style/Home/images/in.png" ></a>
+						<a href="https://www.facebook.com/passion0elevator/" target="_blank"><img src="/Global/Style/Home/images/f.png" ></a>
+						<a href="https://twitter.com/PassionElevator" target="_blank"><img src="/Global/Style/Home/images/t.png" ></a>
+						<a href="https://plus.google.com/u/0/101576190235641729746" target="_blank"><img src="/Global/Style/Home/images/g.png" ></a>
+						<a href="http://www.linkedin.com/company-beta/13346600/" target="_blank"><img src="/Global/Style/Home/images/in.png" ></a>
 						<a href="javascript:;"><img src="/Global/Style/Home/images/i.png" ></a>
 						<a href="javascript:;"><img src="/Global/Style/Home/images/p.png" ></a>
 					</dd>
@@ -48,10 +48,10 @@
 				<dl>
 					<dt>Contact Us</dt>
 					<dd>
-						<span class="footer_contacts_person"><em>Contact Person: </em>Mrs. Vicky</span>
-						<span class="footer_contacts_email"><em>E-mail: </em><a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a></span>
-						<span class="footer_contacts_skype"><em>Skype: </em><a href="javascript:;">vicky.passion1</a></span>
-						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>+86 18049060438</span>
+						<span class="footer_contacts_person"><em>Contact Person: </em>Mrs. Sherry</span>
+						<span class="footer_contacts_email"><em>E-mail: </em><a href="mailto:sherry@passionelevator.com">sherry@passionelevator.com</a></span>
+						<span class="footer_contacts_skype"><em>Skype: </em><a href="skype:peng.sherry3?add">peng.sherry3</a></span>
+						<span class="footer_contacts_whatsapp"><em>Whatsapp: </em>+86 13309214901</span>
 					</dd>
 				</dl>
 			</div>
