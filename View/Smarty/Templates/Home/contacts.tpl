@@ -57,7 +57,7 @@
 						<h3 class="ci_title">E-Mail</h3>
 						<div class="ci_content">
 							<ul class="list-unstyled">
-								<li>Mrs. Vicky
+								<li>Mrs. Sherry
 									<a href="mailto:sherry@passionelevator.com">sherry@passionelevator.com</a>
 								</li>
 							</ul>
