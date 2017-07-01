@@ -34,7 +34,6 @@ class IndexController extends Controller
 
     public function index()
     {
-
         $perpage = 12;
         $curpage = !empty($_GET['page']) ? $_GET['page'] : 1;
         $start = ($curpage-1)*$perpage;
@@ -167,7 +166,7 @@ class IndexController extends Controller
             $this->getResponse()->view()->assign('parentCategory', $parentCategory);
         }
 
-        $this->getResponse()->view()->assign('seoTitle', $product->getSeoTitle());
+        $this->getResponse()->view()->assign('seoTitle', $product->getSeoTitle().'-Passion Elevator Parts Supplier');
         $this->getResponse()->view()->assign('seoKeyWords', $product->getSeoKeyword());
         $this->getResponse()->view()->assign('seoDescription', $product->getSeoDescription());
 
