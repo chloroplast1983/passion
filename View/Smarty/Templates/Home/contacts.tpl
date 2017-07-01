@@ -70,8 +70,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Mrs. Vicky
-									<span><a href="javascript:;">vicky.passion1</a></span>
+									Mrs. Sherry
+									<span><a href="skype:peng.sherry3?add">peng.sherry3</a></span>
 								</li>
 							</ul>
 						</div>
@@ -83,8 +83,8 @@
 						<div class="ci_content">
 							<ul class="list-unstyled">
 								<li>
-									Mrs. Vicky
-									<span>+86 18049060438</span>
+									Mrs. Sherry
+									<span>+86 13309214901</span>
 								</li>
 							</ul>
 						</div>

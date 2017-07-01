@@ -16,7 +16,7 @@
 			</div>
 			<!--contact-->
 			<div class="message_wrap">
-				<p class="company">XI'AN PASSION ELEVATOR PARTS CO.LTD<<a href="mailto:vicky@passionelevator.com">vicky@passionelevator.com</a>></p>
+				<p class="company">XI'AN PASSION ELEVATOR PARTS CO.LTD<<a href="mailto:sherry@passionelevator.com">sherry@passionelevator.com</a>></p>
 				{if $product->getId() > 0}
 				<div class="as_products clearfix">
 					<span class="dt">Product:</span>
