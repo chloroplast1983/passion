@@ -166,7 +166,7 @@ class IndexController extends Controller
             $this->getResponse()->view()->assign('parentCategory', $parentCategory);
         }
 
-        $this->getResponse()->view()->assign('seoTitle', $product->getSeoTitle().'-Passion Elevator Parts Supplier');
+        $this->getResponse()->view()->assign('seoTitle', $product->getSeoTitle().' - Passion Elevator Parts Supplier');
         $this->getResponse()->view()->assign('seoKeyWords', $product->getSeoKeyword());
         $this->getResponse()->view()->assign('seoDescription', $product->getSeoDescription());
 
