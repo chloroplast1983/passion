@@ -107,7 +107,7 @@
 					</ul>
 					<div class="p_contact">
 						<ul class="list-unstyled">
-							<li class="n"><span>Contact Person:</span>Mrs. Vicky</li>
+							<li class="n"><span>Contact Person:</span>Mrs. Sherry</li>
 							<li class="e"><span>Email:</span> <a href="mailto:sherry@passionelevator.coms">sherry@passionelevator.com</a></li>
 							<li class="s"><span>Skype:</span><a href="skype:peng.sherry3?add">peng.sherry3</a></li>
 							<li class="w"><span>Whatsapp:</span>+86 13309214901</li>

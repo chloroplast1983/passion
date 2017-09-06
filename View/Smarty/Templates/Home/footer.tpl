@@ -71,8 +71,9 @@
 {/literal}
 </script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/Global/Style/Home/js/global.js"></script>
-<script src="/Global/Style/Home/js/plugins.js"></script>
 <script src="/Global/Style/Home/js/vendor.js"></script>
+<script src="/Global/Style/Home/js/plugins.js"></script>
+<script src="/Global/Style/Home/js/global.js"></script>
+<script src="/Global/Style/Home/js/jquery.simplyscroll.js"></script>
 </body>
 </html>

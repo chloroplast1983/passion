@@ -13,6 +13,7 @@
 	<link href="/Global/Style/Home/css/vendor.css" rel="stylesheet">
 	<!-- Bootstrap -->
 	<link href="/Global/Style/Home/css/style.css" rel="stylesheet">
+	<link href="/Global/Style/Home/css/jquery.simplyscroll.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
