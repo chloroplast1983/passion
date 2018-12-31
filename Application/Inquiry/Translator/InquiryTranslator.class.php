@@ -16,6 +16,8 @@ class InquiryTranslator extends Translator
         $inquiry->setEmail($expression['email']);
         $inquiry->getProduct()->setId($expression['product_id']);
         $inquiry->setClientIp($expression['client_ip']);
+        $inquiry->setStatusTime($expression['status_time']);
+        $inquiry->setStatus($expression['status']);
         return $inquiry;
     }
 
@@ -33,7 +35,9 @@ class InquiryTranslator extends Translator
                         'content',
                         'email',
                         'product',
-                        'clientIp'
+                        'clientIp',
+                        'statusTime',
+                        'status'
                     );
         }
 
@@ -65,6 +69,14 @@ class InquiryTranslator extends Translator
 
         if (in_array('clientIp', $keys)) {
             $expression['client_ip'] = $inquiry->getClientIp();
+        }
+
+        if (in_array('statusTime', $keys)) {
+            $expression['status_time'] = $inquiry->getStatusTime();
+        }
+       
+        if (in_array('status', $keys)) {
+            $expression['status'] = $inquiry->getStatus();
         }
         return $expression;
     }

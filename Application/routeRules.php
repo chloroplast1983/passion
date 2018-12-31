@@ -71,6 +71,14 @@ return [
             'get'
         ]
     ],
+    [
+        'method'=>'GET',
+        'rule'=>'/Admin/Inquiry/Delete/{inquiryId:\d+}',
+        'controller'=>[
+            'Admin\Controller\InquiryController',
+            'delete'
+        ]
+    ],
     //brand
     [
         'method'=>'GET',

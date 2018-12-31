@@ -17,10 +17,10 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="/Global/Style/Home/images/banner.png" alt="">
+					<img src="/Global/Style/Home/images/banner-01.jpeg" alt="">
 				</div>
 				<div class="item">
-					<img src="/Global/Style/Home/images/banner.png" alt="">
+					<img src="/Global/Style/Home/images/banner-02.jpeg" alt="">
 				</div>
 				<div class="item">
 					<img src="/Global/Style/Home/images/banner.png" alt="">

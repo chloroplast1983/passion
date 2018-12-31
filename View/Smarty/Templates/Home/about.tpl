@@ -76,7 +76,7 @@
 						<h3>Q: Do you have any warranty for your parts?</h3>
 						<p>A: Yes, we have warranty for our parts. 3 months for PCB, 2 years for original roller and other roller, 3-5 years for COMI roller and 1 year for Yaskawa inverter. Please contact us to get more information for other products.</p>
 						<h3>Q: What should I do when the goods doesn’t work under warranty ?</h3>
-						<p>A: You can send it back to repair ,but the freight and repair charge will be paid by you.</p>
+						<p>A: We provide repair service for you, please return the product to our company.</p>
 						<h3>Q:Which payment way is available ?</h3>
 						<p>A: TT, Western Union, Pay pal, You can choose a convinient way for you .</p>
 						<p>Kindly contact our staff to get more answers. Thanks for your cooperation!!!"</p>

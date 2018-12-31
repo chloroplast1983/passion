@@ -2,6 +2,7 @@
 namespace Inquiry\Model;
 
 use Common\Model\ModifyTime;
+use Common\Model\Status;
 use Product\Model\Product;
 use Marmot\Core;
 
@@ -17,6 +18,10 @@ class Inquiry
      * @var ModifyTime 时间性状
      */
     use ModifyTime;
+    /**
+     * @var Status 状态性状
+     */
+    use Status;
     /**
      * @var int $id 询价id
      */
@@ -53,6 +58,8 @@ class Inquiry
         $this->content = '';
         $this->createTime = $_FWGLOBAL['timestamp'];
         $this->updateTime = $_FWGLOBAL['timestamp'];
+        $this->statusTime = $_FWGLOBAL['timestamp'];
+        $this->status = STATUS_NORMAL;
         $this->email = '';
         $this->product = new Product();
         $this->clientIp = $_SERVER["REMOTE_ADDR"];
@@ -68,6 +75,8 @@ class Inquiry
         unset($this->content);
         unset($this->createTime);
         unset($this->updateTime);
+        unset($this->status);
+        unset($this->statusTime);
         unset($this->email);
         unset($this->product);
         unset($this->clientIp);
@@ -187,6 +196,17 @@ class Inquiry
             $this->email();
         }
         return true;
+    }
+
+    public function delete()
+    {
+        $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
+        if ($this->getId() == 0) {
+            return false;
+        }
+        //设置删除状态
+        $this->setStatus(STATUS_DELETE);
+        return $repository->update($this, array('status','statusTime'));
     }
 
     private function email()

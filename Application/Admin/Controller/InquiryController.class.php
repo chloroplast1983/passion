@@ -35,7 +35,7 @@ class InquiryController extends Controller
 
         $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
         list($num, $inquiryList) = $repository->filter(
-            array(),
+            array('status'=>0),
             array(),
             $start,
             $perpage
@@ -75,5 +75,18 @@ class InquiryController extends Controller
 
         $this->getResponse()->view()->assign('inquiry', $inquiry);
         $this->getResponse()->view()->display('Admin/inquiryGet.tpl');
+    }
+
+    //delete
+    public function delete(int $inquiryId = 0)
+    {
+        //触发导航栏链接高亮
+        $this->getResponse()->view()->assign('inquiryListRef', true);
+
+        $repository = Core::$container->get('Inquiry\Repository\Inquiry\InquiryRepository');
+        $inquiry = $repository->getOne($inquiryId);
+        $inquiry->delete();
+
+        $this->message('删除询价成功', '/Admin/Inquiry');
     }
 }
